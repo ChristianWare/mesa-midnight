@@ -1,0 +1,184 @@
+/* Older button variants used by the admin, booking tool, checkout and
+   portals. Not used on the marketing site. Button.tsx falls back to
+   these when a btnType isn't in Button.module.css. */
+
+.underlinedBlackii,
+.underlinedBlackii:link,
+.underlinedBlackii:visited {
+  background-color: transparent;
+  color: var(--black);
+  font-size: 2rem;
+  border-bottom: 1px solid var(--black);
+  border-radius: 0px;
+  padding: 5px 0px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+
+.blackAdmin,
+.blackAdmin:link,
+.blackAdmin:visited {
+  background-color: var(--black);
+  color: var(--white);
+  border: 1px solid var(--black);
+  display: flex;
+  justify-content: space-between;
+}
+
+.white,
+.white:link,
+.white:visited {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--white);
+  display: flex;
+  justify-content: space-between;
+}
+
+.gray,
+.gray:link,
+.gray:visited {
+  background-color: var(--stroke);
+  color: var(--black);
+  border: 1px solid var(--strokeii);
+  display: flex;
+  justify-content: space-between;
+}
+
+.red,
+.red:link,
+.red:visited {
+  background-color: var(--accent);
+  color: var(--white);
+  border: 1px solid var(--accent600);
+  display: flex;
+  justify-content: space-between;
+}
+
+.green,
+.green:link,
+.green:visited {
+  background-color: var(--green);
+  color: var(--white);
+  border: 1px solid var(--darkGreen);
+  display: flex;
+  justify-content: space-between;
+}
+
+.greenii,
+.greenii:link,
+.greenii:visited {
+  background-color: var(--lighterGreen);
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: normal;
+  border: 1px solid var(--darkGreen);
+  display: flex;
+  justify-content: space-between;
+}
+
+.lightRed,
+.lightRed:link,
+.lightRed:visited {
+  background-color: #0000001a;
+  color: var(--black);
+  border: 1px solid var(--accent);
+  display: flex;
+  justify-content: space-between;
+}
+
+.cream,
+.cream:link,
+.cream:visited {
+  background-color: var(--cream);
+  color: var(--black);
+  border: 1px solid var(--strokeii);
+  display: flex;
+  justify-content: space-between;
+}
+
+.blackOutline {
+  background-color: transparent;
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.transparent {
+  color: var(--white) !important;
+  background-color: #ffffff1a;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blackReg {
+  background-color: var(--black);
+  color: var(--white) !important;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 15px;
+}
+
+.blackRegSmall {
+  background-color: var(--black);
+  color: var(--white) !important;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 1.4rem;
+}
+
+.greenReg {
+  background-color: var(--green);
+  color: var(--white) !important;
+  border: 1px solid var(--darkGreen);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 15px;
+}
+
+.redReg {
+  background-color: var(--accent);
+  color: var(--white) !important;
+  border: 1px solid var(--accent600);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 15px;
+}
+
+.grayReg {
+  background-color: var(--black300);
+  color: var(--black) !important;
+  border: 1px solid var(--black300);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 15px;
+}
+
+.blueReg {
+  background-color: var(--blue);
+  color: var(--white) !important;
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 15px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .blackReg:hover {
+    background-color: var(--black400);
+    border: 1px solid var(--black400);
+  }
+
+  .greenReg:hover {
+    background-color: var(--darkGreen);
+    border: 1px solid var(--darkGreen);
+  }
+}

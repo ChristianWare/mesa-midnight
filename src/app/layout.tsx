@@ -37,6 +37,12 @@ const CreatoDisplayRegular = localFont({
   display: "swap",
 });
 
+const IBMPlex = localFont({
+  src: "../../public/fonts/IBMPlexMono-Medium.ttf",
+  variable: "--IBMPlex",
+  display: "swap",
+});
+
 const inter = Inter({
   variable: "--inter",
   subsets: ["latin"],
@@ -135,7 +141,7 @@ export default function RootLayout({
         <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
       </head>
       <body
-        className={`${inter.variable} ${CreatoDisplayExtraBold.variable} ${CreatoDisplayBold.variable} ${CreatoDisplayMedium.variable} ${CreatoDisplayRegular.variable}`}
+        className={`${inter.variable} ${CreatoDisplayExtraBold.variable} ${CreatoDisplayBold.variable} ${CreatoDisplayMedium.variable} ${CreatoDisplayRegular.variable} ${IBMPlex.variable}`}
       >
         <script
           type='application/ld+json'

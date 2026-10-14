@@ -1,32 +1,48 @@
+/* ================================
+   Base
+   Pill with text and a small inline arrow (screenshot 1).
+   ================================ */
 .btn {
   position: relative;
   overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1.8rem;
+  gap: 10px;
   text-align: center;
-  /* border-radius: 5px; */
-  border-radius: 50px;
-  padding: 6px 6px 6px 18px;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.8px;
-  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  text-transform: capitalize;
   white-space: nowrap;
-  cursor: pointer;
-  /* text-transform: capitalize; */
   line-height: 1;
+  cursor: pointer;
   user-select: none;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
 }
 
-.btn:link,
-.btn:visited {
+/* globals.css sets every <span> to black. Inside a button, text and icons
+   always follow the button's own color instead. */
+.btn span,
+.btn svg {
   color: inherit;
+  font-family: inherit;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
 /* ================================
-   Text Flip Animation Styles
+   Text flip animation
    ================================ */
 .textContainer {
   position: relative;
@@ -70,18 +86,18 @@
 }
 
 /* ================================
-   Arrow Slide Animation Styles
+   Icons — inline, no circle, same color as the text
    ================================ */
 .arrowContainer,
 .plusContainer {
-  background-color: var(--white);
-  /* border-radius: 4px 4px 10px; */
-  border-radius: 50px;
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
   overflow: hidden;
+  background: transparent;
+  padding: 0;
+  color: inherit;
 }
 
 .arrowWrapper {
@@ -89,9 +105,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1em;
-  height: 1em;
+  width: 2rem;
+  height: 2rem;
   overflow: hidden;
+  color: inherit;
 }
 
 .arrowPrimary,
@@ -104,271 +121,157 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: inherit;
 }
 
 .arrow {
-  color: var(--black);
-  transform: rotate(90deg);
-}
-
-.optionalIcon {
-  color: var(--black);
-  position: relative;
-  top: 2px;
+  color: currentColor;
   width: 2rem;
   height: 2rem;
 }
 
-.plusContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
+.optionalIcon {
+  color: currentColor;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 /* ================================
-   Button Variants
+   Pill buttons — Bold (screenshot 1)
    ================================ */
-.underlinedWhite,
-.underlinedWhite:link,
-.underlinedWhite:visited {
-  background-color: transparent;
+.mainBlack,
+.mainBlack:link,
+.mainBlack:visited,
+.whiteMain,
+.whiteMain:link,
+.whiteMain:visited {
+  background-color: var(--black);
   color: var(--white);
-  /* border-bottom: 1px solid var(--white); */
-  border-radius: 0px;
-  padding: 5px 0px;
-  font-size: 2rem;
-
-  justify-content: space-between;
+  border-color: var(--black);
+  border-radius: 100px;
+  padding: 12px 22px;
+  font-family: var(--CreatoDisplayBold);
+  font-size: 1.6rem;
+  letter-spacing: normal;
 }
 
+.whiteMain,
+.whiteMain:link,
+.whiteMain:visited {
+  background-color: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+}
+
+/* ================================
+   Pill buttons — Regular (screenshot 2)
+   ================================ */
+.blackMain,
+.blackMain:link,
+.blackMain:visited {
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  border-radius: 100px;
+  padding: 14px 22px;
+  font-family: var(--CreatoDisplayRegular);
+  font-size: 1.6rem;
+  letter-spacing: normal;
+}
+
+/* Smaller pill for the nav ("Let's Talk") */
+.navWhite,
+.navWhite:link,
+.navWhite:visited {
+  background-color: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+  border-radius: 100px;
+  padding: 10px 17px;
+  font-family: var(--CreatoDisplayRegular);
+  font-size: 1.5rem;
+  letter-spacing: normal;
+}
+
+/* ================================
+   Block buttons (screenshot 3)
+   ================================ */
+.whiteBlock,
+.whiteBlock:link,
+.whiteBlock:visited {
+  background-color: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+  border-radius: 6px;
+  padding: 30px 26px;
+  font-family: var(--CreatoDisplayBold);
+  font-size: 1.6rem;
+  letter-spacing: normal;
+}
+
+.blackBlock,
+.blackBlock:link,
+.blackBlock:visited {
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  border-radius: 6px;
+  padding: 30px 26px;
+  font-family: var(--CreatoDisplayBold);
+  font-size: 1.6rem;
+  letter-spacing: normal;
+}
+
+/* ================================
+   Footer subscribe (screenshot 4)
+   ================================ */
+.footerSubWhite,
+.footerSubWhite:link,
+.footerSubWhite:visited {
+  background-color: #f1f1f1;
+  color: var(--black);
+  border-color: #f1f1f1;
+  border-radius: 6px;
+  height: 40px;
+  padding: 0 20px;
+  font-family: var(--CreatoDisplayRegular);
+  font-size: 1.4rem;
+  letter-spacing: normal;
+}
+
+/* ================================
+   Underlined links (screenshot 5)
+   ================================ */
 .underlinedBlack,
 .underlinedBlack:link,
 .underlinedBlack:visited {
   background-color: transparent;
   color: var(--black);
-  font-size: 2rem;
-  /* border-bottom: 3px solid var(--stroke); */
-  border-radius: 0px;
-  padding: 5px 0px;
-  justify-content: space-between;
-}
-
-.underlinedBlack .arrowContainer {
-  background-color: var(--accent);
-}
-
-.underlinedBlack .arrowContainer .arrow {
-  color: var(--white);
-}
-
-.underlinedBlackii,
-.underlinedBlackii:link,
-.underlinedBlackii:visited {
-  background-color: transparent;
-  color: var(--black);
-  font-size: 2rem;
+  border: none;
   border-bottom: 1px solid var(--black);
-  border-radius: 0px;
-  padding: 5px 0px;
-  padding-bottom: 10px;
+  border-radius: 0;
+  padding: 0 0 8px;
+  gap: 30px;
   justify-content: space-between;
-}
-
-.underlinedBlackii .arrowContainer {
-  background-color: var(--black);
-}
-
-.underlinedBlackii .arrowContainer .arrow {
-  color: var(--white);
-}
-
-.black,
-.black:link,
-.black:visited {
-  background-color: var(--black);
-  color: var(--white);
-  border: 1px solid var(--black);
-  display: flex;
-  justify-content: space-between;
-}
-
-.blackAdmin,
-.blackAdmin:link,
-.blackAdmin:visited {
-  background-color: var(--black);
-  color: var(--white);
-  border: 1px solid var(--black);
-  display: flex;
-  justify-content: space-between;
-}
-
-.white,
-.white:link,
-.white:visited {
-  background-color: var(--white);
-  color: var(--black);
-  border: 1px solid var(--white);
-  display: flex;
-  justify-content: space-between;
-}
-
-.white .arrowContainer {
-  background-color: var(--black);
-}
-
-.white .arrowContainer .arrow {
-  color: var(--white);
-}
-
-.gray,
-.gray:link,
-.gray:visited {
-  background-color: var(--stroke);
-  color: var(--black);
-  border: 1px solid var(--strokeii);
-  display: flex;
-  justify-content: space-between;
-}
-
-.red,
-.red:link,
-.red:visited {
-  background-color: var(--accent);
-  color: var(--white);
-  border: 1px solid var(--accent600);
-  display: flex;
-  justify-content: space-between;
-}
-
-.green,
-.green:link,
-.green:visited {
-  background-color: var(--green);
-  color: var(--white);
-  border: 1px solid var(--darkGreen);
-  display: flex;
-  justify-content: space-between;
-}
-
-.greenii,
-.greenii:link,
-.greenii:visited {
-  background-color: var(--lighterGreen);
-  color: var(--green);
-  font-weight: 700;
-  letter-spacing: normal;
-  border: 1px solid var(--darkGreen);
-  display: flex;
-  justify-content: space-between;
-}
-
-.lightRed,
-.lightRed:link,
-.lightRed:visited {
-  background-color: #0000001a;
-  color: var(--black);
-  border: 1px solid var(--accent);
-  display: flex;
-  justify-content: space-between;
-}
-
-.cream,
-.cream:link,
-.cream:visited {
-  background-color: var(--cream);
-  color: var(--black);
-  border: 1px solid var(--strokeii);
-  display: flex;
-  justify-content: space-between;
-}
-
-.blackOutline {
-  background-color: transparent;
-  color: var(--black);
-  border: 1px solid var(--black);
-}
-
-.transparent {
-  color: var(--white) !important;
-  background-color: #ffffff1a;
-  display: flex;
-  justify-content: space-between;
-}
-
-.blackReg {
-  background-color: var(--black);
-  color: var(--white) !important;
-  border: 1px solid var(--black);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 8px 15px;
-}
-
-.blackRegSmall {
-  background-color: var(--black);
-  color: var(--white) !important;
-  border: 1px solid var(--black);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 5px 10px;
+  font-family: var(--IBMPlex);
   font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.greenReg {
-  background-color: var(--green);
-  color: var(--white) !important;
-  border: 1px solid var(--darkGreen);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 8px 15px;
-}
-
-.redReg {
-  background-color: var(--accent);
-  color: var(--white) !important;
-  border: 1px solid var(--accent600);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 8px 15px;
-}
-
-.grayReg {
-  background-color: var(--black300);
-  color: var(--black) !important;
-  border: 1px solid var(--black300);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 8px 15px;
-}
-
-.blueReg {
-  background-color: var(--blue);
-  color: var(--white) !important;
-  border: 1px solid var(--blue);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 8px 15px;
-}
-
-/* ================================
-   HOVER STATES - Desktop only
-   ================================ */
-@media (hover: hover) and (pointer: fine) {
-  .blackReg:hover {
-    background-color: var(--black400);
-    border: 1px solid var(--black400);
-  }
-
-  .greenReg:hover {
-    background-color: var(--darkGreen);
-    border: 1px solid var(--darkGreen);
-  }
+.underlinedWhite,
+.underlinedWhite:link,
+.underlinedWhite:visited {
+  background-color: transparent;
+  color: var(--white);
+  border: none;
+  border-bottom: 1px solid var(--white);
+  border-radius: 0;
+  padding: 0 0 8px;
+  gap: 30px;
+  justify-content: space-between;
+  font-family: var(--IBMPlex);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }

@@ -8,8 +8,9 @@ import {
 } from "react";
 import Link from "next/link";
 import styles from "./Button.module.css";
+import platformStyles from "./PlatformButton.module.css";
 import { motion, useAnimate, AnimationOptions } from "motion/react";
-import Arrow from "../icons/Arrow/Arrow";
+import CornerArrow from "../icons/CornerArrow/CornerArrow";
 import Plus from "../icons/Plus/Plus";
 import DownloadIcon from "../DownloadIcon/DownloadIcon";
 import Close from "../icons/Close/Close";
@@ -38,7 +39,6 @@ interface Props {
   onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 }
 
-// Changed from spring to tween to remove bounce
 const transition: AnimationOptions = {
   type: "tween",
   duration: 0.35,
@@ -53,12 +53,14 @@ const FlipText = ({ label }: { label: string }) => {
       <motion.span
         className={`text-primary ${styles.textPrimary}`}
         style={{ y: 0 }}
+        aria-hidden='true'
       >
         {label}
       </motion.span>
       <motion.span
         className={`text-secondary ${styles.textSecondary}`}
         style={{ y: "-100%" }}
+        aria-hidden='true'
       >
         {label}
       </motion.span>
@@ -77,26 +79,29 @@ const IconSlide = ({
   containerClassName?: string;
 }) => {
   return (
-    <div className={containerClassName || styles.arrowContainer}>
-      <div className={styles.arrowWrapper}>
-        <motion.div
+    <span
+      className={containerClassName || styles.arrowContainer}
+      aria-hidden='true'
+    >
+      <span className={styles.arrowWrapper}>
+        <motion.span
           className={`icon-primary ${styles.arrowPrimary}`}
           style={{ x: 0 }}
         >
           <Icon className={iconClassName} />
-        </motion.div>
-        <motion.div
+        </motion.span>
+        <motion.span
           className={`icon-secondary ${styles.arrowSecondary}`}
           style={{ x: "-100%" }}
         >
           <Icon className={iconClassName} />
-        </motion.div>
-      </div>
-    </div>
+        </motion.span>
+      </span>
+    </span>
   );
 };
 
-// Proper hook using useSyncExternalStore to detect hover capability
+// Detect hover capability without a hydration mismatch
 function useSupportsHover() {
   const subscribe = (callback: () => void) => {
     const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -104,14 +109,11 @@ function useSupportsHover() {
     return () => mediaQuery.removeEventListener("change", callback);
   };
 
-  const getSnapshot = () => {
-    return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  };
+  const getSnapshot = () =>
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  const getServerSnapshot = () => {
-    // Default to true on server (will be corrected on hydration)
-    return true;
-  };
+  // Default to true on the server (corrected on hydration)
+  const getServerSnapshot = () => true;
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
@@ -141,34 +143,30 @@ export default function Button({
 
   const content = text || (typeof children === "string" ? children : null);
   const nonTextChildren = typeof children !== "string" ? children : null;
-  const className = `${styles.btn} ${styles[btnType]}`;
+
+  // New marketing variants first; fall back to the platform variants.
+  const variantClass = styles[btnType] ?? platformStyles[btnType] ?? "";
+  const className = `${styles.btn} ${variantClass}`;
 
   const hoverStart = () => {
-    // Don't animate on touch devices
     if (!supportsHover) return;
     if (blocked) return;
     setBlocked(true);
 
-    // Animate text - all at once, no stagger
-    // Primary text moves down and out
+    // Text: primary slides down and out, secondary comes in from the top
     animate(".text-primary", { y: "100%" }, transition).then(() => {
       animate(".text-primary", { y: 0 }, { duration: 0 }).then(() => {
         setBlocked(false);
       });
     });
-
-    // Secondary text comes in from top
     animate(".text-secondary", { y: "0%" }, transition).then(() => {
       animate(".text-secondary", { y: "-100%" }, { duration: 0 });
     });
 
-    // Animate all icons - horizontal swap
-    // Primary icons move right and out
+    // Icons: primary slides right and out, secondary comes in from the left
     animate(".icon-primary", { x: "100%" }, transition).then(() => {
       animate(".icon-primary", { x: 0 }, { duration: 0 });
     });
-
-    // Secondary icons come in from left
     animate(".icon-secondary", { x: "0%" }, transition).then(() => {
       animate(".icon-secondary", { x: "-100%" }, { duration: 0 });
     });
@@ -180,7 +178,7 @@ export default function Button({
       {nonTextChildren}
       {arrow && (
         <IconSlide
-          icon={Arrow}
+          icon={CornerArrow}
           className={styles.arrow}
           containerClassName={styles.arrowContainer}
         />
@@ -228,11 +226,7 @@ export default function Button({
         />
       )}
       {fileIcon && (
-        <IconSlide
-          icon={FileIcon}
-          className={styles.optionalIcon}
-          // containerClassName={styles.plusContainer}
-        />
+        <IconSlide icon={FileIcon} className={styles.optionalIcon} />
       )}
     </>
   );
