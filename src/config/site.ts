@@ -94,48 +94,48 @@ export interface SiteConfig {
   };
 }
 
-const url = "https://www.example.com";
+const url = "https://www.mesamidnight.com";
 
 export const SITE: SiteConfig = {
-  name: "Your Company",
-  legalName: "Your Company LLC",
-  slug: "your-company",
-  tagline: "Private black car service in Phoenix, Arizona",
+  name: "Mesa Midnight",
+  legalName: "Mesa Midnight Transportation LLC",
+  slug: "mesa-midnight",
+  tagline: "Late-night and executive black car service in Mesa, Arizona",
   description:
-    "Professional chauffeured transportation in Phoenix and Scottsdale. Flat-rate airport transfers, corporate accounts, and event transportation. Book online in under a minute.",
+    "Mesa Midnight is a 24/7 black car service in Mesa and the East Valley. Flat-rate Sky Harbor transfers, executive travel and event rides. Book online.",
   url,
   domain: new URL(url).host,
   email: {
-    info: "info@example.com",
-    reservations: "reservations@example.com",
-    support: "support@example.com",
-    admin: "admin@example.com",
-    corporate: "corporate@example.com",
-    noReply: "no-reply@example.com",
+    info: "info@mesamidnight.com",
+    reservations: "reservations@mesamidnight.com",
+    support: "support@mesamidnight.com",
+    admin: "admin@mesamidnight.com",
+    corporate: "corporate@mesamidnight.com",
+    noReply: "no-reply@mesamidnight.com",
   },
   phone: {
-    display: "(000) 000-0000",
-    tel: "+10000000000",
+    display: "(480) 555-0147",
+    tel: "+14805550147",
   },
   address: {
-    street: "123 Main St, Suite 100",
-    city: "Phoenix",
+    street: "1250 W Main St, Suite 210",
+    city: "Mesa",
     state: "AZ",
-    zip: "85004",
+    zip: "85201",
     country: "US",
   },
   timezone: "America/Phoenix",
   market: {
-    city: "Phoenix",
+    city: "Mesa",
     state: "Arizona",
     stateCode: "AZ",
-    region: "the Valley",
+    region: "the East Valley",
   },
   owner: {
-    name: "Owner Name",
+    name: "Daniel Ortega",
     title: "Founder & Owner",
   },
-  founded: "2020",
+  founded: "2019",
   social: {
     instagram: "",
     facebook: "",
@@ -145,7 +145,7 @@ export const SITE: SiteConfig = {
   },
   logo: "/brand/logo.png",
   ogImage: "/brand/og-image.png",
-  themeColor: "#000000",
+  themeColor: "#0B1020",
   nav: {
     partners: [],
   },

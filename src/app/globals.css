@@ -48,7 +48,7 @@
   */
   /* scroll-margin-top: 440px; */
   -webkit-tap-highlight-color: transparent;
-  font-family: var(--inter);
+  font-family: var(--CreatoDisplayRegular);
   /* overscroll-behavior: none; */
 }
 
@@ -80,56 +80,61 @@ h5,
 h6,
 span {
   color: var(--black);
-  font-family: var(--inter);
   /* hyphens: auto; */
 }
 
 h1,
 .h1 {
-  font-size: 5.4rem;
+  font-size: 9rem;
   font-weight: 500;
-  line-height: 1.1em;
-  /* letter-spacing: -2.2px; */
+  line-height: 1.1;
+  letter-spacing: -3px;
+  font-family: var(--CreatoDisplayBold);
 }
 
 h2,
 .h2 {
-  font-size: 4rem;
+  font-size: 7rem;
   font-weight: 500;
-  line-height: 1.1em;
-  /* letter-spacing: -2.2px; */
+  line-height: 1;
+  letter-spacing: -2.1px;
+  font-family: var(--CreatoDisplayMedium);
 }
 
 h3,
 .h3 {
-  font-size: 3rem;
+  font-size: 5.2rem;
   font-weight: 500;
-  line-height: 1.2em;
-  /* letter-spacing: -1.6px; */
+  line-height: 1.1;
+  letter-spacing: -1.04px;
+  font-family: var(--CreatoDisplayMedium);
 }
 
 h4,
 .h4 {
-  font-size: 2.4rem;
+  font-size: 3.6rem;
   font-weight: 500;
-  line-height: 1.2em;
-  /* letter-spacing: -1.3px; */
+  line-height: 1.1;
+  letter-spacing: -1.08px;
+  font-family: var(--CreatoDisplayMedium);
 }
 
 h5,
 .h5 {
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: 500;
   line-height: 1.2;
-  /* letter-spacing: -1px; */
+  letter-spacing: -0.28px;
+  font-family: var(--CreatoDisplayMedium);
 }
 
 h6,
 .h6 {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: 500;
   line-height: 1.2;
-  /* letter-spacing: -0.8px; */
+  letter-spacing: 0px;
+  font-family: var(--CreatoDisplayMedium);
 }
 
 button {
@@ -146,9 +151,23 @@ textarea {
   font-size: 1.6rem;
   line-height: 1.5em;
   font-weight: 500;
-  /* letter-spacing: -0.8px; */
+  letter-spacing: -0.8px;
   hyphens: auto;
   color: var(--black);
+}
+
+p {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  letter-spacing: 0px;
+  font-family: var(--CreatoDisplayRegular);
+}
+
+.mediumParagrapgh {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  letter-spacing: 0px;
+  font-family: var(--CreatoDisplayMedium);
 }
 
 textarea {
@@ -161,40 +180,14 @@ select:focus {
   outline: none;
 }
 
-.stat {
-  font-size: 8rem;
-  font-weight: 900;
-  letter-spacing: -3px;
+@media screen and (max-width: 1468px) {
+  h1,
+  .h1 {
+    font-size: 8rem;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
 }
-
-/* .toastFont {
-  font-family: var(--ABCSocialLight);
-} */
-
-/* ::-webkit-scrollbar-thumb {
-  border-radius: 20px;
-  background: var(--secondary);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
-}
-
-::selection {
-  background: var(--secondary);
-}
-::-moz-selection {
-  background: var(--secondary);
-} */
-
-/* ::selection {
-  background: var(--orange);
-  color: var(--black);
-}
-::-moz-selection {
-  background: var(--orange);
-  color: var(--black);
-} */
 
 @media screen and (max-width: 1268px) {
   h1,
@@ -234,7 +227,7 @@ select:focus {
     font-size: 50%;
   }
 
-  /* h1,
+  h1,
   .h1 {
     letter-spacing: -2px;
     font-size: 42px;
@@ -242,16 +235,16 @@ select:focus {
 
   h2,
   .h2 {
-    letter-spacing: -2.2px;
+    letter-spacing: -2px;
     font-size: 34px;
-    line-height: 1em;
+    /* line-height: 1em; */
   }
 
   h3,
   .h3 {
     font-size: 2.8rem;
     letter-spacing: -1.5px;
-  } */
+  }
 
   p {
     font-size: 16px;
@@ -267,26 +260,6 @@ select:focus {
   }
 }
 
-/* .toastFont {
-} */
-
-/* Only use in production */
-/* @media screen and (max-width: 480px) {
-  h1 {
-    letter-spacing: -2.5px;
-  }
-  h2 {
-    letter-spacing: -1.5px;
-    line-height: 120%;
-  }
-} */
-
-/* .toastFont {
-  font-family: var(--roboto);
-} */
-
-/* dashboard styles */
-
 .container {
   display: grid;
   gap: 3rem;
@@ -301,13 +274,6 @@ select:focus {
   gap: 2rem;
   flex-wrap: wrap;
   width: 100%;
-}
-
-.heading {
-  border-bottom: 2px solid var(--stroke);
-  width: 100%;
-  padding-bottom: 1rem;
-  /* text-transform: capitalize; */
 }
 
 .tabs {
@@ -891,13 +857,13 @@ th {
   }
 }
 
-/* @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   h1,
   .h1 {
     letter-spacing: -1.5px;
     font-size: 35px;
   }
-} */
+}
 
 /* While a page loads (see NavProgress), the admin content fades slightly. */
 [data-refresh-area] {
