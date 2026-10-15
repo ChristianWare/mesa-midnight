@@ -26,7 +26,7 @@ const TOP: Service[] = [
     sub: "Flat-rate rides with flight tracking",
     label: "PHX · AZA",
     tag: "60 min free wait",
-    image: "/images/img3.webp",
+    image: "/images/img7.jpg",
     focus: "30% 50%",
   },
   {
@@ -35,7 +35,7 @@ const TOP: Service[] = [
     sub: "Executive rides on one monthly invoice",
     label: "Business",
     tag: "Monthly billing",
-    image: "/images/img2.png",
+    image: "/images/img8.jpg",
   },
 ];
 
@@ -46,7 +46,7 @@ const BOTTOM: Service[] = [
     sub: "A car and chauffeur on standby",
     label: "By the hour",
     tag: "2-hr minimum",
-    image: "/images/img1.png",
+    image: "/images/img9.jpg",
     focus: "35% 50%",
   },
   {
@@ -55,7 +55,7 @@ const BOTTOM: Service[] = [
     sub: "Bridal parties, guest shuttles, game nights",
     label: "Events",
     tag: "Up to 14 guests",
-    image: "/images/img2.png",
+    image: "/images/img10.jpg",
     focus: "70% 50%",
   },
   {
@@ -64,7 +64,7 @@ const BOTTOM: Service[] = [
     sub: "The same flat rate at 2 a.m. as 2 p.m.",
     label: "24/7",
     tag: "No surcharge",
-    image: "/images/img3.webp",
+    image: "/images/img11.jpg",
     focus: "65% 50%",
   },
 ];
@@ -132,9 +132,8 @@ export default function ServicesSection() {
             Services<sup className={styles.count}>(05)</sup>
           </h2>
           <p className={styles.intro}>
-            Whatever the reason for the trip, you get the same thing: a
-            spotless car, a chauffeur who&apos;s early, and the price you were
-            quoted.
+            Whatever the reason for the trip, you get the same thing: a spotless
+            car, a chauffeur who&apos;s early, and the price you were quoted.
           </p>
         </div>
 

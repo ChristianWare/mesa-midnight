@@ -169,7 +169,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.6rem;
-  margin-top: 1.4rem;
+  margin-top: 2rem;
 }
 
 .captionText {
@@ -185,7 +185,7 @@
 }
 
 .sub {
-  margin-top: 4px;
+  margin-top: .7rem;
   font-size: 16px;
   line-height: 1.3;
   color: var(--black400);

@@ -24,10 +24,9 @@ const AIRPORTS: Airport[] = [
     name: "Phoenix Sky Harbor",
     code: "PHX",
     sub: "About 25 min from Mesa",
-    blurb:
-      "Curbside or inside at baggage claim, with your name on a sign.",
+    blurb: "Curbside or inside at baggage claim, with your name on a sign.",
     href: "/airports/phx-sky-harbor",
-    image: "/images/vehicles/cadi.jpg",
+    image: "/images/skyHarbor.png",
     alt: "Black Cadillac Escalade waiting on a wet road",
   },
   {
@@ -37,7 +36,7 @@ const AIRPORTS: Airport[] = [
     blurb:
       "Ten minutes from most of Mesa and Gilbert. We know its one-curb pickup well.",
     href: "/airports/phoenix-mesa-gateway",
-    image: "/images/img2.png",
+    image: "/images/mesaGateway.webp",
     alt: "Black SUV driving a desert highway",
   },
   {
@@ -46,7 +45,7 @@ const AIRPORTS: Airport[] = [
     sub: "Falcon Field & Scottsdale",
     blurb: "Tarmac-side pickups at Falcon Field and Scottsdale Airport.",
     href: "/airports/private-aviation",
-    image: "/images/vehicles/cadi2.jpg",
+    image: "/images/scottsdaleAirport.jpg",
     alt: "Black Cadillac Escalade parked outside a stone house",
   },
   {
@@ -56,7 +55,7 @@ const AIRPORTS: Airport[] = [
     blurb:
       "Flat-rate rides between Tucson and the East Valley, with your flight tracked the whole way.",
     href: "/airports",
-    image: "/images/vehicles/heroiii.jpg",
+    image: "/images/tucsonAirport.jpeg",
     alt: "Black Chevrolet Suburban parked on an open lot",
   },
   {
@@ -66,7 +65,7 @@ const AIRPORTS: Airport[] = [
     blurb:
       "Door-to-door rides up to Prescott, with room in the back for every bag.",
     href: "/airports",
-    image: "/images/img1.png",
+    image: "/images/prescottAirport.jpg",
     alt: "Black SUV parked in the desert at sunrise",
   },
   {
@@ -76,7 +75,7 @@ const AIRPORTS: Airport[] = [
     blurb:
       "Long-distance transfers to northern Arizona. Stop for food or a stretch whenever you like.",
     href: "/airports",
-    image: "/images/vehicles/heroiv.jpg",
+    image: "/images/flagstaffAirport.jpg",
     alt: "Black Chevrolet Suburban on a grassy roadside",
   },
 ];
@@ -171,7 +170,9 @@ export default function AirportsSection() {
 
     // Fonts and images can change the stage height after first paint.
     const ro =
-      typeof ResizeObserver !== "undefined" ? new ResizeObserver(onResize) : null;
+      typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(onResize)
+        : null;
     ro?.observe(stage);
 
     window.addEventListener("scroll", request, { passive: true });
