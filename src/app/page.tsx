@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import Hero from "@/components/HomePage/Hero/Hero";
+import AboutIntro from "@/components/HomePage/AboutIntro/AboutIntro";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -18,12 +19,7 @@ export default function Page() {
 
       {/* ...and everything after it scrolls up over the top. */}
       <div className={styles.overHero}>
-        {/* TEMPORARY: stand-in so there's something to scroll.
-            Replace with the real home sections (services, fleet, quote band,
-            testimonials, FAQ...) and delete this block. */}
-        <section className={styles.placeholder}>
-          <p>Next sections go here.</p>
-        </section>
+        <AboutIntro />
       </div>
     </main>
   );

@@ -36,11 +36,3 @@
     position: relative;
   }
 }
-
-/* TEMPORARY — delete with the placeholder section in page.tsx */
-.placeholder {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
