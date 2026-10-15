@@ -330,7 +330,7 @@
 /* ================================
    Small tablet / large phone
    ================================ */
-@media screen and (max-width: 868px) {
+@media screen and (max-width: 968px) {
   .grid {
     grid-template-columns: 1fr;
   }
