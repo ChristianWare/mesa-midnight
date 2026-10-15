@@ -3,7 +3,7 @@
    ================================ */
 .section {
   background-color: var(--white);
-  padding: 8rem 0 12rem;
+  padding: 12rem 0rem;
 }
 
 /* ================================
@@ -210,7 +210,7 @@
    ================================ */
 @media screen and (max-width: 968px) {
   .section {
-    padding: 6rem 0 8rem;
+    padding: 8rem 0rem;
   }
 
   .city {
@@ -242,6 +242,10 @@
    568px
    ================================ */
 @media screen and (max-width: 568px) {
+  .section {
+    padding: 5rem 0rem;
+  }
+
   .trustedTag {
     font-size: 11px;
   }

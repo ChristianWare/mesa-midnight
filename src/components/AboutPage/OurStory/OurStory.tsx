@@ -2,21 +2,6 @@ import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import CountUp from "@/components/shared/CountUp/CountUp";
 import styles from "./OurStory.module.css";
 
-const CHAPTERS = [
-  {
-    when: "2011 — 2019",
-    text: "Daniel Ortega spent eight years driving for other car services across the Valley. The calls he remembers are the ones at 4 a.m.: a traveler at the curb, a ride that never came, a dispatcher who didn't pick up.",
-  },
-  {
-    when: "2019",
-    text: "In 2019 he bought one black sedan, printed a phone number that rang to his own cell, and promised every rider the same thing: early, every time, at a price agreed before the door closed.",
-  },
-  {
-    when: "Today",
-    text: "Today Mesa Midnight runs a fleet of sedans, SUVs and Sprinters from an office on Main Street in Mesa. Dispatch still answers 24 hours a day, and Daniel still takes the occasional 4 a.m. airport run himself.",
-  },
-];
-
 // Places we drive, shown in the strip along the top.
 const CITIES = [
   "Mesa",

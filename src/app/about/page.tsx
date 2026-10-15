@@ -29,8 +29,8 @@ export default function Page() {
       {/* ...and the next sections scroll up over it. */}
       <div className={styles.overHero}>
         <OurStory />
-        <OurStandards />
         <AreasWeServe />
+        <OurStandards />
       </div>
     </main>
   );
