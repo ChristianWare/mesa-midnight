@@ -191,7 +191,7 @@ select:focus {
 @media screen and (max-width: 1468px) {
   h1,
   .h1 {
-    font-size: 70px;
+    font-size: 65px;
     letter-spacing: -2px;
   }
 }
