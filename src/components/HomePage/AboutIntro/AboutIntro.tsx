@@ -31,15 +31,15 @@ const STATS = [
 
 const IMAGES = [
   {
-    src: "/images/img1.png",
+    src: "/images/img4.jpg",
     alt: "Black Mesa Midnight SUV parked in the desert at sunrise",
   },
   {
-    src: "/images/img2.png",
+    src: "/images/img5.jpg",
     alt: "Black Mesa Midnight SUV driving a desert highway",
   },
   {
-    src: "/images/img3.webp",
+    src: "/images/img6.jpg",
     alt: "Black Mesa Midnight SUV in a white studio",
   },
 ];
