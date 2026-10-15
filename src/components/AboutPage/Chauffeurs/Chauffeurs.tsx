@@ -7,17 +7,47 @@ type Chauffeur = {
   name: string;
   role: string;
   years: number;
-  /** Add a portrait path (e.g. "/images/team/daniel.jpg") to replace the initials. */
+  /** Portrait in /public/images/people. Leave out to show initials instead. */
   photo?: string;
 };
 
 const TEAM: Chauffeur[] = [
-  { name: "Daniel Ortega", role: "Founder & chauffeur", years: 15 },
-  { name: "Marcus Reyes", role: "Lead chauffeur", years: 9 },
-  { name: "Elena Vasquez", role: "Airport specialist", years: 7 },
-  { name: "James Whitfield", role: "Senior chauffeur", years: 11 },
-  { name: "Tanya Brooks", role: "Sprinter & group trips", years: 6 },
-  { name: "Omar Haddad", role: "Overnight shift lead", years: 5 },
+  {
+    name: "Daniel Ortega",
+    role: "Founder & chauffeur",
+    years: 15,
+    photo: "/images/people/DO.jpg",
+  },
+  {
+    name: "Marcus Reyes",
+    role: "Lead chauffeur",
+    years: 9,
+    photo: "/images/people/MR.jpg",
+  },
+  {
+    name: "Elena Vasquez",
+    role: "Airport specialist",
+    years: 7,
+    photo: "/images/people/EV.jpg",
+  },
+  {
+    name: "James Whitfield",
+    role: "Senior chauffeur",
+    years: 11,
+    photo: "/images/people/JW.jpg",
+  },
+  {
+    name: "Tanya Brooks",
+    role: "Sprinter & group trips",
+    years: 6,
+    photo: "/images/people/TB.jpg",
+  },
+  {
+    name: "Omar Haddad",
+    role: "Overnight shift lead",
+    years: 5,
+    photo: "/images/people/OH.jpg",
+  },
 ];
 
 const initials = (name: string) =>
@@ -44,9 +74,7 @@ export default function Chauffeurs() {
               <p className={styles.intro}>
                 Every Mesa Midnight chauffeur is a full-time employee with a
                 commercial license, a background check and at least three years
-                of professional driving. They train on our routes before they
-                drive alone, including every gate at Sky Harbor and the private
-                terminals at Falcon Field.
+                of professional driving.
               </p>
               <div className={styles.headerBtn}>
                 <Button
