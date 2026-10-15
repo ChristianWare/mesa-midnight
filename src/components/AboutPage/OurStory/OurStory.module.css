@@ -1,0 +1,172 @@
+/* ================================
+   Section
+   ================================ */
+.section {
+  background-color: var(--white);
+  padding: 12rem 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.heading {
+  max-width: 900px;
+  margin-top: 2rem;
+  color: var(--black);
+}
+
+/* ================================
+   The story, in three short chapters
+   ================================ */
+.chapters {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4rem;
+  margin: 6rem 0 0;
+  padding: 3.2rem 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chapter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.when {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.text {
+  max-width: 420px;
+  color: var(--black400);
+}
+
+/* ================================
+   By the numbers — same cards as the home About intro
+   ================================ */
+.stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 8rem 0 0;
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 4px 0;
+  border-radius: 4px;
+  background-color: #efefef;
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+  min-height: 165px;
+  padding: 16px;
+  border-radius: 3px;
+  background-color: var(--white);
+}
+
+.cardLabel {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* Big number, bottom right */
+.number {
+  display: flex;
+  align-items: baseline;
+  align-self: flex-end;
+  margin: 0;
+  line-height: 0.8;
+  color: var(--black);
+}
+
+.count,
+.suffix {
+  line-height: 0.8;
+  color: inherit;
+}
+
+.cardFoot {
+  margin: 0;
+  padding: 10px 6px 8px;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ================================
+   968px
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding: 8rem 0;
+  }
+
+  .chapters {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3.2rem;
+    margin-top: 4rem;
+  }
+
+  .text {
+    max-width: 640px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 6rem;
+  }
+}
+
+/* ================================
+   568px
+   ================================ */
+@media screen and (max-width: 568px) {
+  .cardInner {
+    min-height: 130px;
+    gap: 2.4rem;
+  }
+}

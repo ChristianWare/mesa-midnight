@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import AboutUsHero from "@/components/AboutPage/AboutUsHero/AboutUsHero";
+import OurStory from "@/components/AboutPage/OurStory/OurStory";
+import OurStandards from "@/components/AboutPage/OurStandards/OurStandards";
 // Same pinned-hero layout as the home page.
 import styles from "../page.module.css";
 
@@ -24,7 +26,10 @@ export default function Page() {
       </div>
 
       {/* ...and the next sections scroll up over it. */}
-      <div className={styles.overHero}></div>
+      <div className={styles.overHero}>
+        <OurStory />
+        <OurStandards />
+      </div>
     </main>
   );
 }

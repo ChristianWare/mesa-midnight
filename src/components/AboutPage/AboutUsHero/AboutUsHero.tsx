@@ -30,7 +30,7 @@ export default function AboutUsHero() {
       {/* Background video */}
       <video
         className={styles.video}
-        src='/videos/heroii.mp4'
+        src='/videos/mesa.mp4'
         autoPlay
         muted
         loop
@@ -47,7 +47,7 @@ export default function AboutUsHero() {
             {/* ── Left: headline + CTA ── */}
             <div className={styles.left}>
               <h1 id='about-hero-heading' className={styles.heading}>
-                Built for the rides other companies miss.
+                Built for the Rides Other Companies Miss
               </h1>
               <div className={styles.btnContainer}>
                 <Button

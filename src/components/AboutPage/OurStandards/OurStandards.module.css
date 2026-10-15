@@ -1,0 +1,304 @@
+/* ================================
+   Section
+   ================================ */
+.section {
+  background-color: var(--white);
+  padding: 0 0 12rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* ================================
+   Heading row (h2 keeps its global size)
+   ================================ */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.heading {
+  color: var(--black);
+}
+
+.intro {
+  max-width: 480px;
+  margin-top: 2rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--black400);
+}
+
+.count {
+  flex-shrink: 0;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+/* ================================
+   Cards: grey, black, then a wider white card in a black frame
+   ================================ */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 375fr) minmax(0, 368fr) minmax(0, 547fr);
+  margin: 6rem 0 0;
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  min-width: 0;
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2.4rem 1.6rem 2rem;
+  border-radius: 6px;
+}
+
+.light {
+  margin-right: 8px;
+}
+
+.light .cardInner {
+  background-color: #efefef;
+}
+
+.dark .cardInner {
+  border-radius: 6px 0 0 6px;
+  background-color: var(--black);
+}
+
+/* Black frame round a white card, joined to the black card */
+.framed {
+  padding: 8px;
+  border-radius: 0 6px 6px 0;
+  background-color: var(--black);
+}
+
+.framed .cardInner {
+  border-radius: 4px;
+  background-color: var(--white);
+}
+
+/* ── Card content ── */
+.chip {
+  align-self: flex-start;
+  padding: 6px 8px;
+  border-radius: 3px;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.dark .chip {
+  background-color: #2a2a2a;
+  color: var(--white);
+}
+
+.framed .chip {
+  background-color: #efefef;
+}
+
+.title {
+  margin-top: 2rem;
+  color: var(--black);
+}
+
+.dark .title {
+  color: var(--white);
+}
+
+.cardIntro {
+  max-width: 320px;
+  margin-top: 0.8rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--black400);
+}
+
+.dark .cardIntro {
+  color: var(--black300);
+}
+
+.divider {
+  height: 1px;
+  margin: 2.4rem 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .divider {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.listLabel {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.dark .listLabel {
+  color: var(--white);
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+
+/* Wide card: two columns of standards */
+.framed .list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2.4rem;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.plus {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background-color: var(--white);
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+}
+
+.dark .plus {
+  background-color: #2a2a2a;
+  color: var(--white);
+}
+
+.framed .plus {
+  background-color: #efefef;
+}
+
+.itemText {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--black400);
+}
+
+.dark .itemText {
+  color: var(--black300);
+}
+
+.itemName {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--black);
+}
+
+.dark .itemName {
+  color: var(--white);
+}
+
+/* Figure + button, pinned to the bottom of the card */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  margin-top: auto;
+  padding-top: 4.8rem;
+}
+
+.figure {
+  color: var(--black);
+}
+
+.dark .figure {
+  color: var(--white);
+}
+
+/* ================================
+   968px — two across, the wide card underneath
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding-bottom: 8rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 8px;
+    margin-top: 4rem;
+  }
+
+  .dark .cardInner {
+    border-radius: 6px;
+  }
+
+  .framed {
+    grid-column: 1 / -1;
+    border-radius: 6px;
+  }
+}
+
+/* ================================
+   568px — one column
+   ================================ */
+@media screen and (max-width: 568px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .light {
+    margin-right: 0;
+  }
+
+  .framed .list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
