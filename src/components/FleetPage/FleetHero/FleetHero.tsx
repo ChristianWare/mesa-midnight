@@ -18,9 +18,17 @@ const SHOTS: Shot[] = [
   { src: "/images/img6.jpg", size: "large" },
 ];
 
-// Listed twice so the strip is long enough to loop on wide screens.
-const VEHICLES = ["Executive Sedan", "Luxury SUV", "Executive Sprinter", "Party Bus"];
-const STRIP = [...VEHICLES, ...VEHICLES];
+// Every vehicle in the fleet, for the strip under the photos.
+const VEHICLES = [
+  "Executive Sedan",
+  "Executive SUV",
+  "Luxury SUV",
+  "Executive Sprinter",
+  "Stretch Limousine",
+  "Party Bus",
+  "Coach Bus",
+];
+const STRIP = VEHICLES;
 
 export default function FleetHero() {
   return (

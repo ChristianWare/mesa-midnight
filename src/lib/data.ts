@@ -13,9 +13,13 @@ export type FleetEntry = {
 };
 
 export const fleetData: readonly FleetEntry[] = [
-  { slug: "luxury-sedan", name: "Luxury Sedan", passengers: 3, luggage: 3, bestFor: "Airport transfers, executive travel" },
+  { slug: "luxury-sedan", name: "Executive Sedan", passengers: 3, luggage: 3, bestFor: "Airport transfers, executive travel" },
   { slug: "executive-suv", name: "Executive SUV", passengers: 6, luggage: 6, bestFor: "Families, groups with luggage, corporate" },
-  { slug: "executive-sprinter", name: "Executive Sprinter", passengers: 12, luggage: 12, bestFor: "Group airport runs, events, crews" },
+  { slug: "luxury-suv", name: "Luxury SUV", passengers: 6, luggage: 6, bestFor: "VIP pickups, special occasions" },
+  { slug: "executive-sprinter", name: "Executive Sprinter", passengers: 14, luggage: 12, bestFor: "Group airport runs, events, crews" },
+  { slug: "stretch-limo", name: "Stretch Limousine", passengers: 10, luggage: 4, bestFor: "Weddings, proms, anniversaries" },
+  { slug: "party-bus", name: "Party Bus", passengers: 20, luggage: 8, bestFor: "Birthdays, bachelor parties, nights out" },
+  { slug: "coach-bus", name: "Coach Bus", passengers: 50, luggage: 50, bestFor: "Conferences, tours, large groups" },
 ];
 
 export const homeQuestions = [

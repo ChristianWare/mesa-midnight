@@ -1,0 +1,301 @@
+/* ================================
+   Section — every vehicle as a card
+   ================================ */
+.section {
+  background-color: #f5f5f5;
+  padding: 12rem 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 300fr) minmax(0, 990fr);
+}
+
+.labelCol {
+  padding-top: 0.6rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* ================================
+   Heading row (h2 keeps its global size)
+   ================================ */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.heading {
+  max-width: 560px;
+  color: var(--black);
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  max-width: 320px;
+  text-align: right;
+}
+
+.intro {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.3;
+  color: #7f7f7f;
+}
+
+.headerBtn {
+  margin-top: 3rem;
+}
+
+/* ================================
+   Cards
+   ================================ */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 6rem 0 0;
+  padding: 0;
+}
+
+.card,
+.card:link,
+.card:visited {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  background-color: var(--white);
+  color: var(--black);
+  transition: box-shadow 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  }
+
+  .card:hover .image {
+    transform: scale(1.04);
+  }
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+}
+
+/* Vehicle cut-out on a soft grey stage */
+.imageWrap {
+  position: relative;
+  display: block;
+  aspect-ratio: 330 / 210;
+  overflow: hidden;
+  border-radius: 4px;
+  background: radial-gradient(ellipse at 50% 80%, #ffffff 0%, #ececec 70%);
+}
+
+.image {
+  object-fit: contain;
+  padding: 8% 10% 6%;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: var(--black);
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.6rem 0.6rem 0.4rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.name,
+.price {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  color: var(--black);
+}
+
+.price {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.priceFrom {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  color: var(--black400);
+}
+
+.model {
+  margin-top: 0.8rem;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+.model {
+  margin-bottom: 3.2rem;
+}
+
+/* margin-top: auto pushes the bottom block down so every card lines up */
+.divider {
+  height: 1px;
+  margin-top: auto;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.facts {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1.6rem;
+}
+
+.fact {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--black400);
+}
+
+.fact strong {
+  font-family: inherit;
+  font-weight: inherit;
+  color: var(--black);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 1.2rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  background-color: #f2f2f2;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.chip svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ================================
+   1268px
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .layout {
+    grid-template-columns: minmax(0, 200fr) minmax(0, 990fr);
+  }
+}
+
+/* ================================
+   968px — centred heading, two across
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding: 8rem 0;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2rem;
+  }
+
+  .labelCol {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    text-align: center;
+  }
+
+  .headerRight {
+    align-items: center;
+    max-width: 440px;
+    text-align: center;
+  }
+
+  .headerBtn {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 4rem;
+  }
+}
+
+/* ================================
+   568px — one column
+   ================================ */
+@media screen and (max-width: 568px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
