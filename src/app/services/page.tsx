@@ -5,6 +5,8 @@ import ServicesList from "@/components/ServicesPage/ServicesList/ServicesList";
 import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
 import OurStandards from "@/components/AboutPage/OurStandards/OurStandards";
 import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
+import FaqSection from "@/components/HomePage/FaqSection/FaqSection";
+import BlogSection from "@/components/HomePage/BlogSection/BlogSection";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -19,6 +21,8 @@ export default function Page() {
       <ServicesList />
       <WhyChooseUs />
       <OurStandards />
+      <FaqSection />
+      <BlogSection />
       <FinalCta />
     </main>
   );

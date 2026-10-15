@@ -20,7 +20,7 @@ const SERVICES: Service[] = [
     description:
       "Flat-rate rides to and from Sky Harbor, Gateway and the private terminals, with your flight tracked from takeoff.",
     tags: ["Flight tracking", "60 min free wait", "Meet & greet", "Curbside or inside"],
-    image: "/images/vehicles/cadi.jpg",
+    image: "/images/img7.jpg",
     alt: "Black Cadillac Escalade waiting for an airport pickup",
   },
   {
@@ -29,7 +29,7 @@ const SERVICES: Service[] = [
     description:
       "Executive transportation for teams, clients and roadshows, with one invoice at the end of the month.",
     tags: ["Monthly billing", "Client pickups", "Roadshows", "Account manager"],
-    image: "/images/vehicles/heroiii.jpg",
+    image: "/images/img8.jpg",
     alt: "Black Chevrolet Suburban parked on an open lot",
   },
   {
@@ -38,7 +38,7 @@ const SERVICES: Service[] = [
     description:
       "A chauffeur and vehicle at your disposal by the hour, for back-to-back meetings, errands or a night out.",
     tags: ["2-hour minimum", "Multiple stops", "Wait time included"],
-    image: "/images/img1.png",
+    image: "/images/img9.jpg",
     alt: "Black SUV parked in the desert at sunrise",
   },
   {
@@ -47,7 +47,7 @@ const SERVICES: Service[] = [
     description:
       "Wedding parties, guest shuttles, concerts and game days, planned around your timeline down to the minute.",
     tags: ["Guest shuttles", "Up to 14 per Sprinter", "Timeline planning"],
-    image: "/images/img2.png",
+    image: "/images/img10.jpg",
     alt: "Black SUV driving a desert highway",
   },
   {
@@ -56,7 +56,7 @@ const SERVICES: Service[] = [
     description:
       "Rides at any hour, with no late-night surcharge and a dispatcher who actually picks up the phone.",
     tags: ["24/7 dispatch", "No surcharge", "Same flat rate"],
-    image: "/images/vehicles/heroiv.jpg",
+    image: "/images/img11.jpg",
     alt: "Black Chevrolet Suburban on a roadside at dusk",
   },
 ];

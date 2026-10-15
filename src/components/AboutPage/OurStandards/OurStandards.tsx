@@ -80,7 +80,7 @@ export default function OurStandards() {
         <div className={styles.header}>
           <div>
             <h2 id='standards-heading' className={styles.heading}>
-              What we hold ourselves to
+              The Standard We Hold Ourselves To
             </h2>
             <p className={styles.intro}>
               Five promises every chauffeur and every dispatcher works to, on
