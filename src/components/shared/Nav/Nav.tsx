@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
@@ -60,6 +61,8 @@ const SOCIALS = [
   { key: "yelp", label: "Yelp", short: "Y" },
 ] as const;
 
+const noopSubscribe = () => () => {};
+
 function dashboardFor(roles: AppRole[]): string {
   if (roles.includes("ADMIN")) return "/admin";
   if (roles.includes("DRIVER")) return "/driver-dashboard";
@@ -105,6 +108,12 @@ export default function Nav({ variant = "solid" }: NavProps) {
   const roles = ((session?.user as { roles?: AppRole[] } | undefined)?.roles ??
     []) as AppRole[];
   const [open, setOpen] = useState(false);
+  // True only in the browser, so the portal never renders during SSR.
+  const mounted = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
 
   const isActive = (href: string) =>
     href === "/"
@@ -192,145 +201,162 @@ export default function Nav({ variant = "solid" }: NavProps) {
         </div>
       </nav>
 
-      {/* ── Slide-out menu ── */}
-      <div
-        className={`${styles.backdrop} ${open ? styles.backdropOpen : ""}`}
-        onClick={close}
-        aria-hidden='true'
-      />
-      <aside
-        id='site-menu'
-        className={`${styles.panel} ${open ? styles.panelOpen : ""}`}
-        aria-label='Site menu'
-        aria-hidden={!open}
-        inert={!open}
-      >
-        <div className={styles.panelTop}>
-          <Link
-            href={accountHref}
-            className={styles.panelIcon}
-            aria-label={session ? "Your dashboard" : "Log in"}
-            onClick={close}
-          >
-            <AccountIcon />
-          </Link>
-          <Link href='/book' className={styles.panelBook} onClick={close}>
-            Book a ride
-          </Link>
-          <button type='button' className={styles.panelClose} onClick={close}>
-            <span className={styles.closeIcon}>
-              <CloseIcon />
-            </span>
-            <span className={styles.panelCloseLabel}>Menu</span>
-          </button>
-        </div>
-
-        <ul className={styles.menuList}>
-          {MENU_LINKS.map((l) => (
-            <li key={l.href}>
-              <Link
-                href={l.href}
-                className={`${styles.menuLink} ${
-                  isActive(l.href) ? styles.menuLinkActive : ""
-                }`}
-                onClick={close}
-              >
-                {l.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <Link
-          href='/corporate-accounts'
-          className={styles.panelCta}
-          onClick={close}
-        >
-          <span className={styles.panelCtaText}>Open a corporate account</span>
-          <CornerArrow className={styles.panelCtaArrow} />
-        </Link>
-
-        <div className={styles.account}>
-          {status === "loading" ? null : session ? (
-            <>
-              <Link
-                href={dashboardFor(roles)}
-                className={styles.accountLink}
-                onClick={close}
-              >
-                Dashboard
-              </Link>
-              <button
-                type='button'
-                className={styles.accountLink}
-                onClick={() => signOut({ callbackUrl: "/" })}
-              >
-                Log out
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                href='/login'
-                className={styles.accountLink}
-                onClick={close}
-              >
-                Log in
-              </Link>
-              <Link
-                href='/register'
-                className={styles.accountLink}
-                onClick={close}
-              >
-                Create account
-              </Link>
-            </>
-          )}
-        </div>
-
-        <div className={styles.panelFooter}>
-          <div className={styles.contactGroup}>
-            <span className={styles.contactLabel}>Email:</span>
-            <a
-              href={`mailto:${SITE.email.reservations}`}
-              className={styles.contactValue}
+      {/* ── Slide-out menu ──
+          Rendered into <body> so it always sits above the page, even when
+          the nav lives inside the sticky hero that later sections scroll over. */}
+      {mounted &&
+        createPortal(
+          <>
+            <div
+              className={`${styles.backdrop} ${open ? styles.backdropOpen : ""}`}
+              onClick={close}
+              aria-hidden='true'
+            />
+            <aside
+              id='site-menu'
+              className={`${styles.panel} ${open ? styles.panelOpen : ""}`}
+              aria-label='Site menu'
+              aria-hidden={!open}
+              inert={!open}
             >
-              {SITE.email.reservations}
-            </a>
-            <a
-              href={`mailto:${SITE.email.support}`}
-              className={styles.contactValue}
-            >
-              {SITE.email.support}
-            </a>
-          </div>
+              <div className={styles.panelTop}>
+                <Link
+                  href={accountHref}
+                  className={styles.panelIcon}
+                  aria-label={session ? "Your dashboard" : "Log in"}
+                  onClick={close}
+                >
+                  <AccountIcon />
+                </Link>
+                <Link href='/book' className={styles.panelBook} onClick={close}>
+                  Book a ride
+                </Link>
+                <button
+                  type='button'
+                  className={styles.panelClose}
+                  onClick={close}
+                >
+                  <span className={styles.closeIcon}>
+                    <CloseIcon />
+                  </span>
+                  <span className={styles.panelCloseLabel}>Menu</span>
+                </button>
+              </div>
 
-          <div className={styles.contactGroup}>
-            <span className={styles.contactLabel}>Dispatch 24/7:</span>
-            <a href={`tel:${SITE.phone.tel}`} className={styles.contactValue}>
-              {SITE.phone.display}
-            </a>
-          </div>
+              <ul className={styles.menuList}>
+                {MENU_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className={`${styles.menuLink} ${
+                        isActive(l.href) ? styles.menuLinkActive : ""
+                      }`}
+                      onClick={close}
+                    >
+                      {l.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
 
-          {socials.length > 0 && (
-            <ul className={styles.socials}>
-              {socials.map((s) => (
-                <li key={s.key}>
+              <Link
+                href='/corporate-accounts'
+                className={styles.panelCta}
+                onClick={close}
+              >
+                <span className={styles.panelCtaText}>
+                  Open a corporate account
+                </span>
+                <CornerArrow className={styles.panelCtaArrow} />
+              </Link>
+
+              <div className={styles.account}>
+                {status === "loading" ? null : session ? (
+                  <>
+                    <Link
+                      href={dashboardFor(roles)}
+                      className={styles.accountLink}
+                      onClick={close}
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      type='button'
+                      className={styles.accountLink}
+                      onClick={() => signOut({ callbackUrl: "/" })}
+                    >
+                      Log out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href='/login'
+                      className={styles.accountLink}
+                      onClick={close}
+                    >
+                      Log in
+                    </Link>
+                    <Link
+                      href='/register'
+                      className={styles.accountLink}
+                      onClick={close}
+                    >
+                      Create account
+                    </Link>
+                  </>
+                )}
+              </div>
+
+              <div className={styles.panelFooter}>
+                <div className={styles.contactGroup}>
+                  <span className={styles.contactLabel}>Email:</span>
                   <a
-                    href={SITE.social[s.key]}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={styles.social}
-                    aria-label={s.label}
+                    href={`mailto:${SITE.email.reservations}`}
+                    className={styles.contactValue}
                   >
-                    {s.short}
+                    {SITE.email.reservations}
                   </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </aside>
+                  <a
+                    href={`mailto:${SITE.email.support}`}
+                    className={styles.contactValue}
+                  >
+                    {SITE.email.support}
+                  </a>
+                </div>
+
+                <div className={styles.contactGroup}>
+                  <span className={styles.contactLabel}>Dispatch 24/7:</span>
+                  <a
+                    href={`tel:${SITE.phone.tel}`}
+                    className={styles.contactValue}
+                  >
+                    {SITE.phone.display}
+                  </a>
+                </div>
+
+                {socials.length > 0 && (
+                  <ul className={styles.socials}>
+                    {socials.map((s) => (
+                      <li key={s.key}>
+                        <a
+                          href={SITE.social[s.key]}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className={styles.social}
+                          aria-label={s.label}
+                        >
+                          {s.short}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </aside>
+          </>,
+          document.body,
+        )}
 
       <NavProgress />
     </header>
