@@ -1,0 +1,232 @@
+/* ================================
+   Section
+   ================================ */
+.section {
+  background-color: #f5f5f5;
+  padding: 12rem 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 300fr) minmax(0, 990fr);
+}
+
+.labelCol {
+  padding-top: 0.6rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* ================================
+   Heading row (h2 keeps its global size)
+   ================================ */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.heading {
+  max-width: 520px;
+  color: var(--black);
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  max-width: 340px;
+  text-align: right;
+}
+
+.intro {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--black400);
+}
+
+.headerBtn {
+  margin-top: 3rem;
+}
+
+/* ================================
+   Team grid — lines up under the heading
+   ================================ */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin: 6rem 0 0;
+  margin-left: calc(300 / 1290 * 100%);
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 355 / 405;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(160deg, #2a2a2a 0%, #0d0d0d 100%);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Stand-in until a portrait is added */
+.initials {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 14px 14px 14px 16px;
+  border-radius: 0 0 4px 4px;
+  background-color: var(--white);
+}
+
+.infoText {
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  color: var(--black);
+}
+
+.role {
+  margin-top: 2px;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.3;
+  color: #7f7f7f;
+}
+
+/* Years of experience in the round badge */
+.years {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+}
+
+.years span {
+  color: inherit;
+  font: inherit;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ================================
+   1268px
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .layout {
+    grid-template-columns: minmax(0, 200fr) minmax(0, 990fr);
+  }
+
+  .grid {
+    margin-left: calc(200 / 1190 * 100%);
+  }
+}
+
+/* ================================
+   968px — stacked heading, full-width grid
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding: 8rem 0;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2rem;
+  }
+
+  .labelCol {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    text-align: center;
+  }
+
+  .headerRight {
+    align-items: center;
+    max-width: 480px;
+    text-align: center;
+  }
+
+  .headerBtn {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-left: 0;
+    margin-top: 4rem;
+  }
+}
+
+/* ================================
+   568px — one column
+   ================================ */
+@media screen and (max-width: 568px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .photo {
+    aspect-ratio: 4 / 3;
+  }
+}

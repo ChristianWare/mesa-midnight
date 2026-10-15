@@ -3,7 +3,8 @@ import AboutUsHero from "@/components/AboutPage/AboutUsHero/AboutUsHero";
 import OurStory from "@/components/AboutPage/OurStory/OurStory";
 import OurStandards from "@/components/AboutPage/OurStandards/OurStandards";
 import AreasWeServe from "@/components/AboutPage/AreasWeServe/AreasWeServe";
-// Same pinned-hero layout as the home page.
+import Chauffeurs from "@/components/AboutPage/Chauffeurs/Chauffeurs";
+import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 import styles from "../page.module.css";
 
 const TITLE = "About Mesa Midnight | East Valley Black Car Service Since 2019";
@@ -31,6 +32,8 @@ export default function Page() {
         <OurStory />
         <AreasWeServe />
         <OurStandards />
+        <Chauffeurs />
+        <FinalCta />
       </div>
     </main>
   );
