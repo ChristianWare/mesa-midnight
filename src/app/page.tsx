@@ -4,6 +4,7 @@ import Hero from "@/components/HomePage/Hero/Hero";
 import AboutIntro from "@/components/HomePage/AboutIntro/AboutIntro";
 import ServicesSection from "@/components/HomePage/ServicesSection/ServicesSection";
 import HowItWorks from "@/components/HomePage/HowItWorks/HowItWorks";
+import FleetTeaser from "@/components/HomePage/FleetTeaser/FleetTeaser";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function Page() {
         <AboutIntro />
         <ServicesSection />
         <HowItWorks />
+        <FleetTeaser />
       </div>
     </main>
   );
