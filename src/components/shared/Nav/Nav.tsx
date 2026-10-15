@@ -16,12 +16,13 @@ import Moon from "../icons/Moon/Moon";
 /**
  * Site nav.
  * - variant="overlay": transparent with white text, sits on top of the hero.
+ * - variant="dark": transparent with dark text, for pages with a light hero.
  * - default ("solid"): white bar with dark text, for every other page.
  * `background` and the color props are still accepted so the existing
  * `<Nav background="white" />` callers keep compiling.
  */
 export interface NavProps {
-  variant?: "overlay" | "solid";
+  variant?: "overlay" | "dark" | "solid";
   navItemColor?: string;
   color?: string;
   hamburgerColor?: string;
@@ -147,7 +148,11 @@ export default function Nav({ variant = "solid" }: NavProps) {
   return (
     <header
       className={`${styles.header} ${
-        variant === "overlay" ? styles.overlay : styles.solid
+        variant === "overlay"
+          ? styles.overlay
+          : variant === "dark"
+            ? styles.dark
+            : styles.solid
       }`}
     >
       <nav className={styles.nav} aria-label='Main'>

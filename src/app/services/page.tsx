@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
-    import PagePlaceholder from "@/components/shared/PagePlaceholder/PagePlaceholder";
-    import { guides } from "@/lib/pageGuides";
-    import { SITE } from "@/config/site";
-    import Link from "next/link";
-import { servicesData } from "@/lib/services";
+import { SITE } from "@/config/site";
+import ServicesHero from "@/components/ServicesPage/ServicesHero/ServicesHero";
+import ServicesList from "@/components/ServicesPage/ServicesList/ServicesList";
+import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
+import OurStandards from "@/components/AboutPage/OurStandards/OurStandards";
+import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 
-    export const metadata: Metadata = {
-      title: "Services",
-      description: `Airport transfers, corporate travel, events, and hourly chauffeur service from ${SITE.name}.`,
-    };
+export const metadata: Metadata = {
+  title: "Services",
+  description: `Airport transfers, corporate travel, hourly chauffeur, weddings and late-night rides from ${SITE.name}, at a flat rate you see before you book.`,
+  alternates: { canonical: "/services" },
+};
 
-    export default function Page() {
-      return (
-        <PagePlaceholder {...guides.services}>
-          <h2>Services (from src/lib/services.ts)</h2>
-          <ul>
-            {servicesData.map((s) => (
-              <li key={s.slug}>
-                <Link href={`/services/${s.slug}`}>{s.title}</Link> — {s.copy}
-              </li>
-            ))}
-          </ul>
-        </PagePlaceholder>
-      );
-    }
+export default function Page() {
+  return (
+    <main>
+      <ServicesHero />
+      <ServicesList />
+      <WhyChooseUs />
+      <OurStandards />
+      <FinalCta />
+    </main>
+  );
+}

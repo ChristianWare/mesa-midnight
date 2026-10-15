@@ -14,4 +14,5 @@ export const servicesData: readonly ServiceEntry[] = [
   { slug: "corporate-travel", title: "Corporate Travel", copy: "Executive transportation for teams, clients, and roadshows, billed monthly." },
   { slug: "weddings-and-events", title: "Weddings & Events", copy: "Wedding party, guest shuttles, concerts, and game-day transportation." },
   { slug: "hourly-chauffeur", title: "Hourly Chauffeur", copy: "A chauffeur and vehicle at your disposal by the hour, with a minimum." },
+  { slug: "late-night-rides", title: "Late-Night Rides", copy: "Rides at any hour of the night, with no late-night surcharge." },
 ];

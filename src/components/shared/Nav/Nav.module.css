@@ -20,6 +20,16 @@
   --pillText: var(--black);
 }
 
+/* On a light hero: transparent, dark text, no bottom border */
+.dark {
+  background-color: transparent;
+  --navText: var(--black);
+  --navMuted: rgba(0, 0, 0, 0.55);
+  --navLine: rgba(0, 0, 0, 0.2);
+  --pillBg: var(--black);
+  --pillText: var(--white);
+}
+
 /* Everywhere else: white bar, dark text */
 .solid {
   background-color: var(--white);
