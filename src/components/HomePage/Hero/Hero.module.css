@@ -32,7 +32,7 @@
   bottom: 0;
   left: 50%;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   z-index: -1;
   pointer-events: none;
 }
@@ -183,7 +183,7 @@
 .bottomBar {
   margin-top: auto;
   padding-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
