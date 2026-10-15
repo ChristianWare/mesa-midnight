@@ -68,38 +68,35 @@ export default function ServicesList() {
         <ul className={styles.list}>
           {SERVICES.map((s) => (
             <li key={s.slug} className={styles.row}>
-              {/* ── Name + link ── */}
-              <div className={styles.nameCol}>
-                <h2 className={`${styles.title} h4`}>{s.title}</h2>
-                <div className={styles.link}>
-                  <Button
-                    href={`/services/${s.slug}`}
-                    text='Explore service'
-                    btnType='underlinedBlack'
-                    arrow
-                  />
-                </div>
+              {/* Flat children so each screen size can rearrange them
+                  with grid areas (see the CSS). */}
+              <h2 className={`${styles.title} h4`}>{s.title}</h2>
+
+              <div className={styles.link}>
+                <Button
+                  href={`/services/${s.slug}`}
+                  text='Explore service'
+                  btnType='underlinedBlack'
+                  arrow
+                />
               </div>
 
-              {/* ── Description + tags ── */}
-              <div className={styles.textCol}>
-                <p className={styles.description}>{s.description}</p>
-                <ul className={styles.tags}>
-                  {s.tags.map((t) => (
-                    <li key={t} className={styles.tagChip}>
-                      # {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className={styles.description}>{s.description}</p>
 
-              {/* ── Photo ── */}
+              <ul className={styles.tags}>
+                {s.tags.map((t) => (
+                  <li key={t} className={styles.tagChip}>
+                    # {t}
+                  </li>
+                ))}
+              </ul>
+
               <div className={styles.imageWrap}>
                 <Image
                   src={s.image}
                   alt={s.alt}
                   fill
-                  sizes='(max-width: 968px) 100vw, 26vw'
+                  sizes='(max-width: 768px) 100vw, (max-width: 968px) 50vw, 345px'
                   className={styles.image}
                 />
               </div>

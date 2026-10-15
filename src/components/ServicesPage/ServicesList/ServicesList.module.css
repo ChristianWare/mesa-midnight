@@ -1,5 +1,7 @@
 /* ================================
    One row per service: name | text + tags | photo
+   Each piece is placed with grid areas so the layout can change
+   at every breakpoint without changing the markup.
    ================================ */
 .section {
   background-color: var(--white);
@@ -12,33 +14,38 @@
   padding: 0;
 }
 
+/* Desktop: title/description at the top, link/tags at the bottom */
 .row {
   display: grid;
   grid-template-columns: minmax(0, 450fr) minmax(0, 495fr) minmax(0, 345fr);
-  gap: 3rem;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "title desc  image"
+    ".     .     image"
+    "link  tags  image";
+  column-gap: 3rem;
+  row-gap: 2rem;
   padding: 1.6rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.nameCol,
-.textCol {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 3.2rem;
-  padding: 1.4rem 0 1rem;
-}
-
 .title {
+  grid-area: title;
+  padding-top: 1.4rem;
   color: var(--black);
 }
 
 .link {
-  align-self: flex-start;
+  grid-area: link;
+  align-self: end;
+  justify-self: start;
+  padding-bottom: 1rem;
 }
 
 .description {
+  grid-area: desc;
   max-width: 330px;
+  padding-top: 1.6rem;
   font-family: var(--CreatoDisplayMedium);
   font-size: 16px;
   line-height: 1.3;
@@ -46,13 +53,15 @@
 }
 
 .tags {
+  grid-area: tags;
+  align-self: end;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   max-width: 340px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 1rem;
 }
 
 .tagChip {
@@ -68,7 +77,9 @@
 }
 
 .imageWrap {
+  grid-area: image;
   position: relative;
+  width: 100%;
   aspect-ratio: 345 / 225;
   overflow: hidden;
   border-radius: 4px;
@@ -87,7 +98,45 @@
 }
 
 /* ================================
-   968px — name and text left, photo right
+   1468px — tags sit right under the description, photo 300px
+   ================================ */
+@media screen and (max-width: 1468px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 300px);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "title desc  image"
+      ".     tags  image"
+      "link  .     image";
+    row-gap: 1.6rem;
+  }
+
+  .tags {
+    align-self: start;
+    padding-bottom: 0;
+  }
+
+  .imageWrap {
+    max-width: 300px;
+    justify-self: end;
+  }
+}
+
+/* ================================
+   1268px — photo 250px
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 250px);
+  }
+
+  .imageWrap {
+    max-width: 250px;
+  }
+}
+
+/* ================================
+   968px — name + link left; text, tags and photo right
    ================================ */
 @media screen and (max-width: 968px) {
   .section {
@@ -96,49 +145,69 @@
 
   .row {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 2rem 3rem;
-    padding: 3.2rem 0;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "title desc"
+      "link  tags"
+      ".     image";
+    column-gap: 3rem;
+    row-gap: 1.6rem;
+    padding: 2.4rem 0;
   }
 
-  .nameCol {
-    grid-column: 1;
-    grid-row: 1;
-    padding: 0;
-    gap: 1.6rem;
-    justify-content: flex-start;
+  .title,
+  .description {
+    padding-top: 0.8rem;
   }
 
-  .textCol {
-    grid-column: 1;
-    grid-row: 2;
-    padding: 0;
-    gap: 2rem;
-    justify-content: flex-start;
+  .link {
+    align-self: start;
+    padding-bottom: 0;
+  }
+
+  .description {
+    max-width: none;
+  }
+
+  .tags {
+    max-width: none;
   }
 
   .imageWrap {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: start;
+    max-width: none;
+    justify-self: stretch;
+    margin-top: 1.6rem;
   }
 }
 
 /* ================================
-   568px — everything stacks
+   768px — photo on top, then name + link, text and tags
    ================================ */
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 768px) {
   .row {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "image image"
+      "title link"
+      "desc  desc"
+      "tags  tags";
+    column-gap: 2rem;
+    row-gap: 1.2rem;
   }
 
-  .nameCol,
-  .textCol,
   .imageWrap {
-    grid-column: 1;
-    grid-row: auto;
+    margin-top: 0;
+    margin-bottom: 0.4rem;
   }
 
-  .imageWrap {
-    order: -1;
+  .title,
+  .description {
+    padding-top: 0;
+  }
+
+  .link {
+    align-self: center;
+    justify-self: end;
   }
 }
