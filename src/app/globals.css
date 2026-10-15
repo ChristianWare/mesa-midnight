@@ -107,7 +107,8 @@ h2,
 }
 
 h3,
-.h3 {
+.h3,
+.h2h4 {
   font-size: 52px;
   font-weight: 500;
   line-height: 1.1;
@@ -194,6 +195,14 @@ select:focus {
     font-size: 65px;
     letter-spacing: -2px;
   }
+
+  .h2h4 {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -1.08px;
+    font-family: var(--CreatoDisplayMedium);
+  }
 }
 
 @media screen and (max-width: 1268px) {
@@ -234,7 +243,7 @@ select:focus {
   }
 
   h4,
-  .h4 {
+  .h4, .h2h4 {
     font-size: 32px;
     letter-spacing: -1.08px;
   }
@@ -272,7 +281,7 @@ select:focus {
   }
 
   h4,
-  .h4 {
+  .h4, .h2h4 {
     font-size: 30px;
     letter-spacing: -1.08px;
   }
@@ -314,7 +323,7 @@ select:focus {
   }
 
   h4,
-  .h4 {
+  .h4, .h2h4 {
     font-size: 26px;
     letter-spacing: -0.8px;
   }

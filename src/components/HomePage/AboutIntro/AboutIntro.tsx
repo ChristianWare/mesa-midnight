@@ -53,7 +53,7 @@ export default function AboutIntro() {
           <div className={styles.left}>
             <div className={styles.top}>
               <span className={styles.tag}>About us</span>
-              <h2 id='about-intro-heading' className={`${styles.heading} h4`}>
+              <h2 id='about-intro-heading' className={`${styles.heading} h2h4`}>
                 A 24/7 black car service built by a former chauffeur. We answer
                 at every hour, arrive 15 minutes early, and charge the flat rate
                 you were quoted.
@@ -83,7 +83,7 @@ export default function AboutIntro() {
                         <CountUp
                           to={s.value}
                           duration={1.2}
-                          className={styles.count}
+                          className={`${styles.count} h2`}
                         />
                         {s.suffix && (
                           <span className={styles.suffix}>{s.suffix}</span>
