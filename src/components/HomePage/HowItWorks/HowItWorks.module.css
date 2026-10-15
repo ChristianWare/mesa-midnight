@@ -1,0 +1,468 @@
+/* ================================
+   Section
+   ================================ */
+.section {
+  background-color: var(--black);
+  padding: 12rem 0;
+  color: var(--white);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 300fr) minmax(0, 990fr);
+}
+
+.labelCol {
+  padding-top: 0.6rem;
+}
+
+/* Same chip as the other section tags, dark version */
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #1f1f1f;
+  font-family: var(--IBMPlex);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* ================================
+   Heading row
+   ================================ */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.heading {
+  max-width: 640px;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--white);
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 260px;
+  text-align: right;
+}
+
+.intro {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 15px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.headerBtn {
+  margin-top: 3rem;
+}
+
+/* ================================
+   Photo + steps
+   ================================ */
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 330fr) minmax(0, 630fr);
+  column-gap: 3rem;
+  margin-top: 6rem;
+}
+
+/* ── Desktop photo, slides to sit level with the open step ── */
+.mediaCol {
+  position: relative;
+}
+
+.media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.mediaLabel {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.mediaFrame {
+  position: relative;
+  margin-top: 1.4rem;
+  aspect-ratio: 330 / 224;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #1a1a1a;
+}
+
+/* All photos stacked; the open step's fades in */
+.mediaImg {
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 0.5s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mediaImgActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Steps ── */
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  min-width: 0;
+}
+
+.box {
+  padding: 6px;
+  border: 1px solid #1f1f1f;
+  border-radius: 10px;
+  background-color: #070707;
+  transition: border-color 0.3s ease;
+}
+
+.card {
+  border-radius: 7px;
+  background-color: transparent;
+  transition: background-color 0.4s ease;
+}
+
+.itemOpen .card {
+  background-color: #f5f5f5;
+}
+
+.titleWrap {
+  margin: 0;
+  font-size: inherit;
+}
+
+.trigger {
+  display: block;
+  width: 100%;
+  padding: 2rem 2.2rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.itemOpen .trigger {
+  cursor: default;
+  padding-bottom: 1.2rem;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+.itemOpen .trigger:focus-visible {
+  outline-color: var(--black);
+  outline-offset: -4px;
+}
+
+.title {
+  display: block;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+}
+
+.itemOpen .title {
+  color: var(--black);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item:not(.itemOpen) .trigger:hover .title {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .item:not(.itemOpen) .box:hover {
+    border-color: #333;
+  }
+}
+
+/* ── Open / close: rows grow from 0 to their natural height ── */
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.itemOpen .collapse {
+  grid-template-rows: 1fr;
+}
+
+.collapseInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.card .collapseInner {
+  padding: 0 2.2rem;
+}
+
+.text {
+  max-width: 440px;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--black400);
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2.4rem 0 0;
+  padding: 2.4rem 0 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chip {
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+  font-family: var(--IBMPlex);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.cta,
+.cta:link,
+.cta:visited {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.6rem 1.8rem 1rem;
+  color: var(--white);
+}
+
+.ctaText {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.ctaIcon {
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover .ctaIcon {
+    transform: translateX(4px);
+  }
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* Phone / tablet photo lives inside each step; hidden on desktop */
+.mobileMedia {
+  display: none;
+}
+
+.mobileFrame {
+  position: relative;
+  margin-top: 6px;
+  aspect-ratio: 443 / 302;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #1a1a1a;
+}
+
+.mobileImg {
+  object-fit: cover;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ================================
+   1268px
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .layout {
+    grid-template-columns: minmax(0, 200fr) minmax(0, 990fr);
+  }
+
+  .heading {
+    font-size: 48px;
+    max-width: 560px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+}
+
+/* ================================
+   968px — one centred column, photo opens under the step
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding: 8rem 0;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .labelCol {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .heading {
+    max-width: 480px;
+    font-size: 40px;
+    letter-spacing: -1.4px;
+  }
+
+  .headerRight {
+    align-items: center;
+    max-width: 340px;
+    text-align: center;
+  }
+
+  .headerBtn {
+    display: none;
+  }
+
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 4rem;
+  }
+
+  .mediaCol {
+    display: none;
+  }
+
+  .mobileMedia {
+    display: grid;
+  }
+
+  .title {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+  }
+
+  .trigger {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .card .collapseInner {
+    padding: 0 1.6rem;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .tags {
+    margin-top: 1.8rem;
+    padding: 1.8rem 0 1.6rem;
+  }
+
+  .cta,
+  .cta:link,
+  .cta:visited {
+    padding: 1.4rem 1.6rem 1rem;
+  }
+}
+
+/* ================================
+   568px
+   ================================ */
+@media screen and (max-width: 568px) {
+  .heading {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+
+  .intro {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .mobileFrame {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ================================
+   Reduced motion
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+  .media,
+  .mediaImg,
+  .collapse,
+  .card,
+  .title {
+    transition: none;
+  }
+}
