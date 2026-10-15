@@ -7,9 +7,11 @@ import styles from "./BlogSection.module.css";
 
 // Used when a post has no coverImage in its frontmatter.
 const FALLBACK_IMAGES = [
-  "/images/img1.png",
-  "/images/img2.png",
-  "/images/img3.webp",
+  "/images/blog/blog1.jpg",
+  "/images/blog/blog2.jpg",
+  "/images/blog/blog3.jpg",
+  
+  
 ];
 
 const formatDate = (iso: string) =>
@@ -44,14 +46,11 @@ export default function BlogSection() {
         <ul className={styles.grid}>
           {posts.map((post, i) => (
             <li key={post._id}>
-              <Link
-                href={`/blog/${post.slug.current}`}
-                className={styles.card}
-              >
+              <Link href={`/blog/${post.slug.current}`} className={styles.card}>
                 <span className={styles.imageWrap}>
                   <Image
                     src={
-                      post.coverImage?.src ??
+                      // post.coverImage?.src ??
                       FALLBACK_IMAGES[i % FALLBACK_IMAGES.length]
                     }
                     alt={post.coverImage?.alt ?? ""}
