@@ -35,7 +35,7 @@ const PRIMARY_LINKS = [
   { text: "Services", href: "/services" },
   { text: "Fleet", href: "/fleet" },
   { text: "Airports", href: "/airports" },
-  { text: "Corporate", href: "/corporate-accounts" },
+  { text: "About Us", href: "/about" },
   { text: "Contact", href: "/contact" },
 ];
 
