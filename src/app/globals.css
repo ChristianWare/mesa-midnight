@@ -83,18 +83,23 @@ span {
   /* hyphens: auto; */
 }
 
+/* ================================
+   Headings
+   Sizes in px so they stay exact even though html font-size
+   changes at 968px and 568px.
+   ================================ */
 h1,
 .h1 {
-  font-size: 9rem;
+  font-size: 80px;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -3px;
   font-family: var(--CreatoDisplayBold);
 }
 
 h2,
 .h2 {
-  font-size: 7rem;
+  font-size: 70px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -2.1px;
@@ -103,7 +108,7 @@ h2,
 
 h3,
 .h3 {
-  font-size: 5.2rem;
+  font-size: 52px;
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -1.04px;
@@ -112,7 +117,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 3.6rem;
+  font-size: 36px;
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -1.08px;
@@ -121,7 +126,7 @@ h4,
 
 h5,
 .h5 {
-  font-size: 2.8rem;
+  font-size: 28px;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.28px;
@@ -130,7 +135,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 2.4rem;
+  font-size: 24px;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0px;
@@ -157,8 +162,8 @@ textarea {
 }
 
 p {
-  font-size: 1.8rem;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.4;
   letter-spacing: 0px;
   font-family: var(--CreatoDisplayRegular);
 }
@@ -180,11 +185,13 @@ select:focus {
   outline: none;
 }
 
+/* ================================
+   Typography breakpoints
+   ================================ */
 @media screen and (max-width: 1468px) {
   h1,
   .h1 {
-    font-size: 8rem;
-    line-height: 1;
+    font-size: 80px;
     letter-spacing: -2px;
   }
 }
@@ -192,11 +199,14 @@ select:focus {
 @media screen and (max-width: 1268px) {
   h1,
   .h1 {
-    font-size: 4.8rem;
+    font-size: 62px;
+    letter-spacing: -1.4px;
   }
+
   h2,
   .h2 {
-    font-size: 3.8rem;
+    font-size: 62px;
+    letter-spacing: -2.1px;
   }
 }
 
@@ -205,20 +215,78 @@ select:focus {
     font-size: 55%;
   }
 
-  p {
-    font-size: 113.7%;
+  h1,
+  .h1 {
+    font-size: 52px;
+    letter-spacing: -1.4px;
+  }
+
+  h2,
+  .h2 {
+    font-size: 52px;
+    letter-spacing: -1.4px;
+  }
+
+  h3,
+  .h3 {
+    font-size: 42px;
+    letter-spacing: -1px;
+  }
+
+  h4,
+  .h4 {
+    font-size: 32px;
+    letter-spacing: -1.08px;
+  }
+
+  h5,
+  .h5 {
+    font-size: 26px;
+    letter-spacing: -0.28px;
+  }
+
+  h6,
+  .h6 {
+    font-size: 24px;
+    letter-spacing: 0px;
   }
 }
 
 @media screen and (max-width: 768px) {
   h1,
   .h1 {
-    font-size: 4.2rem;
+    font-size: 48px;
+    letter-spacing: -1.4px;
   }
 
   h2,
   .h2 {
-    font-size: 3.4rem;
+    font-size: 40px;
+    letter-spacing: -1.2px;
+  }
+
+  h3,
+  .h3 {
+    font-size: 32px;
+    letter-spacing: -0.8px;
+  }
+
+  h4,
+  .h4 {
+    font-size: 30px;
+    letter-spacing: -1.08px;
+  }
+
+  h5,
+  .h5 {
+    font-size: 26px;
+    letter-spacing: -0.2px;
+  }
+
+  h6,
+  .h6 {
+    font-size: 20px;
+    letter-spacing: 0px;
   }
 }
 
@@ -229,25 +297,38 @@ select:focus {
 
   h1,
   .h1 {
-    letter-spacing: -2px;
     font-size: 42px;
+    letter-spacing: -1px;
   }
 
   h2,
   .h2 {
-    letter-spacing: -2px;
-    font-size: 34px;
-    /* line-height: 1em; */
+    font-size: 32px;
+    letter-spacing: -0.8px;
   }
 
   h3,
   .h3 {
-    font-size: 2.8rem;
-    letter-spacing: -1.5px;
+    font-size: 28px;
+    letter-spacing: -0.6px;
   }
 
-  p {
-    font-size: 16px;
+  h4,
+  .h4 {
+    font-size: 26px;
+    letter-spacing: -0.8px;
+  }
+
+  h5,
+  .h5 {
+    font-size: 24px;
+    letter-spacing: -0.3px;
+  }
+
+  h6,
+  .h6 {
+    font-size: 20px;
+    letter-spacing: 0px;
   }
 
   .stat {
@@ -854,14 +935,6 @@ th {
   .select,
   .selectBorder {
     font-size: 16px !important;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  h1,
-  .h1 {
-    letter-spacing: -1.5px;
-    font-size: 35px;
   }
 }
 

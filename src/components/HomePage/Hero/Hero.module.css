@@ -22,7 +22,7 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-color: rgba(5, 6, 15, 0.7);
+  background-color: rgba(5, 6, 15, 0.5);
 }
 
 /* Thin vertical line down the middle with a "+" at its center */
@@ -32,7 +32,7 @@
   bottom: 0;
   left: 50%;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.20);
   z-index: -1;
   pointer-events: none;
 }
@@ -182,7 +182,7 @@
 .bottomBar {
   margin-top: auto;
   padding-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.20);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -275,7 +275,7 @@
   align-items: flex-start;
   gap: 0.4rem;
   padding-left: 1.2rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 100px solid rgba(255, 255, 255, 0.2);
 }
 
 .locationLabel {
@@ -318,7 +318,7 @@
 /* ================================
    Small tablet / large phone
    ================================ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 868px) {
   .grid {
     grid-template-columns: 1fr;
   }
