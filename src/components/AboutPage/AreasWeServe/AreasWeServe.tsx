@@ -18,21 +18,27 @@ type Shot = { src: string; h: number };
 
 // Two columns of photos with mixed heights. Swap in local photos any time.
 const LEFT: Shot[] = [
-  { src: "/images/vehicles/cadi.jpg", h: 420 },
-  { src: "/images/img2.png", h: 220 },
-  { src: "/images/vehicles/heroiv.jpg", h: 300 },
-  { src: "/images/img3.webp", h: 260 },
+  { src: "/images/areas/mesaii.jpg", h: 420 },
+  { src: "/images/areas/gilbert.jpg", h: 220 },
+  { src: "/images/areas/phoenix.jpg", h: 300 },
+  { src: "/images/areas/prescott.webp", h: 260 },
 ];
 
 const RIGHT: Shot[] = [
-  { src: "/images/img1.png", h: 300 },
-  { src: "/images/vehicles/cadi2.jpg", h: 420 },
-  { src: "/images/vehicles/heroiii.jpg", h: 220 },
-  { src: "/images/vehicles/charter.jpg", h: 260 },
+  { src: "/images/areas/scottsdale.jpg", h: 300 },
+  { src: "/images/areas/sedona.jpg", h: 420 },
+  { src: "/images/areas/tempe.jpg", h: 220 },
+  { src: "/images/areas/tucson.webp", h: 260 },
 ];
 
 /** One endlessly scrolling column. The list is drawn twice so it loops. */
-function Column({ shots, direction }: { shots: Shot[]; direction: "up" | "down" }) {
+function Column({
+  shots,
+  direction,
+}: {
+  shots: Shot[];
+  direction: "up" | "down";
+}) {
   return (
     <div className={styles.column}>
       <div
@@ -80,8 +86,7 @@ export default function AreasWeServe() {
                 </h2>
                 <p className={styles.intro}>
                   Home base is Mesa, but we pick up across the East Valley every
-                  day, with long-distance rides to Tucson, Sedona and
-                  Flagstaff.
+                  day, with long-distance rides to Tucson, Sedona and Flagstaff.
                 </p>
 
                 <ul className={styles.cities}>
