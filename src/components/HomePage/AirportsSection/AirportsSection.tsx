@@ -249,7 +249,7 @@ export default function AirportsSection() {
                         className={styles.image}
                       />
                       <span className={styles.code}>{a.code}</span>
-                      <span className={styles.blurb}>{a.blurb}</span>
+                      {/* <span className={styles.blurb}>{a.blurb}</span> */}
                     </span>
 
                     <span className={styles.info}>
