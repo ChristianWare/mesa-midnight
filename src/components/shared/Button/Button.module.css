@@ -250,7 +250,7 @@
   border: none;
   border-bottom: 1px solid var(--black);
   border-radius: 0;
-  padding: 0 0 8px;
+  padding: 0 0 3px;
   gap: 30px;
   justify-content: space-between;
   font-family: var(--IBMPlex);
@@ -267,7 +267,7 @@
   border: none;
   border-bottom: 1px solid var(--white);
   border-radius: 0;
-  padding: 0 0 8px;
+  padding: 0 0 3px;
   gap: 30px;
   justify-content: space-between;
   font-family: var(--IBMPlex);
