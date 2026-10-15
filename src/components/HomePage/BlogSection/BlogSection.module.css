@@ -71,7 +71,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 1.4rem;
+  margin-top: 2rem;
 }
 
 .chip {
@@ -96,8 +96,9 @@
 }
 
 .title {
-  margin-top: 1.4rem;
+  margin-top: 1.5rem;
   color: var(--black);
+  width: 90%;
 }
 
 @media (hover: hover) and (pointer: fine) {

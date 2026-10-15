@@ -124,7 +124,7 @@ export default function HowItWorks() {
             {/* ── Heading row ── */}
             <div className={styles.header}>
               <h2 id='how-heading' className={styles.heading}>
-                Booked in a minute. Remembered for years.
+                Booked in a Minute. Remembered for Years.
               </h2>
               <div className={styles.headerRight}>
                 <p className={styles.intro}>

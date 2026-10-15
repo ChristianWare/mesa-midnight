@@ -202,7 +202,7 @@ export default function AirportsSection() {
 
               <div className={styles.header}>
                 <h2 id='airports-heading' className={styles.heading}>
-                  Both East Valley airports, covered.
+                  Both East Valley Airports, Covered.
                 </h2>
                 <div className={styles.headerRight}>
                   <p className={styles.intro}>

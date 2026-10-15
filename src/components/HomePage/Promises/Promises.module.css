@@ -78,14 +78,14 @@
 }
 
 .ribbon {
-  width: 32px;
-  height: 44px;
+  width: 40px;
+  height: 80px;
   display: block;
 }
 
 .rosette {
-  width: 46px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
   display: block;
 }
 
@@ -95,8 +95,9 @@
   display: grid;
   place-items: center;
   font-family: var(--CreatoDisplayBold);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
+  letter-spacing: normal;
   color: var(--white);
 }
 
@@ -114,15 +115,16 @@
 
 .title {
   font-family: var(--CreatoDisplayMedium);
-  font-size: 16px;
+  font-size: 2rem;
   line-height: 1.2;
   letter-spacing: 0;
+  text-transform: capitalize;
   color: var(--black);
 }
 
 .chip {
-  padding: 3px 5px;
-  border-radius: 2px;
+  padding: 4px 6px;
+  border-radius: 4px;
   background-color: var(--black);
   font-family: var(--IBMPlex);
   font-size: 12px;
@@ -135,8 +137,7 @@
 .body {
   margin-top: 1.2rem;
   font-family: var(--CreatoDisplayMedium);
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 1.6rem;
   color: var(--black400);
 }
 

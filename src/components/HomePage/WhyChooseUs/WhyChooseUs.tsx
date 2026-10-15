@@ -65,7 +65,7 @@ export default function WhyChooseUs() {
       <LayoutWrapper>
         <div className={styles.content}>
           <h2 id='why-heading' className={`${styles.heading} h3`}>
-            Why Choose Us for your Transportation Needs?
+            Why Choose Us for Your Transportation Needs?
           </h2>
           <p className={`${styles.copy} mediumParagrapgh`}>
            Every chauffeur is full-time, licensed and
