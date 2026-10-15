@@ -5,12 +5,16 @@ import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import styles from "./WhyChooseUs.module.css";
 
 export default function WhyChooseUs() {
+  const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Only play while on screen, and not at all for "reduce motion".
+  // Only play while the section is on screen, and not at all for
+  // "reduce motion". We watch the section, not the video: the video is
+  // position: fixed, so it always counts as on screen.
   useEffect(() => {
+    const section = sectionRef.current;
     const video = videoRef.current;
-    if (!video) return;
+    if (!section || !video) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let onScreen = false;
@@ -30,11 +34,11 @@ export default function WhyChooseUs() {
               onScreen = entry.isIntersecting;
               sync();
             },
-            { threshold: 0.1 },
+            { threshold: 0 },
           )
         : null;
 
-    if (io) io.observe(video);
+    if (io) io.observe(section);
     else {
       onScreen = true;
       sync();
@@ -48,8 +52,12 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section className={styles.section} aria-labelledby='why-heading'>
-      {/* Background video */}
+    <section
+      ref={sectionRef}
+      className={styles.section}
+      aria-labelledby='why-heading'
+    >
+      {/* Background video: fixed to the screen, seen through the section */}
       <video
         ref={videoRef}
         className={styles.video}
@@ -68,10 +76,10 @@ export default function WhyChooseUs() {
             Why Choose Us for Your Transportation Needs?
           </h2>
           <p className={`${styles.copy} mediumParagrapgh`}>
-           Every chauffeur is full-time, licensed and
-            background-checked, and every car is detailed before each ride. We
-            track your flight, answer the phone at any hour, and never add surge
-            pricing at 2 a.m. or on game day.
+            Every chauffeur is full-time, licensed and background-checked, and
+            every car is detailed before each ride. We track your flight, answer
+            the phone at any hour, and never add surge pricing at 2 a.m. or on
+            game day.
           </p>
         </div>
       </LayoutWrapper>

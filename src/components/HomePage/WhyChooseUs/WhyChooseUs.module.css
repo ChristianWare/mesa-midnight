@@ -1,5 +1,5 @@
 /* ================================
-   Section — full-screen video with centred text on top
+   Section — a "window" onto a video that stays still while you scroll
    ================================ */
 .section {
   position: relative;
@@ -7,21 +7,26 @@
   display: flex;
   align-items: center;
   min-height: 100vh;
-  overflow: hidden;
   background-color: var(--black);
+  /* The window: anything inside, including the fixed video,
+     only shows within this section's box. */
+  clip-path: inset(0);
 }
 
 .section > * {
   width: 100%;
 }
 
+/* Fixed to the screen, so the page scrolls past it */
 .video {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
   z-index: -2;
+  pointer-events: none;
 }
 
 /* Same even shade as the hero, so white text stays readable */
@@ -52,6 +57,14 @@
   text-align: center;
   color: rgba(255, 255, 255, 0.65);
   max-width: 700px;
+}
+
+/* "Reduce motion": no window effect, the video scrolls with the section */
+@media (prefers-reduced-motion: reduce) {
+  .video {
+    position: absolute;
+    height: 100%;
+  }
 }
 
 /* ================================
