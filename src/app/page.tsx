@@ -8,6 +8,10 @@ import FleetTeaser from "@/components/HomePage/FleetTeaser/FleetTeaser";
 import AirportsSection from "@/components/HomePage/AirportsSection/AirportsSection";
 import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
 import Testimonials from "@/components/HomePage/Testimonials/Testimonials";
+import Promises from "@/components/HomePage/Promises/Promises";
+import FaqSection from "@/components/HomePage/FaqSection/FaqSection";
+import BlogSection from "@/components/HomePage/BlogSection/BlogSection";
+import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -32,6 +36,10 @@ export default function Page() {
         <AirportsSection />
         <WhyChooseUs />
         <Testimonials />
+        <Promises />
+        <FaqSection />
+        <BlogSection />
+        <FinalCta />
       </div>
     </main>
   );

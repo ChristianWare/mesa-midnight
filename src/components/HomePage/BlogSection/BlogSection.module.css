@@ -1,0 +1,155 @@
+/* ================================
+   Section
+   ================================ */
+.section {
+  background-color: var(--white);
+  padding: 4rem 0 12rem;
+}
+
+/* Tag ── line ── link */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.tag {
+  flex-shrink: 0;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ================================
+   Cards
+   ================================ */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 3.2rem 0 0;
+  padding: 0;
+}
+
+.card,
+.card:link,
+.card:visited {
+  display: flex;
+  flex-direction: column;
+  color: var(--black);
+}
+
+.imageWrap {
+  position: relative;
+  display: block;
+  aspect-ratio: 424 / 300;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #e6e6e6;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.chip {
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.date {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.title {
+  margin-top: 1.4rem;
+  color: var(--black);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .image {
+    transform: scale(1.04);
+  }
+
+  .card:hover .title {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ================================
+   968px — two across
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding: 2rem 0 8rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 3.2rem;
+  }
+}
+
+/* ================================
+   568px — one column, link drops below
+   ================================ */
+@media screen and (max-width: 568px) {
+  .header {
+    flex-wrap: wrap;
+    row-gap: 1.6rem;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .header > :last-child {
+    margin-left: auto;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
