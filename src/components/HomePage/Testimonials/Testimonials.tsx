@@ -91,7 +91,7 @@ export default function Testimonials() {
 
           <div className={styles.header}>
             <h2 id='testimonials-heading' className={styles.heading}>
-              What riders say at 5&nbsp;a.m.
+              Testimonials from Previous Clients
             </h2>
             <div className={styles.headerRight}>
               <p className={styles.intro}>
@@ -145,7 +145,7 @@ export default function Testimonials() {
           <figure className={styles.review} key={active} aria-live='polite'>
             <Stars />
             <blockquote className={styles.quote}>
-              <p>&ldquo;{t.quote}&rdquo;</p>
+              <p className='h4'>&ldquo;{t.quote}&rdquo;</p>
             </blockquote>
             <figcaption className={styles.author}>
               <span className={styles.avatar} aria-hidden='true'>
