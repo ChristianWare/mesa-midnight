@@ -20,7 +20,7 @@
 }
 
 .heading {
-  max-width: 900px;
+  /* max-width: 900px; */
   margin-top: 2rem;
   color: var(--black);
 }

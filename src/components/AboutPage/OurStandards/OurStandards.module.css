@@ -3,7 +3,7 @@
    ================================ */
 .section {
   background-color: var(--white);
-  padding: 0 0 12rem;
+  padding: 10rem 0;
 }
 
 .tag {
@@ -135,10 +135,10 @@
 }
 
 .cardIntro {
-  max-width: 320px;
-  margin-top: 0.8rem;
+  max-width: 300px;
+  margin-top: 1rem;
   font-family: var(--CreatoDisplayMedium);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--black400);
 }
@@ -159,7 +159,7 @@
 
 .listLabel {
   font-family: var(--IBMPlex);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -174,7 +174,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 2rem;
   margin: 2rem 0 0;
   padding: 0;
 }
@@ -196,13 +196,13 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  width: 26px;
+  height: 26px;
   margin-top: 1px;
   border-radius: 50%;
   background-color: var(--white);
   font-family: var(--CreatoDisplayMedium);
-  font-size: 12px;
+  font-size: 20px;
   line-height: 1;
   color: var(--black);
 }
@@ -218,8 +218,9 @@
 
 .itemText {
   font-family: var(--CreatoDisplayMedium);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
+  letter-spacing: normal;
   color: var(--black400);
 }
 
@@ -230,7 +231,7 @@
 .itemName {
   font-family: inherit;
   font-size: inherit;
-  color: var(--black);
+  color: var(--black400);
 }
 
 .dark .itemName {
@@ -261,7 +262,7 @@
    ================================ */
 @media screen and (max-width: 968px) {
   .section {
-    padding-bottom: 8rem;
+    padding: 8rem 0rem;
   }
 
   .header {
@@ -290,6 +291,10 @@
    568px — one column
    ================================ */
 @media screen and (max-width: 568px) {
+  .section {
+    padding: 5rem 0rem;
+  }
+
   .grid {
     grid-template-columns: minmax(0, 1fr);
   }

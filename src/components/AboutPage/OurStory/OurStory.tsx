@@ -18,7 +18,7 @@ const CHAPTERS = [
 ];
 
 const NUMBERS = [
-  { label: "Rides", value: 40000, suffix: "+", separator: ",", foot: "Rides since 2019" },
+  { label: "Rides", value: 25000, suffix: "+", separator: ",", foot: "Rides since 2019" },
   { label: "On time", value: 98, suffix: "%", separator: "", foot: "On-time pickups in 2025" },
   { label: "Chauffeurs", value: 12, suffix: "", separator: "", foot: "Full-time chauffeurs" },
   { label: "Reviews", value: 1200, suffix: "+", separator: ",", foot: "Five-star reviews" },
@@ -30,17 +30,19 @@ export default function OurStory() {
       <LayoutWrapper paddingNone='paddingNone'>
         <span className={styles.tag}>Our story</span>
         <h2 id='story-heading' className={`${styles.heading} h2h4`}>
-          It started with a 4:10 a.m. phone call.
+          Tired of seeing 4 a.m. travelers stranded, Daniel Ortega bought one
+          black sedan in 2019. Today Mesa Midnight runs a full fleet, and Daniel
+          still drives the occasional early airport run.
         </h2>
 
-        <ol className={styles.chapters}>
+        {/* <ol className={styles.chapters}>
           {CHAPTERS.map((c) => (
             <li key={c.when} className={styles.chapter}>
               <span className={styles.when}>{c.when}</span>
               <p className={styles.text}>{c.text}</p>
             </li>
           ))}
-        </ol>
+        </ol> */}
 
         {/* ── By the numbers ── */}
         <h3 className={styles.srOnly}>By the numbers</h3>

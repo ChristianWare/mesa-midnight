@@ -98,7 +98,7 @@ export default function OurStandards() {
             >
               <div className={styles.cardInner}>
                 <span className={styles.chip}>{g.chip}</span>
-                <h3 className={`${styles.title} h6`}>{g.title}</h3>
+                <h3 className={`${styles.title} h5`}>{g.title}</h3>
                 <p className={styles.cardIntro}>{g.intro}</p>
 
                 <div className={styles.divider} aria-hidden='true' />
