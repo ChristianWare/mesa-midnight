@@ -18,6 +18,13 @@
   border-color: var(--tan);
 }
 
+@media screen and (max-width: 1268px) {
+  .layout {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
 @media screen and (max-width: 568px) {
   .layout {
     padding-right: 7px;

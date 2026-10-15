@@ -22,7 +22,7 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-color: rgba(5, 6, 15, 0.5);
+  background-color: rgba(5, 6, 15, 0.6);
 }
 
 /* Thin vertical line down the middle with a "+" at its center */
@@ -32,7 +32,7 @@
   bottom: 0;
   left: 50%;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.20);
+  background-color: rgba(255, 255, 255, 0.2);
   z-index: -1;
   pointer-events: none;
 }
@@ -93,10 +93,10 @@
 }
 
 .rightTop {
-    display: grid;
-    gap: 2rem;
-    max-width: 417px;
-    margin-left: auto;
+  display: grid;
+  gap: 2rem;
+  max-width: 417px;
+  margin-left: auto;
 }
 
 .eyebrow {
@@ -142,6 +142,7 @@
 .serviceLabel {
   color: var(--white);
   font-family: var(--IBMPlex);
+  font-size: 14px;
 }
 
 .serviceRule {
@@ -182,7 +183,7 @@
 .bottomBar {
   margin-top: auto;
   padding-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.20);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -219,7 +220,9 @@
 
 .team {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
   gap: 1.2rem;
 }
 
@@ -235,8 +238,8 @@
 
 .avatar {
   position: relative;
-  width: 4.4rem;
-  height: 4.4rem;
+  width: 5rem;
+  height: 5rem;
   overflow: hidden;
   border-radius: 3px;
 }
@@ -252,7 +255,10 @@
 .teamText {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  gap: 0.7rem;
 }
 
 .teamTitle {
@@ -292,16 +298,22 @@
   color: var(--white);
 }
 
-/* ================================
-   Tablet
-   ================================ */
+@media screen and (max-width: 1268px) {
+  .copy {
+    font-size: 2rem;
+    letter-spacing: normal;
+    max-width: 417px;
+    margin-left: auto;
+  }
+}
+
 @media screen and (max-width: 1068px) {
   .content {
     padding-top: 10rem;
   }
 
   .right {
-    width: min(100%, 32rem);
+    /* width: min(100%, 32rem); */
     margin-top: 10rem;
   }
 
@@ -325,12 +337,15 @@
 
   .right {
     justify-self: end;
-    width: min(100%, 30rem);
     margin-top: 4rem;
   }
 
+  .rightTop {
+    max-width: 300px;
+  }
+
   .copy {
-    font-size: 1.6rem;
+    font-size: 16px;
     line-height: 1.4;
   }
 
@@ -352,20 +367,24 @@
     padding: 9rem 0 3rem;
   }
 
-
-
   .btnContainer {
     margin-top: 2.4rem;
   }
 
   .right {
-    justify-self: stretch;
+    justify-self: flex-start;
     width: 100%;
     margin-top: 4rem;
   }
 
+  .rightTop {
+    align-items: flex-start;
+    margin-left: 0;
+  }
+
   .copy {
-    margin-top: 2rem;
+    margin-top: 4rem;
+    margin-left: 0;
   }
 
   .bottomBar {
