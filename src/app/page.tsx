@@ -5,6 +5,7 @@ import AboutIntro from "@/components/HomePage/AboutIntro/AboutIntro";
 import ServicesSection from "@/components/HomePage/ServicesSection/ServicesSection";
 import HowItWorks from "@/components/HomePage/HowItWorks/HowItWorks";
 import FleetTeaser from "@/components/HomePage/FleetTeaser/FleetTeaser";
+import AirportsSection from "@/components/HomePage/AirportsSection/AirportsSection";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function Page() {
         <ServicesSection />
         <HowItWorks />
         <FleetTeaser />
+        <AirportsSection />
       </div>
     </main>
   );
