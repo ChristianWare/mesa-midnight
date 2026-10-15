@@ -447,7 +447,7 @@
 /* ================================
    968px and down: icon + Menu only
    ================================ */
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 1268px) {
   .nav {
     grid-template-columns: auto auto;
     justify-content: space-between;
