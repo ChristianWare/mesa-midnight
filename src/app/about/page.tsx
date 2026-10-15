@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AboutUsHero from "@/components/AboutPage/AboutUsHero/AboutUsHero";
 import OurStory from "@/components/AboutPage/OurStory/OurStory";
 import OurStandards from "@/components/AboutPage/OurStandards/OurStandards";
+import AreasWeServe from "@/components/AboutPage/AreasWeServe/AreasWeServe";
 // Same pinned-hero layout as the home page.
 import styles from "../page.module.css";
 
@@ -29,6 +30,7 @@ export default function Page() {
       <div className={styles.overHero}>
         <OurStory />
         <OurStandards />
+        <AreasWeServe />
       </div>
     </main>
   );

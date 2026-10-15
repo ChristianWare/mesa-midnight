@@ -1,0 +1,250 @@
+/* ================================
+   Section — black, text left, moving photos right
+   ================================ */
+.section {
+  background-color: var(--black);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  height: 100vh;
+  min-height: 720px;
+  max-height: 1000px;
+}
+
+/* ================================
+   Left: text
+   ================================ */
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  height: 100%;
+  padding: 10rem 0 8rem;
+}
+
+/* LayoutWrapper fills the column height */
+.grid > :first-child,
+.grid > :first-child > * {
+  height: 100%;
+}
+
+.labelCol {
+  padding-top: 0.6rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #1f1f1f;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+  padding-right: 4rem;
+}
+
+.heading {
+  max-width: 420px;
+  color: var(--white);
+}
+
+.intro {
+  max-width: 340px;
+  margin-top: 3.2rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* City list, two columns */
+.cities {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  column-gap: 4rem;
+  row-gap: 1rem;
+  margin: 3.2rem 0 0;
+  padding: 0;
+}
+
+.city {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.cityNum {
+  font-family: inherit;
+  font-size: inherit;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.btn {
+  margin-top: 3.2rem;
+}
+
+.year {
+  margin: 0;
+  color: var(--white);
+}
+
+/* ================================
+   Right: moving photo columns
+   ================================ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  height: 100%;
+  overflow: hidden;
+  padding-right: calc(30px + 3rem);
+  /* fade at the top and bottom edges */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.column {
+  position: relative;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+/* Each copy carries 8px of space under it so the loop has no seam */
+.set {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.up {
+  animation: scrollUp 40s linear infinite;
+}
+
+.down {
+  animation: scrollDown 40s linear infinite;
+}
+
+@keyframes scrollUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.shot {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #1a1a1a;
+}
+
+.image {
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .up,
+  .down {
+    animation: none;
+  }
+}
+
+/* ================================
+   1268px
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2.4rem;
+    grid-template-rows: auto 1fr;
+  }
+
+  .gallery {
+    padding-right: calc(10px + 2rem);
+  }
+}
+
+/* ================================
+   968px — text on top, photos underneath
+   ================================ */
+@media screen and (max-width: 968px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  .content {
+    padding: 8rem 0 4rem;
+  }
+
+  .main {
+    padding-right: 0;
+  }
+
+  .year {
+    margin-top: 2rem;
+  }
+
+  .gallery {
+    height: 560px;
+    padding: 0 calc(10px + 2rem);
+  }
+}
+
+/* ================================
+   568px
+   ================================ */
+@media screen and (max-width: 568px) {
+  .gallery {
+    height: 440px;
+    padding: 0 calc(7px + 1rem);
+  }
+
+  .cities {
+    column-gap: 2.4rem;
+  }
+}
