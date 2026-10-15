@@ -3,6 +3,7 @@ import Image from "next/image";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import Button from "@/components/shared/Button/Button";
 import CornerArrow from "@/components/shared/icons/CornerArrow/CornerArrow";
+import Nav from "@/components/shared/Nav/Nav";
 import HeroClock from "./HeroClock";
 import styles from "./Hero.module.css";
 
@@ -26,6 +27,9 @@ const CHAUFFEURS = [
 export default function Hero() {
   return (
     <section className={styles.section} aria-labelledby='hero-heading'>
+      {/* Transparent nav over the video */}
+      <Nav variant='overlay' />
+
       {/* Background video */}
       <video
         className={styles.video}
@@ -46,9 +50,6 @@ export default function Hero() {
             {/* ── Left: headline + CTA ── */}
             <div className={styles.left}>
               <h1 id='hero-heading' className={styles.heading}>
-                {/* On Time at 4 a.m.
-                <br />
-                On Time at Midnight. */}
                 Executive Black Car Service in Mesa, Phoenix and Beyond
               </h1>
               <div className={styles.btnContainer}>
