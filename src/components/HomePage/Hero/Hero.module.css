@@ -335,6 +335,10 @@
     grid-template-columns: 1fr;
   }
 
+  .heading {
+    max-width: 660px;
+  }
+
   .right {
     justify-self: end;
     margin-top: 4rem;
