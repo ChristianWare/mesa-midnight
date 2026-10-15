@@ -298,7 +298,7 @@
   color: var(--white);
 }
 
-@media screen and (max-width: 1268px) {
+@media screen and (max-width: 1468px) {
   .copy {
     font-size: 2rem;
     letter-spacing: normal;
@@ -307,7 +307,7 @@
   }
 }
 
-@media screen and (max-width: 1068px) {
+@media screen and (max-width: 1268px) {
   .content {
     padding-top: 10rem;
   }
