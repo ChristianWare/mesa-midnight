@@ -1,3 +1,4 @@
+import SmoothScroll from "@/components/shared/SmoothScroll/SmoothScroll";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -149,7 +150,6 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
-        <ScrollToTop />
         <PlausibleProvider
           domain={SITE.domain}
           trackLocalhost={false}
@@ -157,8 +157,11 @@ export default function RootLayout({
         >
           <SessionProviderWrap>
             <ToastsProvider />
-            {children}
-            <Footer />
+            <SmoothScroll>
+              <ScrollToTop />
+              {children}
+              <Footer />
+            </SmoothScroll>
           </SessionProviderWrap>
         </PlausibleProvider>
       </body>

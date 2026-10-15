@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
@@ -108,6 +109,7 @@ export default function Nav({ variant = "solid" }: NavProps) {
   const roles = ((session?.user as { roles?: AppRole[] } | undefined)?.roles ??
     []) as AppRole[];
   const [open, setOpen] = useState(false);
+  const lenis = useLenis();
   // True only in the browser, so the portal never renders during SSR.
   const mounted = useSyncExternalStore(
     noopSubscribe,
@@ -128,15 +130,17 @@ export default function Nav({ variant = "solid" }: NavProps) {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    lenis?.stop();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
+      lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
-  }, [open]);
+  }, [open, lenis]);
 
   const socials = SOCIALS.filter((s) => SITE.social[s.key]);
 
@@ -218,6 +222,7 @@ export default function Nav({ variant = "solid" }: NavProps) {
               aria-label='Site menu'
               aria-hidden={!open}
               inert={!open}
+              data-lenis-prevent
             >
               <div className={styles.panelTop}>
                 <Link

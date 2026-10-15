@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import Hero from "@/components/HomePage/Hero/Hero";
 import AboutIntro from "@/components/HomePage/AboutIntro/AboutIntro";
+import ServicesSection from "@/components/HomePage/ServicesSection/ServicesSection";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function Page() {
       {/* ...and everything after it scrolls up over the top. */}
       <div className={styles.overHero}>
         <AboutIntro />
+        <ServicesSection />
       </div>
     </main>
   );

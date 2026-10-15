@@ -3,6 +3,7 @@
 
 import { useLayoutEffect, useRef, MouseEvent } from "react";
 // import Close from "../icons/Close/Close";
+import { useLenis } from "lenis/react";
 import styles from "./Modal.module.css";
 
 interface Props {
@@ -15,6 +16,7 @@ export default function Modal({ isOpen, onClose, children }: Props) {
   const scrollRef = useRef(0);
   const htmlPrev = useRef<string>("");
   const removeTouchBlockRef = useRef<() => void>(() => {});
+  const lenis = useLenis();
 
   useLayoutEffect(() => {
     if (!isOpen) return;
@@ -30,6 +32,8 @@ export default function Modal({ isOpen, onClose, children }: Props) {
     // Also keep layout stable when scrollbar disappears
     html.style.overflow = "hidden";
     (html.style as any).scrollbarGutter = "stable";
+    // Pause smooth scrolling while the modal is open
+    lenis?.stop();
 
     // Extra safety on mobile: block touchmove on background
     const blockTouch = (e: TouchEvent) => {
@@ -53,10 +57,11 @@ export default function Modal({ isOpen, onClose, children }: Props) {
 
       // Restore styles
       html.setAttribute("style", htmlPrev.current);
+      lenis?.start();
       // Restore scroll exactly where it was (paranoia guard)
       root.scrollTo({ top: scrollRef.current });
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, lenis]);
 
   const stop = (e: MouseEvent) => e.stopPropagation();
 
@@ -72,6 +77,7 @@ export default function Modal({ isOpen, onClose, children }: Props) {
         onClick={stop}
         role='dialog'
         aria-modal='true'
+        data-lenis-prevent
       >
         <button
           onClick={onClose}
