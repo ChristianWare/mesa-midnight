@@ -324,6 +324,7 @@ select:focus {
   .h3 {
     font-size: 28px;
     letter-spacing: -0.6px;
+    line-height: 1.4;
   }
 
   h4,
