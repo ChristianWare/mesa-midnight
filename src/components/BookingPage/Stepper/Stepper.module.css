@@ -4,11 +4,11 @@
   grid-row-gap: 5rem;
   grid-column-gap: 0rem;
   align-items: flex-start;
-  background-color: var(--cream);
-  box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   padding: 2rem;
-  padding-top: 4rem;
-  border-radius: 10px;
+  padding-top: 3.2rem;
+  border-radius: 6px;
   /* border-top-right-radius: 0px; */
   /* border-top-left-radius: 0px; */
 }
@@ -119,6 +119,7 @@
 }
 
 .stepNumber {
+  font-family: var(--IBMPlex);
   border: 1px solid var(--strokeii);
   width: 3rem;
   height: 3rem;
@@ -136,7 +137,7 @@
   content: "";
   width: 100%;
   height: 100%;
-  border: 10px solid var(--white);
+  border: 10px solid #f5f5f5;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -145,8 +146,8 @@
 
 /* ✅ ACTIVE (current step): accent + pulse */
 .stepNumberActive {
-  background-color: var(--accent);
-  color: var(--cream);
+  background-color: var(--black);
+  color: var(--white);
   border-color: transparent;
 }
 
@@ -155,7 +156,7 @@
   position: absolute;
   inset: -6px;
   border-radius: 999px;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--black);
   opacity: 0.45;
   transform: scale(1);
   animation: stepPulseRing 1.35s ease-out infinite;
@@ -164,14 +165,14 @@
 
 /* ✅ COMPLETE (already finished): accent, NO pulse */
 .stepNumberComplete {
-  background-color: var(--accent);
-  color: var(--cream);
+  background-color: var(--black);
+  color: var(--white);
   border-color: transparent;
 }
 
 /* ✅ INACTIVE (not reached): default */
 .stepNumberInactive {
-  background-color: var(--cream);
+  background-color: var(--white);
   color: var(--strokeii);
 }
 
@@ -218,10 +219,11 @@
 }
 
 .label {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: .7px;
+  letter-spacing: 0.02em;
 }
 
 .copy {

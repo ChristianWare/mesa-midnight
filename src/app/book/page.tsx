@@ -148,7 +148,7 @@ export default async function BookPage({
   return (
     <DirtyFormProvider>
       <main>
-        <Nav background='white' />
+        <Nav variant='dark' />
         <BookingPageIntro />
         <BookingWizard
           serviceTypes={serviceTypes as any}

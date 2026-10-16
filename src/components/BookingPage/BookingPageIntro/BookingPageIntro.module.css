@@ -1,64 +1,99 @@
+/* ================================
+   Booking header — tag, H1, intro; facts on the right
+   ================================ */
 .container {
-  padding: 10rem 0rem;
-  padding-bottom: 0rem;
   background-color: var(--white);
+  padding: 8rem 0 6rem;
 }
 
-.hero {
-  position: relative;
-  min-height: 420px;
-  border-radius: 10px;
-  overflow: hidden;
-  isolation: isolate;
-  display: grid;
-  align-items: center;
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4rem;
+  padding-bottom: 6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.img {
-  object-fit: cover;
-  z-index: 0;
-  object-fit: cover;
-  z-index: 0;
-  object-position: top;
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 1;
+.heading {
+  margin-top: 2.4rem;
+  color: var(--black);
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-  padding: clamp(2.5rem, 5vw, 5rem);
-  max-width: 900px;
-  display: grid;
-  gap: 1rem;
+.intro {
+  max-width: 460px;
+  margin-top: 1.6rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.4;
+  color: #7f7f7f;
 }
 
-.heading,
-.copy,
-.subheading {
-  color: var(--cream);
+.facts {
+  display: flex;
+  gap: 4rem;
+  flex-shrink: 0;
+  margin: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    padding: 5rem 0rem;
-  }
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
 
-  .content {
-    display: flex;
+.factLabel {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+.factValue {
+  margin: 0;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+@media screen and (max-width: 1068px) {
+  .top {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .container {
+    padding: 5rem 0 4rem;
   }
 
-  .heading,
-  .copy {
-    text-align: center;
+  .top {
+    padding-bottom: 4rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .facts {
+    flex-direction: column;
+    gap: 2rem;
   }
 }

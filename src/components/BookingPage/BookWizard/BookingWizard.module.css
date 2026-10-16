@@ -1,36 +1,36 @@
 .content {
   display: grid;
-  grid-template-columns: 2fr 4fr;
-  grid-gap: 15rem;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  grid-gap: 8rem;
   align-items: start;
 }
 
 .checklistContainer,
 .checklistMobile {
   position: sticky;
-  top: 85px;
+  top: 24px;
   z-index: 10;
   height: fit-content;
 }
 
 .sectionBox {
-  border: 1px solid var(--stroke);
-  border-radius: 10px;
+  border-radius: 6px;
+  background-color: #f5f5f5;
   display: grid;
-  grid-gap: 1rem;
-  padding: 2rem;
+  grid-gap: 1.2rem;
+  padding: 2.4rem;
 }
 
 .routePickerInline {
   margin-top: 1rem;
-  background-color: var(--cream);
+  background-color: var(--white);
   padding: 1rem;
   padding-top: 0rem;
   border-radius: 14px;
 }
 
 .routePickerContainerMobile {
-  background-color: var(--cream);
+  background-color: #f5f5f5;
   padding: 1rem;
   padding-top: 0rem;
   border-radius: 20px;
@@ -187,9 +187,9 @@
   flex-direction: column;
   gap: 10px;
   padding: 12px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
 }
 
 .stopRowWizard {
@@ -204,7 +204,7 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: #3b82f6;
+  background: var(--black);
   color: white;
   font-size: 1.4rem;
   font-weight: 700;
@@ -251,9 +251,9 @@
 }
 
 .addStopBtnWizard:hover {
-  border-color: #3b82f6;
-  background: #f0f9ff;
-  color: #3b82f6;
+  border-color: var(--black);
+  background: var(--white);
+  color: var(--black);
 }
 
 .addStopFeeWizard {
@@ -362,7 +362,7 @@
 
   .checklistMobile {
     display: block;
-    top: 54px;
+    top: 8px;
   }
 
   .contentBox {
@@ -383,7 +383,7 @@
 
 @media screen and (max-width: 568px) {
   .checklistMobile {
-    top: 45px;
+    top: 8px;
   }
 
   .bottomBtnContainer {
@@ -405,8 +405,8 @@
 
 /* ── Flight summary card (Step 3) ── */
 .flightSummaryCard {
-  background: var(--accent);
-  border-radius: 10px;
+  background: var(--black);
+  border-radius: 6px;
   padding: 2rem 2.4rem 1.6rem;
   color: var(--white);
   position: relative;
@@ -546,4 +546,195 @@
   background: rgba(255, 255, 255, 0.6);
   border: 2px solid rgba(255, 255, 255, 0.9);
   flex-shrink: 0;
+}
+
+/* =====================================================================
+   Site styling for the booking flow.
+   Scoped to this section so the admin pages that share the global
+   form classes (.input, .cardTitle, .primaryBtn …) are not affected.
+   ===================================================================== */
+.container {
+  /* Fonts/colors some booking components expect from the old theme */
+  --interTight: var(--CreatoDisplayMedium);
+  --tan: #efefef;
+  background-color: var(--white);
+  padding-bottom: 12rem;
+  font-family: var(--CreatoDisplayMedium);
+}
+
+/* Form controls don't inherit fonts by default */
+.container :global(button),
+.container :global(input),
+.container :global(select),
+.container :global(textarea) {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+/* Step headings: "1. Trip details" */
+.wizard :global(h2.underline) {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: var(--black);
+}
+
+.wizard :global(.subheading) {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.4;
+  color: #7f7f7f;
+}
+
+/* Field labels: small mono caps, like the contact form */
+.container :global(.cardTitle) {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.container :global(.cardTitle.redBorder) {
+  color: var(--red);
+  border: none;
+}
+
+/* "Date" / "Time" labels inside the date picker */
+.container :global(label.h5.bgWhite) {
+  padding: 0;
+  background: none;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.container :global(.underline) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Inputs and selects: white boxes on the grey panels */
+.container :global(.input),
+.container :global(.selectBorder),
+.container :global(.inputBorder),
+.container .textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background-color: var(--white);
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--black);
+  opacity: 1;
+  transition: border-color 0.2s ease;
+}
+
+.container :global(.selectBorder) {
+  padding-right: 4.4rem;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1.6rem 1.6rem;
+}
+
+.container :global(.input::placeholder),
+.container .textarea::placeholder {
+  color: #9a9a9a;
+  opacity: 1;
+}
+
+.container :global(.input:focus),
+.container :global(.selectBorder:focus),
+.container :global(.inputBorder:focus),
+.container .textarea:focus {
+  outline: none;
+  border-color: var(--black);
+}
+
+.container :global(.miniNote) {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.4;
+  color: #7f7f7f;
+  opacity: 1;
+}
+
+.container :global(.box) {
+  border: none;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+}
+
+/* Buttons: pills, like the rest of the site */
+.container :global(.primaryBtn),
+.container :global(.secondaryBtn) {
+  padding: 14px 22px;
+  border-radius: 100px;
+  font-family: var(--CreatoDisplayBold);
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.container :global(.primaryBtn) {
+  background-color: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+
+.container :global(.primaryBtn:hover) {
+  background-color: var(--black);
+  opacity: 0.85;
+}
+
+.container :global(.secondaryBtn) {
+  background-color: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: var(--black);
+}
+
+.container :global(.secondaryBtn:hover) {
+  border-color: var(--black);
+}
+
+.container :global(.primaryBtn:disabled),
+.container :global(.secondaryBtn:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 1068px) {
+  .wizard :global(h2.underline) {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .container {
+    padding-bottom: 8rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .sectionBox {
+    padding: 1.6rem;
+  }
 }
