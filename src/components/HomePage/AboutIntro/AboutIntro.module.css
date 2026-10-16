@@ -2,33 +2,16 @@
    Section
    ================================ */
 .section {
+  --grow: 0; /* 0 → 1, set from scroll position */
   background-color: var(--white);
-  padding-bottom: 12rem;
+  padding: 12rem 0;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 440px;
-  column-gap: 6rem;
-  align-items: start;
-}
-
-/* ================================
-   Left — pinned for as long as the photos scroll
-   ================================ */
-.left {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+.header {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 4rem;
-  padding: 8rem 0 6rem;
-}
-
-.top {
-  max-width: 900px;
+  align-items: center;
+  text-align: center;
 }
 
 .tag {
@@ -37,7 +20,7 @@
   border-radius: 3px;
   background-color: #efefef;
   font-family: var(--IBMPlex);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -45,270 +28,259 @@
 }
 
 .heading {
+  max-width: 920px;
   margin-top: 2rem;
   color: var(--black);
 }
 
-.btnContainer {
-  margin-top: 3.2rem;
-}
-
 /* ================================
-   Stat cards
+   Three columns, bottoms aligned
+   (so the growing middle reaches upward)
    ================================ */
-.stats {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-width: 900px;
+.grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas: "left middle right";
+  align-items: end;
+  gap: 8px;
+  max-width: 1400px;
+  margin: 6rem auto 0;
+}
+
+.middle {
+  grid-area: middle;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
+.cardLeft {
+  grid-area: left;
+}
+
+.cardRight {
+  grid-area: right;
+}
+
+/* Grey fading to white, like the reference */
 .card {
   display: flex;
   flex-direction: column;
-  padding: 4px 4px 0;
-  border-radius: 4px;
-  background-color: #efefef;
-}
-
-.cardInner {
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  gap: 2rem;
-  min-height: 155px;
-  padding: 18px;
-  border-radius: 3px;
-  background-color: var(--white);
-}
-
-.cardLabel {
-  font-family: var(--IBMPlex);
-  font-size: 14px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: uppercase;
-  color: var(--black);
-}
-
-.cardBottom {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.delta {
-  font-family: var(--IBMPlex);
-  font-size: 11px;
-  line-height: 1;
-  color: var(--darkGreen) !important;
-}
-
-.number {
-  display: flex;
-  align-items: baseline;
-  margin: 0;
-  font-family: var(--CreatoDisplayRegular);
-  font-size: 56px;
-  line-height: 0.8;
-  letter-spacing: -2px;
-  color: var(--black);
-}
-
-.count,
-.suffix {
-  font-family: var(--CreatoDisplayBold);
-  
-  letter-spacing: inherit;
-  color: inherit;
-}
-
-.cardFoot {
-  margin: 0;
-  padding: 10px 6px 8px;
-  font-family: var(--IBMPlex);
-  font-size: 13px;
-  line-height: 1.3;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  color: var(--black400);
-}
-
-/* ================================
-   Right — photo stack
-   ================================ */
-.right {
-  /* Photos start lower than the heading, then scroll past the pinned left side */
-  padding-top: 32vh;
-  display: grid;
-  gap: 8px;
-}
-
-.imageWrap {
-  position: relative;
-  width: 440px;
-  height: 500px;
+  gap: 2.4rem;
+  min-height: 320px;
+  padding: 2rem;
   border-radius: 6px;
-  overflow: hidden;
-  background-color: #efefef;
+  background: linear-gradient(to bottom, #efefef 0%, #f7f7f7 60%, #ffffff 100%);
 }
 
-.image {
-  object-fit: cover;
+/* Middle card: taller to start, grows with scroll */
+.cardMiddle {
+  min-height: calc(380px + var(--grow) * 80px);
 }
 
-.imageTag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 6px 8px;
-  border-radius: 3px;
-  background-color: var(--white);
-  font-family: var(--IBMPlex);
-  font-size: 11px;
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--black);
-}
-
-.caption {
+/* ── Top row: big number + chip ── */
+.top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 2rem;
-  margin-top: 8px;
+  gap: 1.2rem;
 }
 
-.captionTitle,
-.captionTitle:link,
-.captionTitle:visited {
-  font-family: var(--CreatoDisplayMedium);
-  font-size: 18px;
-  line-height: 1.2;
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0;
+  line-height: 0.9;
+}
+
+.value {
+  line-height: 0.9;
   color: var(--black);
 }
 
-.captionSub {
-  margin-top: 4px;
-  font-size: 14px;
-  line-height: 1.3;
-  color: var(--black400);
+.unit {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--black);
 }
 
-.captionLocation {
+.chip {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background-color: #e3e3e3;
   font-family: var(--IBMPlex);
-  font-size: 11px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--black400);
+  white-space: nowrap;
+  color: var(--black);
 }
 
-/* Short screens: pinning would squash the left side, so let it scroll */
-@media screen and (max-height: 700px) {
-  .left {
-    position: relative;
-    height: auto;
+/* ── Oval photo ──
+   Same approach as the reference: the width sets the size and the
+   height follows from it (aspect-ratio), so it never collapses.
+   --grow makes it a little taller as you scroll. */
+.oval {
+  position: relative;
+  width: 100%;
+  max-width: 230px;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 230 / calc(300 + var(--grow) * 60);
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: #e6e6e6;
+}
+
+.ovalImg {
+  object-fit: cover;
+}
+
+/* ── Copy: first sentence dark, rest grey ── */
+.copy,
+.copy:link,
+.copy:visited {
+  /* max-width: 320px; */
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--black);
+}
+
+.lead {
+  font-family: var(--CreatoDisplayMedium);
+  color: var(--black);
+  font-size: 16px;
+}
+
+.rest {
+  color: #9a9a9a;
+  font-size: 16px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .copy:hover .lead {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }
 
+/* ── Black button bar above the middle card ── */
+.bar,
+.bar:link,
+.bar:visited {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 4px 4px 4px 1.6rem;
+  border-radius: 6px;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.barText {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.barIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: var(--white);
+  color: var(--black);
+  transition: transform 0.3s ease;
+}
+
+.barIcon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bar:hover .barIcon {
+    transform: translateX(3px);
+  }
+}
+
+.bar:focus-visible,
+.copy:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+}
+
 /* ================================
-   1268px
+   1268px — smaller oval
    ================================ */
 @media screen and (max-width: 1268px) {
-  .grid {
-    grid-template-columns: minmax(0, 1fr) 240px;
-    column-gap: 4rem;
-  }
-
-  .imageWrap {
-    width: 240px;
-    height: 272px;
-  }
-
-  .number {
-    font-size: 48px;
-    letter-spacing: -1.6px;
+  .oval {
+    max-width: 160px;
   }
 }
 
 /* ================================
-   968px — one column, two photos side by side
+   968px — middle card full width on top, two below
    ================================ */
 @media screen and (max-width: 968px) {
   .section {
-    padding-bottom: 8rem;
+    padding: 8rem 0;
   }
 
   .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .left {
-    position: relative;
-    height: auto;
-    padding: 8rem 0 0;
-    gap: 3rem;
-  }
-
-  .top,
-  .stats {
-    max-width: none;
-  }
-
-  .number {
-    font-size: 40px;
-    letter-spacing: -1.4px;
-  }
-
-  .cardInner {
-    min-height: 96px;
-    padding: 14px;
-  }
-
-  .right {
-    padding-top: 1.2rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "middle middle"
+      "left   right";
+    align-items: stretch;
+    margin-top: 4rem;
   }
 
-  .imageWrap {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 440 / 500;
+  .card {
+    min-height: 0;
   }
 
-  /* Two photos only, no caption */
-  .imageWrap:nth-of-type(3),
-  .caption {
-    display: none;
+  .cardMiddle {
+    min-height: 0;
+  }
+
+  /* Fixed small pill; no scroll growth at this size */
+  .oval {
+    max-width: 80px;
+    aspect-ratio: 80 / 112;
   }
 }
 
 /* ================================
-   568px — stats 2 + 1
+   568px — one column
    ================================ */
 @media screen and (max-width: 568px) {
-  .left {
-    padding-top: 6rem;
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "middle"
+      "left"
+      "right";
   }
 
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .card:nth-child(3) {
-    grid-column: 1 / -1;
-  }
-
-  .number {
-    font-size: 32px;
-    letter-spacing: -1px;
-  }
-
-  .cardInner {
-    min-height: 84px;
-    padding: 12px;
+  .chip {
+    white-space: normal;
+    text-align: right;
   }
 }
