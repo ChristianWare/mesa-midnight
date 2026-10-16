@@ -30,7 +30,7 @@ export default function AboutUsHero() {
       {/* Background video */}
       <video
         className={styles.video}
-        src='/videos/101.mp4'
+        src='/videos/mesa.mp4'
         autoPlay
         muted
         loop

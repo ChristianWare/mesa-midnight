@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { googleMapsSrc } from "@/lib/googleMaps";
 import { getBookingWidgetData } from "@/lib/booking/widgetData";
-import QuoteBand from "@/components/HomePage/QuoteBand/QuoteBand";
+// import QuoteBand from "@/components/HomePage/QuoteBand/QuoteBand";
 import { SITE } from "@/config/site";
 import Hero from "@/components/HomePage/Hero/Hero";
 import AboutIntro from "@/components/HomePage/AboutIntro/AboutIntro";
@@ -46,7 +46,7 @@ export default async function Page() {
       {/* ...and everything after it scrolls up over the top. */}
       <div className={styles.overHero}>
         <AboutIntro />
-        <QuoteBand widget={widget} showMap />
+        {/* <QuoteBand widget={widget} showMap /> */}
         <ServicesSection />
         <HowItWorks />
         <FleetTeaser />
