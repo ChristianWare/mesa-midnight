@@ -70,16 +70,9 @@ export default function ServicesList() {
             <li key={s.slug} className={styles.row}>
               {/* Flat children so each screen size can rearrange them
                   with grid areas (see the CSS). */}
-              <h2 className={`${styles.title} h4`}>{s.title}</h2>
+              <h2 className={`${styles.title} h5`}>{s.title}</h2>
 
-              <div className={styles.link}>
-                <Button
-                  href={`/services/${s.slug}`}
-                  text='Explore service'
-                  btnType='underlinedBlack'
-                  arrow
-                />
-              </div>
+              
 
               <p className={styles.description}>{s.description}</p>
 
@@ -89,6 +82,14 @@ export default function ServicesList() {
                     # {t}
                   </li>
                 ))}
+                <div className={styles.link}>
+                <Button
+                  href={`/services/${s.slug}`}
+                  text='Explore service'
+                  btnType='mainBlack'
+                  arrow
+                />
+              </div>
               </ul>
 
               <div className={styles.imageWrap}>

@@ -39,7 +39,9 @@
   grid-area: link;
   align-self: end;
   justify-self: start;
-  padding-bottom: 1rem;
+  margin-top: 2rem;
+  display: grid;
+  width: 100%;
 }
 
 .description {
