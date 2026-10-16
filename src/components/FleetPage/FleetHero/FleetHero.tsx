@@ -8,14 +8,14 @@ type Shot = { src: string; size: "small" | "large" };
 
 // Alternating narrow and wide photos in the moving strip.
 const SHOTS: Shot[] = [
-  { src: "/images/img4.jpg", size: "small" },
-  { src: "/images/img7.jpg", size: "large" },
-  { src: "/images/img9.jpg", size: "small" },
-  { src: "/images/img8.jpg", size: "large" },
-  { src: "/images/img10.jpg", size: "small" },
-  { src: "/images/img11.jpg", size: "large" },
-  { src: "/images/img5.jpg", size: "small" },
-  { src: "/images/img6.jpg", size: "large" },
+  { src: "/images/vehicles/sub.jpg", size: "small" },
+  { src: "/images/vehicles/yukon.jpg", size: "large" },
+  { src: "/images/vehicles/cadi.webp", size: "small" },
+  { src: "/images/vehicles/sprinterii.png", size: "large" },
+  { src: "/images/vehicles/limo.jpg", size: "small" },
+  { src: "/images/vehicles/partyBus.jpg", size: "large" },
+  { src: "/images/vehicles/sprinteriii.jpg", size: "small" },
+  { src: "/images/vehicles/coach.jpeg", size: "large" },
 ];
 
 // Every vehicle in the fleet, for the strip under the photos.
@@ -61,10 +61,7 @@ export default function FleetHero() {
           {[0, 1].map((copy) => (
             <div className={styles.set} key={copy}>
               {SHOTS.map((s) => (
-                <div
-                  key={s.src}
-                  className={`${styles.shot} ${styles[s.size]}`}
-                >
+                <div key={s.src} className={`${styles.shot} ${styles[s.size]}`}>
                   <Image
                     src={s.src}
                     alt=''

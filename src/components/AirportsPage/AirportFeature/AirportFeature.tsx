@@ -69,7 +69,7 @@ export default function AirportFeature({
           <Button
             href={data.cta.href}
             text={data.cta.text}
-            btnType='whiteMain'
+            btnType='goldMain'
             arrow={!isPhone}
           />
         </div>
