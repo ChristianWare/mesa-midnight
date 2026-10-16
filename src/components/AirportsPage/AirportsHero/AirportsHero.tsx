@@ -30,7 +30,7 @@ export default function AirportsHero() {
       {/* Background video */}
       <video
         className={styles.video}
-        src='/videos/101.mp4'
+        src='/videos/airport.mp4'
         autoPlay
         muted
         loop

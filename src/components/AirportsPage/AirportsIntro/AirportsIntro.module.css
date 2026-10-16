@@ -28,7 +28,7 @@
 }
 
 .heading {
-  max-width: 680px;
+  max-width: 920px;
   margin-top: 2rem;
   color: var(--black);
 }
@@ -43,7 +43,7 @@
   grid-template-areas: "left middle right";
   align-items: end;
   gap: 8px;
-  max-width: 1060px;
+  max-width: 1400px;
   margin: 6rem auto 0;
 }
 
@@ -109,11 +109,11 @@
 
 .chip {
   flex-shrink: 0;
-  padding: 6px 10px;
+  padding: 6px 14px;
   border-radius: 100px;
   background-color: #e3e3e3;
   font-family: var(--IBMPlex);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -140,7 +140,7 @@
 .copy,
 .copy:link,
 .copy:visited {
-  max-width: 320px;
+  /* max-width: 320px; */
   font-family: var(--CreatoDisplayMedium);
   font-size: 14px;
   line-height: 1.4;
@@ -148,11 +148,14 @@
 }
 
 .lead {
+  font-family: var(--CreatoDisplayMedium);
   color: var(--black);
+  font-size: 16px;
 }
 
 .rest {
   color: #9a9a9a;
+  font-size: 16px;
 }
 
 @media (hover: hover) and (pointer: fine) {

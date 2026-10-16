@@ -33,6 +33,7 @@ type AppRole = "USER" | "ADMIN" | "DRIVER" | "CORPORATE";
 
 /** Top bar: five numbered links (hidden at 968px and below). */
 const PRIMARY_LINKS = [
+  { text: "Home", href: "/" },
   { text: "Services", href: "/services" },
   { text: "Fleet", href: "/fleet" },
   { text: "Airports", href: "/airports" },

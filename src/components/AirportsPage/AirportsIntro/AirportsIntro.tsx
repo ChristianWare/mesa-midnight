@@ -46,7 +46,7 @@ function Stat({ card, big }: { card: Card; big?: boolean }) {
   return (
     <div className={styles.top}>
       <p className={styles.stat}>
-        <span className={`${styles.value} ${big ? "h2" : "h3"}`}>
+        <span className={`${styles.value} ${big ? "h2" : "h2"}`}>
           {card.value}
         </span>
         <span className={styles.unit}>{card.unit}</span>
