@@ -1,0 +1,268 @@
+/* ================================
+   Section
+   ================================ */
+.section {
+  --grow: 0; /* 0 → 1, set from scroll position */
+  background-color: var(--white);
+  padding: 12rem 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.heading {
+  max-width: 680px;
+  margin-top: 2rem;
+  color: var(--black);
+}
+
+/* ================================
+   Three columns, bottoms aligned
+   (so the growing middle reaches upward)
+   ================================ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas: "left middle right";
+  align-items: end;
+  gap: 8px;
+  max-width: 1060px;
+  margin: 6rem auto 0;
+}
+
+.middle {
+  grid-area: middle;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardLeft {
+  grid-area: left;
+}
+
+.cardRight {
+  grid-area: right;
+}
+
+/* Grey fading to white, like the reference */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+  min-height: 320px;
+  padding: 2rem;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #efefef 0%, #f7f7f7 60%, #ffffff 100%);
+}
+
+/* Middle card: taller to start, grows with scroll */
+.cardMiddle {
+  min-height: calc(380px + var(--grow) * 80px);
+}
+
+/* ── Top row: big number + chip ── */
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0;
+  line-height: 0.9;
+}
+
+.value {
+  line-height: 0.9;
+  color: var(--black);
+}
+
+.unit {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--black);
+}
+
+.chip {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 100px;
+  background-color: #e3e3e3;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--black);
+}
+
+/* ── Oval photo, grows with the card ── */
+.oval {
+  position: relative;
+  align-self: center;
+  width: 170px;
+  height: calc(170px + var(--grow) * 70px);
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: #e6e6e6;
+}
+
+.ovalImg {
+  object-fit: cover;
+}
+
+/* ── Copy: first sentence dark, rest grey ── */
+.copy,
+.copy:link,
+.copy:visited {
+  max-width: 320px;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--black);
+}
+
+.lead {
+  color: var(--black);
+}
+
+.rest {
+  color: #9a9a9a;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .copy:hover .lead {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ── Black button bar above the middle card ── */
+.bar,
+.bar:link,
+.bar:visited {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 4px 4px 4px 1.6rem;
+  border-radius: 6px;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.barText {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.barIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: var(--white);
+  color: var(--black);
+  transition: transform 0.3s ease;
+}
+
+.barIcon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bar:hover .barIcon {
+    transform: translateX(3px);
+  }
+}
+
+.bar:focus-visible,
+.copy:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+}
+
+/* ================================
+   968px — middle card full width on top, two below
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding: 8rem 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "middle middle"
+      "left   right";
+    align-items: stretch;
+    margin-top: 4rem;
+  }
+
+  .card {
+    min-height: 0;
+  }
+
+  .cardMiddle {
+    min-height: 0;
+  }
+
+  .oval {
+    width: 90px;
+    height: 130px;
+  }
+}
+
+/* ================================
+   568px — one column
+   ================================ */
+@media screen and (max-width: 568px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "middle"
+      "left"
+      "right";
+  }
+
+  .chip {
+    white-space: normal;
+    text-align: right;
+  }
+}
