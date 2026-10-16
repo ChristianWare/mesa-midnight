@@ -60,7 +60,7 @@
 
 .btn {
   padding: 8px 14px;
-  border-radius: 100px;
+  border-radius: 7px;
   background: var(--white);
   color: #333;
   border: 1px solid var(--stroke);
@@ -92,7 +92,7 @@
 .iconBtn {
   width: 42px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 7px;
   background: var(--tan);
   color: #222;
   border: 1px solid var(--stroke);
@@ -111,7 +111,7 @@
   flex: 1 1 auto;
   min-width: 0;
   padding: 10px 12px;
-  border-radius: 5px;
+  border-radius: 7px;
   border: 1px solid rgba(0, 0, 0, 0.18);
   background: #fff;
   font-family: var(--interTight);
@@ -149,7 +149,7 @@
 
 .dayCell {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 5px;
   background: var(--white);
   min-height: 52px;
   padding: 10px;
@@ -192,19 +192,23 @@
 }
 
 .today {
-  background: #f5f5f5;
-  border-color: var(--black);
-  outline: none;
+  background: #eaf8ee;
+  border-color: #bfe8cc;
+  outline: 2px solid #4e94ec33;
   outline-offset: 0;
 }
 
+/* Picked date: green, like the completed checklist items */
 .selected {
-  background: var(--black);
-
+  background: var(--lighterGreen);
+  border-color: var(--green);
+  outline: 2px solid var(--lightGreen);
+  outline-offset: 0;
 }
 
 .selected .dayNum {
-  color: var(--white);
+  color: var(--darkGreen);
+  font-family: var(--CreatoDisplayBold);
 }
 
 .pastDay {
@@ -275,8 +279,8 @@
 }
 
 .legendSelected {
-  background: #111;
-  border-color: #111;
+  background: var(--lighterGreen);
+  border-color: var(--green);
 }
 
 .legendPast {
@@ -296,7 +300,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 12px 12px;
-  border-radius: 5px;
+  border-radius: 7px;
   border: 2px solid var(--stroke);
   background: #fff;
   cursor: pointer;
@@ -326,7 +330,7 @@
 
 .timePanel {
   width: min(520px, 100%);
-  border-radius: 14px;
+  border-radius: 7px;
   border: 2px solid var(--stroke);
   background: var(--white);
   overflow: hidden;
@@ -353,7 +357,7 @@
 .closeBtn {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 7px;
   border: 2px solid var(--stroke);
   background: #fff;
   cursor: pointer;
@@ -400,7 +404,7 @@
 .pinnedChip {
   width: 100%;
   padding: 10px 10px;
-  border-radius: 5px;
+  border-radius: 7px;
   border: 2px solid #111;
   background: #111;
   color: #fff;
@@ -413,7 +417,7 @@
 
 .colList {
   border: 2px solid var(--stroke);
-  border-radius: 10px;
+  border-radius: 7px;
   background: #fff;
   overflow: auto;
   max-height: 240px;
@@ -425,7 +429,7 @@
 
 .colItem {
   padding: 10px 10px;
-  border-radius: 5px;
+  border-radius: 7px;
   border: 2px solid var(--stroke);
   background: var(--tan);
   cursor: pointer;
@@ -530,7 +534,7 @@
 
   .timePanel {
     width: 100%;
-    border-radius: 14px;
+    border-radius: 7px;
     border-left: 2px solid var(--stroke);
     border-right: 2px solid var(--stroke);
     border-bottom: 2px solid var(--stroke);

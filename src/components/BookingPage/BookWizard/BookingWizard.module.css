@@ -14,7 +14,7 @@
 }
 
 .sectionBox {
-  border-radius: 6px;
+  border-radius: 7px;
   background-color: #f5f5f5;
   display: grid;
   grid-gap: 1.2rem;
@@ -26,14 +26,14 @@
   background-color: var(--white);
   padding: 1rem;
   padding-top: 0rem;
-  border-radius: 14px;
+  border-radius: 7px;
 }
 
 .routePickerContainerMobile {
   background-color: #f5f5f5;
   padding: 1rem;
   padding-top: 0rem;
-  border-radius: 20px;
+  border-radius: 7px;
 }
 
 .right {
@@ -73,7 +73,7 @@
 
 .summaryCard {
   padding: 0.9rem;
-  border-radius: 14px;
+  border-radius: 7px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   display: grid;
   gap: 6px;
@@ -96,7 +96,7 @@
 
 .textarea {
   padding: 0.8rem;
-  border-radius: 5px;
+  border-radius: 7px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   resize: vertical;
   background: white;
@@ -123,7 +123,7 @@
 
 .button {
   padding: 0.8rem 1rem;
-  border-radius: 5px;
+  border-radius: 7px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   background: white;
   cursor: pointer;
@@ -153,7 +153,7 @@
 .flightInfoSection {
   margin-top: 1rem;
   border: 2px solid var(--stroke);
-  border-radius: 12px;
+  border-radius: 7px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.5);
 }
@@ -189,7 +189,7 @@
   padding: 12px;
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
+  border-radius: 7px;
 }
 
 .stopRowWizard {
@@ -223,7 +223,7 @@
   background: #fee2e2;
   color: #dc2626;
   border: none;
-  border-radius: 6px;
+  border-radius: 7px;
   cursor: pointer;
   font-size: 1.4rem;
   transition: all 0.15s ease;
@@ -241,7 +241,7 @@
   padding: 12px 16px;
   background: white;
   border: 2px dashed #cbd5e1;
-  border-radius: 8px;
+  border-radius: 7px;
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: 500;
@@ -269,7 +269,7 @@
   padding: 10px 14px;
   background: #fef3c7;
   border: 1px solid #fcd34d;
-  border-radius: 8px;
+  border-radius: 7px;
   font-size: 1.4rem;
   color: #92400e;
 }
@@ -308,7 +308,7 @@
   padding: 0.5rem 1rem;
   background: #fef3c7;
   border: 1px solid #f59e0b;
-  border-radius: 6px;
+  border-radius: 7px;
   font-size: 1.4rem;
   font-weight: 600;
   color: #92400e;
@@ -318,7 +318,7 @@
   padding: 1.25rem;
   background: #fef3c7;
   border: 1px solid #f59e0b;
-  border-radius: 8px;
+  border-radius: 7px;
   margin-top: 1rem;
 }
 
@@ -406,7 +406,7 @@
 /* ── Flight summary card (Step 3) ── */
 .flightSummaryCard {
   background: var(--black);
-  border-radius: 6px;
+  border-radius: 7px;
   padding: 2rem 2.4rem 1.6rem;
   color: var(--white);
   position: relative;
@@ -423,7 +423,7 @@
 .flightSummaryAirlineCode {
   background: rgba(255, 255, 255, 0.2);
   padding: 0.2rem 0.7rem;
-  border-radius: 4px;
+  border-radius: 7px;
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: 0.5px;
@@ -446,7 +446,7 @@
   align-items: center;
   gap: 2rem;
   background: rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
+  border-radius: 7px;
   padding: 1.4rem 1.8rem;
 }
 
@@ -632,7 +632,7 @@
   width: 100%;
   padding: 14px 16px;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 7px;
   background-color: var(--white);
   font-family: var(--CreatoDisplayMedium);
   font-size: 16px;
@@ -675,7 +675,7 @@
 
 .container :global(.box) {
   border: none;
-  border-radius: 6px;
+  border-radius: 7px;
   background-color: #f5f5f5;
 }
 
@@ -683,7 +683,7 @@
 .container :global(.primaryBtn),
 .container :global(.secondaryBtn) {
   padding: 14px 22px;
-  border-radius: 100px;
+  border-radius: 7px;
   font-family: var(--CreatoDisplayBold);
   font-size: 16px;
   font-weight: 400;
