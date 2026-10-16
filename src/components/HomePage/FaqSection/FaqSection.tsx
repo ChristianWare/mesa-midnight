@@ -8,7 +8,7 @@ import styles from "./FaqSection.module.css";
 
 export default function FaqSection() {
   // First answer open by default; click again to close it.
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section className={styles.section} aria-labelledby='faq-heading'>
