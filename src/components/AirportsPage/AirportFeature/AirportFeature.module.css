@@ -26,6 +26,10 @@
   background-color: var(--darkBlue);
 }
 
+.reverse .textCard {
+  background-color: var(--black400);
+}
+
 .tag {
   display: inline-flex;
   align-items: center;

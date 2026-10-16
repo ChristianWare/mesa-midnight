@@ -13,6 +13,7 @@ import FaqSection from "@/components/HomePage/FaqSection/FaqSection";
 import BlogSection from "@/components/HomePage/BlogSection/BlogSection";
 import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 import styles from "./page.module.css";
+import AreasWeServe from "@/components/AboutPage/AreasWeServe/AreasWeServe";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -33,6 +34,7 @@ export default function Page() {
         <ServicesSection />
         <HowItWorks />
         <FleetTeaser />
+        <AreasWeServe />
         <AirportsSection />
         <WhyChooseUs />
         <Testimonials />

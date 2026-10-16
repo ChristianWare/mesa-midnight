@@ -4,6 +4,7 @@ import FleetHero from "@/components/FleetPage/FleetHero/FleetHero";
 import FleetList from "@/components/FleetPage/FleetList/FleetList";
 import FaqSection from "@/components/HomePage/FaqSection/FaqSection";
 import BlogSection from "@/components/HomePage/BlogSection/BlogSection";
+import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 
 export const metadata: Metadata = {
   title: "Fleet",
@@ -18,6 +19,7 @@ export default function Page() {
       <FleetList />
       <FaqSection />
       <BlogSection />
+      <FinalCta />
     </main>
   );
 }
