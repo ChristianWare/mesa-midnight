@@ -1,0 +1,286 @@
+/* ================================
+   One feature: dark text card + photo with a frosted card
+   ================================ */
+.feature {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas: "text media";
+  gap: 8px;
+  min-height: 600px;
+}
+
+/* Photo on the left */
+.reverse {
+  grid-template-areas: "media text";
+}
+
+/* ── Text card ── */
+.textCard {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 5rem 4rem;
+  border-radius: 8px;
+  background-color: #0d0d0d;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.tagIcon {
+  width: 12px;
+  height: 12px;
+  color: var(--white);
+}
+
+/* Numbered list: active item white, others grey */
+.items {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  row-gap: 0.4rem;
+  margin: 2.4rem 0 0;
+  padding: 0;
+}
+
+.item {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-family: var(--IBMPlex);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--black);
+  transition: background-color 0.25s ease;
+}
+
+.itemLabel {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.25s ease;
+}
+
+.itemActive .num {
+  background-color: var(--white);
+}
+
+.itemActive .itemLabel {
+  color: var(--white);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item:not(.itemActive):hover .itemLabel {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.heading {
+  max-width: 520px;
+  margin-top: 3.2rem;
+  color: var(--white);
+}
+
+.intro {
+  max-width: 460px;
+  margin-top: 2rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.btn {
+  align-self: flex-start;
+}
+
+/* ── Photo ── */
+.media {
+  grid-area: media;
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Frosted card, bottom-left of the photo */
+.glass {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: min(300px, calc(100% - 32px));
+  padding: 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  background-color: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glassTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glassTitle {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.glassIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--white);
+}
+
+.glassBody {
+  margin-top: 4rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--white);
+  animation: glassIn 0.45s ease;
+}
+
+@keyframes glassIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glassBody {
+    animation: none;
+  }
+}
+
+/* ================================
+   1440px+ — a little taller
+   ================================ */
+@media screen and (min-width: 1440px) {
+  .feature {
+    min-height: 680px;
+  }
+
+  .textCard {
+    padding: 6rem 4rem;
+  }
+
+  .glass {
+    width: min(330px, calc(100% - 32px));
+  }
+}
+
+/* ================================
+   968px — stacked: text first, photo below
+   (photo first on the reversed one)
+   ================================ */
+@media screen and (max-width: 968px) {
+  .feature {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "text"
+      "media";
+    min-height: 0;
+  }
+
+  .reverse {
+    grid-template-areas:
+      "media"
+      "text";
+  }
+
+  .textCard {
+    padding: 4rem 2.4rem;
+  }
+
+  .itemLabel {
+    font-size: 20px;
+  }
+
+  .media {
+    min-height: 480px;
+  }
+}
+
+/* ================================
+   568px
+   ================================ */
+@media screen and (max-width: 568px) {
+  .textCard {
+    padding: 3.2rem 1.6rem;
+  }
+
+  .itemLabel {
+    font-size: 18px;
+  }
+
+  .media {
+    min-height: 420px;
+  }
+
+  .glass {
+    left: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .glassBody {
+    margin-top: 2.4rem;
+  }
+}

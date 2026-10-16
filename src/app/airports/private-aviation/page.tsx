@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import PagePlaceholder from "@/components/shared/PagePlaceholder/PagePlaceholder";
-import { guides } from "@/lib/pageGuides";
-import { SITE } from "@/config/site";
+import AirportDetailPage from "@/components/AirportsPage/AirportFeature/AirportDetailPage";
+import { featureById } from "@/lib/airportFeatures";
+
+const data = featureById("private");
 
 export const metadata: Metadata = {
-  title: "Private Aviation",
-  description: `FBO and charter transportation from ${SITE.name}.`,
+  title: { absolute: data.meta.title },
+  description: data.meta.description,
+  alternates: { canonical: "/airports/private-aviation" },
 };
 
 export default function Page() {
-  return (
-    <PagePlaceholder {...guides.privateAviation}></PagePlaceholder>
-  );
+  return <AirportDetailPage data={data} />;
 }

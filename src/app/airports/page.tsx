@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AirportsHero from "@/components/AirportsPage/AirportsHero/AirportsHero";
 import AirportsIntro from "@/components/AirportsPage/AirportsIntro/AirportsIntro";
+import AirportFeatures from "@/components/AirportsPage/AirportFeature/AirportFeatures";
 // Same pinned-hero layout as the home page.
 import styles from "../page.module.css";
 
@@ -27,6 +28,7 @@ export default function Page() {
       {/* ...and the next sections scroll up over it. */}
       <div className={styles.overHero}>
         <AirportsIntro />
+        <AirportFeatures />
       </div>
     </main>
   );

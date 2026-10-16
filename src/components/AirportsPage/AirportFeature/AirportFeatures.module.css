@@ -1,0 +1,19 @@
+.section {
+  background-color: var(--white);
+  padding-bottom: 12rem;
+}
+
+.stack {
+  display: grid;
+  gap: 8px;
+}
+
+@media screen and (max-width: 968px) {
+  .section {
+    padding-bottom: 8rem;
+  }
+
+  .stack {
+    gap: 4rem;
+  }
+}
