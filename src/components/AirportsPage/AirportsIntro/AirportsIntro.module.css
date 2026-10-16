@@ -121,12 +121,17 @@
   color: var(--black);
 }
 
-/* ── Oval photo, grows with the card ── */
+/* ── Oval photo ──
+   Same approach as the reference: the width sets the size and the
+   height follows from it (aspect-ratio), so it never collapses.
+   --grow makes it a little taller as you scroll. */
 .oval {
   position: relative;
-  align-self: center;
-  width: 170px;
-  height: calc(170px + var(--grow) * 70px);
+  width: 100%;
+  max-width: 230px;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 230 / calc(300 + var(--grow) * 60);
   overflow: hidden;
   border-radius: 999px;
   background-color: #e6e6e6;
@@ -222,6 +227,15 @@
 }
 
 /* ================================
+   1268px — smaller oval
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .oval {
+    max-width: 160px;
+  }
+}
+
+/* ================================
    968px — middle card full width on top, two below
    ================================ */
 @media screen and (max-width: 968px) {
@@ -246,9 +260,10 @@
     min-height: 0;
   }
 
+  /* Fixed small pill; no scroll growth at this size */
   .oval {
-    width: 90px;
-    height: 130px;
+    max-width: 80px;
+    aspect-ratio: 80 / 112;
   }
 }
 
