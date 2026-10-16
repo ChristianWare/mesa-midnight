@@ -52,18 +52,6 @@ export default function Hero() {
               <h1 id='hero-heading' className={styles.heading}>
                 Executive Black Car Service in Mesa, Phoenix and Beyond
               </h1>
-              <div className={styles.btnContainer}>
-                <Button
-                  href='/book'
-                  text='Book a ride'
-                  btnType='whiteMain'
-                  arrow
-                />
-              </div>
-            </div>
-
-            {/* ── Right: services + intro ── */}
-            <div className={styles.right}>
               <div className={styles.rightTop}>
                 <p className={styles.eyebrow}>
                   <svg
@@ -100,7 +88,18 @@ export default function Hero() {
                 A 24/7 black car service for the East Valley, with a
                 professional chauffeur and a flat rate you see before you book.
               </p>
+              <div className={styles.btnContainer}>
+                <Button
+                  href='/book'
+                  text='Book a ride'
+                  btnType='whiteMain'
+                  arrow
+                />
+              </div>
             </div>
+
+            {/* ── Right: services + intro ── */}
+            <div className={styles.right}></div>
           </div>
 
           {/* ── Bottom bar ── */}

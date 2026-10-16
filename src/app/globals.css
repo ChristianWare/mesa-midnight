@@ -705,6 +705,7 @@ th {
 .underline {
   border-bottom: 2px solid var(--stroke);
   padding-bottom: 1rem;
+  letter-spacing: -1px !important;
 }
 
 .countPill {
