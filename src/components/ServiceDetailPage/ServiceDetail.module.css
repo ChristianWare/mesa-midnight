@@ -1,0 +1,363 @@
+/* ================================
+   Hero
+   ================================ */
+.hero {
+  background-color: var(--white);
+}
+
+.heroTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+  padding-top: 8rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.heading {
+  margin-top: 2.4rem;
+  color: var(--black);
+}
+
+.intro {
+  max-width: 440px;
+  margin-top: 1.6rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.4;
+  color: #7f7f7f;
+}
+
+.year {
+  flex-shrink: 0;
+  margin: 4.4rem 0 0;
+  color: var(--black);
+}
+
+/* Wide 2:1 photo */
+.heroImage {
+  position: relative;
+  margin-top: 6rem;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #efefef;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ================================
+   Details: sticky card left, content right
+   ================================ */
+.details {
+  background-color: var(--white);
+  padding: 8rem 0 12rem;
+}
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.side {
+  flex: 0 1 480px;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.summary {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 480px;
+  min-height: 405px;
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+
+.summaryLabel {
+  font-family: var(--IBMPlex);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 1.6rem 0 0;
+  padding: 0;
+}
+
+.tagChip {
+  padding: 8px 10px;
+  border-radius: 2px;
+  background-color: var(--white);
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.statValue {
+  margin: 0;
+  line-height: 1;
+  color: var(--black);
+}
+
+.statLabel {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+/* ── Content rows ── */
+.content {
+  flex: 0 1 760px;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.4rem 0 4rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.rowTitle {
+  flex: 0 0 200px;
+  color: var(--black);
+}
+
+.rowBody {
+  flex: 1;
+  min-width: 0;
+  max-width: 530px;
+}
+
+.text {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.45;
+  color: #7f7f7f;
+}
+
+.text + .text {
+  margin-top: 2rem;
+}
+
+/* ── Process cards, 2 × 2 ── */
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 4rem 0 0;
+  padding: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 300px;
+  padding: 2.4rem 2rem 2.4rem 0;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}
+
+.stepTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+/* Black bar on the card's left edge */
+.stepLine {
+  flex-shrink: 0;
+  width: 5px;
+  height: 56px;
+  background-color: var(--black);
+}
+
+.stepTitle {
+  flex: 1;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  white-space: pre-line; /* the \n in the title becomes a line break */
+  color: var(--black);
+}
+
+.stepNum {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black400);
+}
+
+.stepBody {
+  padding-left: 2.1rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 15px;
+  line-height: 1.4;
+  color: #7f7f7f;
+}
+
+/* ── Gallery ── */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 1.2rem;
+}
+
+.galleryImage {
+  position: relative;
+  aspect-ratio: 370 / 345;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #efefef;
+}
+
+/* ================================
+   1268px
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .side {
+    flex-basis: 360px;
+  }
+
+  .rowTitle {
+    flex-basis: 150px;
+  }
+
+  .step {
+    min-height: 260px;
+  }
+}
+
+/* ================================
+   968px — card on top, not sticky
+   ================================ */
+@media screen and (max-width: 968px) {
+  .heroTop {
+    padding-top: 5rem;
+  }
+
+  .year {
+    display: none;
+  }
+
+  .heroImage {
+    margin-top: 4rem;
+    aspect-ratio: 16 / 10;
+  }
+
+  .details {
+    padding: 4rem 0 8rem;
+  }
+
+  .layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3.2rem;
+  }
+
+  .side,
+  .content {
+    flex: none;
+    width: 100%;
+  }
+
+  .summary {
+    position: static;
+    max-width: none;
+    min-height: 0;
+    gap: 3.2rem;
+  }
+
+  .rowBody {
+    max-width: none;
+  }
+
+  .rowTitle {
+    flex-basis: 140px;
+  }
+
+  .step {
+    min-height: 220px;
+  }
+}
+
+/* ================================
+   568px — titles above text
+   ================================ */
+@media screen and (max-width: 568px) {
+  .row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .rowTitle {
+    flex-basis: auto;
+  }
+
+  .heroImage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .step {
+    min-height: 200px;
+    padding: 1.6rem 1.2rem 1.6rem 0;
+  }
+
+  .stepTop {
+    gap: 1rem;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+
+  .stepBody {
+    padding-left: 1.5rem;
+    font-size: 14px;
+  }
+}
