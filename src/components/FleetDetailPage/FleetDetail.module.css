@@ -1,0 +1,369 @@
+/* ================================
+   Hero — black, white text
+   ================================ */
+.hero {
+  position: relative;
+  background-color: var(--black);
+  padding-bottom: 8rem;
+}
+
+.heroTop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4rem;
+  padding-top: 14rem;
+}
+
+.heroText {
+  min-width: 0;
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chipDark {
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #2a2a2a;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.chipPlain {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.heading {
+  margin-top: 2.4rem;
+  color: var(--white);
+}
+
+.intro {
+  max-width: 460px;
+  margin-top: 1.6rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Features | capacity + rate */
+.meta {
+  display: flex;
+  gap: 6rem;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.metaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.metaLabel {
+  margin-bottom: 0.6rem;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.metaGap {
+  margin-top: 2.4rem;
+}
+
+.metaValue {
+  margin: 0;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* 2:1 frame, vehicle cut-out on a light stage */
+.stage {
+  position: relative;
+  margin-top: 6rem;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: radial-gradient(ellipse at 50% 75%, #ffffff 0%, #e4e4e4 70%);
+}
+
+.cutout {
+  object-fit: contain;
+  padding: 8% 12% 6%;
+}
+
+/* ================================
+   Content blocks — tag left, text right
+   ================================ */
+.block {
+  background-color: var(--white);
+  padding-top: 12rem;
+}
+
+.blockLast {
+  padding-bottom: 12rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  column-gap: 4rem;
+}
+
+.tag {
+  align-self: start;
+  justify-self: start;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.body {
+  max-width: 640px;
+  margin: 0;
+}
+
+.blockHeading {
+  color: var(--black);
+}
+
+.text {
+  margin-top: 1.6rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.45;
+  color: #7f7f7f;
+}
+
+/* Galleries line up under the text column */
+.galleryThree,
+.galleryTwo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 6rem;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 515 / 345;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #efefef;
+}
+
+.photoWide {
+  grid-column: 1 / -1;
+  aspect-ratio: 1035 / 427;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ── Feedback ── */
+.quote {
+  margin: 0;
+}
+
+.quote p {
+  color: #7f7f7f;
+}
+
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 3.2rem;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 4px;
+  background-color: #efefef;
+}
+
+.statValue {
+  color: var(--black);
+}
+
+.statLabel {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 8px;
+  padding: 1.6rem 2rem;
+  border-radius: 4px;
+  background-color: #efefef;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: var(--black);
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  color: var(--white);
+}
+
+.reviewerText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.reviewerName {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--black);
+}
+
+.reviewerRole {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.stars svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--accent);
+}
+
+/* ================================
+   1268px — galleries span the full width
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .heroTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meta {
+    gap: 4rem;
+  }
+}
+
+/* ================================
+   968px — tag above the text
+   ================================ */
+@media screen and (max-width: 968px) {
+  .heroTop {
+    padding-top: 12rem;
+  }
+
+  .stage {
+    margin-top: 4rem;
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero {
+    padding-bottom: 6rem;
+  }
+
+  .block {
+    padding-top: 8rem;
+  }
+
+  .blockLast {
+    padding-bottom: 8rem;
+  }
+
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2rem;
+  }
+
+  .body {
+    max-width: none;
+  }
+
+  .galleryThree,
+  .galleryTwo {
+    margin-top: 4rem;
+  }
+}
+
+/* ================================
+   568px
+   ================================ */
+@media screen and (max-width: 568px) {
+  .heroTop {
+    padding-top: 10rem;
+  }
+
+  .meta {
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .stage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .cutout {
+    padding: 10% 6%;
+  }
+
+  .statCard {
+    padding: 1.4rem;
+  }
+
+  .reviewer {
+    padding: 1.2rem 1.4rem;
+  }
+}
