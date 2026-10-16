@@ -1,4 +1,6 @@
 :root {
+  /* Booking components (from Nier) ask for --interTight */
+  --interTight: var(--CreatoDisplayMedium);
   --black: #1C2333;
   --black400: #7f7f7f;
   --black300: #b2b2b2;

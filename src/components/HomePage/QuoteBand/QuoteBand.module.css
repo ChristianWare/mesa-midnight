@@ -1,0 +1,228 @@
+.container {
+  padding: 8rem 0rem;
+  background-color: var(--white);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 4rem;
+  align-items: stretch;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Homepage: the widget carries a map, so give the band the full width. */
+.contentWide {
+  width: 100%;
+}
+
+/* ── Left: photo card ─────────────────────────────────────────────── */
+
+.photoCard {
+  position: relative;
+  margin: 0;
+  min-height: 640px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+}
+
+.photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark at the bottom where the quote sits, lighter at the top so the
+   photo still reads. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.photoCardTop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.heading {
+  z-index: 1;
+}
+
+.quoteWrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.quote {
+  margin: 0;
+  font-family: var(--CreatoDisplayMedium);
+  color: var(--white);
+  font-size: 3.6rem;
+  font-weight: 500;
+  line-height: 1.15em;
+  letter-spacing: -1.6px;
+  max-width: 520px;
+}
+
+.author {
+  font-family: var(--CreatoDisplayMedium);
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Right: pitch on top, widget below ────────────────────────────── */
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.heading {
+  max-width: 600px;
+  color: var(--white);
+}
+
+.headingMuted {
+  color: var(--paragraph);
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+.trust {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-top: 0.4rem;
+  z-index: 1;
+}
+
+.avatars {
+  list-style: none;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.avatar {
+  position: relative;
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--white);
+  background-color: var(--cream);
+}
+
+.avatar + .avatar {
+  margin-left: -1.2rem;
+}
+
+.avatarImg {
+  object-fit: cover;
+}
+
+.copy {
+  font-family: var(--CreatoDisplayMedium);
+  color: var(--lightGray);
+  max-width: 440px;
+}
+
+.phone {
+  color: var(--yellow);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.widget {
+  width: 100%;
+  margin-top: auto;
+}
+
+@media screen and (max-width: 1468px) {
+  .content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1268px) {
+  .quote {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 1068px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .photoCard {
+    min-height: 480px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 6rem 0rem;
+  }
+
+  .photoCard {
+    min-height: 440px;
+    padding: 2.4rem;
+  }
+
+  .quote {
+    font-size: 2.6rem;
+    letter-spacing: -1px;
+  }
+
+  .trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+  }
+}
+
+/* "Instant Quote" label in the site font */
+.top :global(span) {
+  font-family: var(--CreatoDisplayMedium);
+}

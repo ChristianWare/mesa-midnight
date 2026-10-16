@@ -1,0 +1,267 @@
+/* HomeBookingWidget.module.css
+   Visual contract: match BookingWizard exactly.
+   - All gap/padding values: whole-number rem only
+   - No font-size below 14px
+   - No new font-weight values
+*/
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  min-width: 450px;
+  width: 450px;
+  /* No overflow:hidden — keeps Google Places pac-container unclipped */
+}
+
+/* In-article use (blog RideBox): take the column's width, never overflow it */
+.fluid {
+  min-width: 0;
+  width: 100%;
+}
+
+/* ── Map layout: form left (2fr), route map right (1fr) ───────────── */
+.withMap {
+  min-width: 0;
+  width: 100%;
+  /* Stack by the widget's own width, not the screen's: in a blog column
+     the widget is far narrower than the viewport. */
+  container-type: inline-size;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  align-items: stretch; /* map column matches the form's height */
+}
+
+.split > .cardBody {
+  min-width: 0;
+}
+
+.mapCol {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 2rem;
+  border-left: 1px solid var(--stroke);
+}
+
+/* ── Header ────────────────────────────────────────────────────────── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* title left, links right */
+  gap: 1rem;
+  padding: 2rem;
+  border-bottom: 1px solid var(--stroke);
+  background: var(--cream);
+  border-radius: 14px 14px 0 0;
+}
+
+/* "Book your Ride" — left side of header */
+.headerTitle {
+  font-family: var(--interTight);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--black);
+  white-space: nowrap;
+}
+
+/* Auth links — grouped on the right */
+.headerLinks {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Airport type suffix appended to the Service label */
+.airportLabel {
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+/* ── Body — 4-column grid on desktop ──────────────────────────────── */
+.cardBody {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 0 0 14px 14px;
+  align-items: start; /* prevents tall cells from stretching neighbours */
+}
+
+/* ── Individual field wrapper ──────────────────────────────────────── */
+.field {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ── Two-column grid (service+airport, hour/minute, passengers/luggage) ── */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Three-column grid (Year / Month / Day) ────────────────────────── */
+.threeCol {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Flight info section — always spans full width ─────────────────── */
+.flightSection {
+  display: grid;
+  gap: 1rem;
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  padding: 2rem;
+  grid-column: 1 / -1;
+}
+
+.optionalTag {
+  font-weight: 400;
+  opacity: 0.5;
+}
+
+/* ── Button wrapper — sits at natural height, aligned to bottom ─────── */
+.buttonWrap {
+  display: flex;
+  align-items: flex-end;
+  align-self: end;
+}
+
+.buttonWrap > * {
+  width: 100%;
+}
+
+@container (max-width: 620px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .mapCol {
+    padding: 0 2rem 2rem;
+    border-left: none;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .card {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* ── 3-column at 1268px ────────────────────────────────────────────── */
+/* @media screen and (max-width: 1268px) {
+  .cardBody {
+    grid-template-columns: repeat(3, 1fr);
+  }
+} */
+
+/* ── 2-column at 1000px ────────────────────────────────────────────── */
+/* @media screen and (max-width: 1268px) {
+  .cardHeader,
+  .cardBody {
+    padding: 2rem;
+  }
+
+  .cardBody {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .flightSection {
+    grid-column: 1 / -1;
+    padding: 2rem;
+  }
+
+  .threeCol {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .twoCol {
+    gap: 1rem;
+  }
+
+  .buttonWrap {
+    align-items: stretch;
+  }
+} */
+
+/* @media screen and (max-width: 668px) {
+  .cardBody {
+    grid-template-columns: 1fr;
+  }
+
+  .threeCol {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .threeCol > select:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .flightSection .twoCol {
+    grid-template-columns: 1fr;
+  }
+} */
+
+/* =====================================================================
+   Mesa Midnight fonts on Nier's booking styles.
+   Headings, labels and dates: Creato Display Medium.
+   Anything the rider types or picks: Creato Display Regular.
+   Heading sizes match Nier's so the layout is unchanged.
+   ===================================================================== */
+.card {
+  font-family: var(--CreatoDisplayMedium);
+}
+
+.card :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, label, p, span, div, strong, li, th, td, a, button)) {
+  font-family: var(--CreatoDisplayMedium);
+}
+
+.card :global(:is(input, select, textarea, option)),
+.card :global(:is(.input, .selectBorder, .inputBorder, .select)) {
+  font-family: var(--CreatoDisplayRegular);
+  letter-spacing: normal;
+}
+
+.card :global(:is(h2, .h2)) {
+  font-size: 4rem;
+  line-height: 1.2;
+  letter-spacing: -2.2px;
+}
+
+.card :global(:is(h3, .h3)) {
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: -1.6px;
+}
+
+.card :global(:is(h4, .h4)) {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  letter-spacing: -1.3px;
+}
+
+.card :global(:is(h5, .h5)) {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.card :global(:is(h6, .h6)) {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+
+.card :global(p) {
+  font-size: 16px;
+}

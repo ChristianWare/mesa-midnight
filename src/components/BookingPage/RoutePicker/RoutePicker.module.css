@@ -17,11 +17,41 @@
 .map {
   width: 100%;
   height: 420px;
-  border-radius: 7px;
+  border-radius: 14px;
   border: 3px solid #bfe8cc;
   overflow: hidden;
   background: white;
   outline: 2px solid #4e94ec33;
+}
+
+/* ── Fill mode: map stretches to the parent's height ── */
+.fillRoot {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+.mapFill {
+  flex: 1;
+  height: auto;
+  min-height: 320px;
+}
+
+.fillStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Narrow map column: stack Total Distance / Est. Duration */
+@container (max-width: 300px) {
+  .fillStats {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============================================
@@ -32,7 +62,7 @@
 .stopsList {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 7px;
+  border-radius: 10px;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -53,7 +83,7 @@
   color: #059669;
   background: #d1fae5;
   padding: 4px 10px;
-  border-radius: 7px;
+  border-radius: 20px;
 }
 
 /* Individual Stop Row */
@@ -90,7 +120,7 @@
   background: #fee2e2;
   color: #dc2626;
   border: none;
-  border-radius: 7px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1.4rem;
   transition: all 0.15s ease;
@@ -109,7 +139,7 @@
   padding: 12px 16px;
   background: white;
   border: 2px dashed #cbd5e1;
-  border-radius: 7px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: 500;
@@ -139,5 +169,11 @@
 @media screen and (max-width: 768px) {
   .map {
     height: 300px;
+  }
+
+  .mapFill {
+    flex: none;
+    height: 300px;
+    min-height: 0;
   }
 }
