@@ -89,8 +89,8 @@
   justify-content: space-between;
   gap: 2rem;
   width: 100%;
-  max-width: 480px;
-  min-height: 405px;
+      max-width: 480px;
+    min-height: 405px;
   padding: 2rem;
   border-radius: 5px;
   background-color: #f1f1f1;
@@ -145,14 +145,13 @@
 
 /* ── Content rows ── */
 .content {
-  flex: 0 1 760px;
+  flex: 0 1 1000px;
   min-width: 0;
 }
 
 .row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
   gap: 2rem;
   padding: 2.4rem 0 4rem;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -166,7 +165,7 @@
 .rowBody {
   flex: 1;
   min-width: 0;
-  max-width: 530px;
+  /* max-width: 530px; */
 }
 
 .text {
@@ -195,7 +194,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
-  min-height: 300px;
+  min-height: 400px;
   padding: 2.4rem 2rem 2.4rem 0;
   border-radius: 10px;
   background-color: #f0f0f0;
@@ -205,6 +204,14 @@
   display: flex;
   align-items: flex-start;
   gap: 1.6rem;
+}
+
+.stepTopBox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
 }
 
 /* Black bar on the card's left edge */
@@ -217,12 +224,7 @@
 
 .stepTitle {
   flex: 1;
-  font-family: var(--CreatoDisplayMedium);
-  font-size: 22px;
-  line-height: 1.2;
-  letter-spacing: -0.3px;
-  white-space: pre-line; /* the \n in the title becomes a line break */
-  color: var(--black);
+  max-width: 130px;
 }
 
 .stepNum {
@@ -235,7 +237,7 @@
 .stepBody {
   padding-left: 2.1rem;
   font-family: var(--CreatoDisplayMedium);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.4;
   color: #7f7f7f;
 }
@@ -269,7 +271,7 @@
   }
 
   .step {
-    min-height: 260px;
+    min-height: 280px;
   }
 }
 
@@ -322,7 +324,13 @@
   }
 
   .step {
-    min-height: 220px;
+    min-height: 240px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -343,6 +351,10 @@
     aspect-ratio: 4 / 3;
   }
 
+  .steps {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .step {
     min-height: 200px;
     padding: 1.6rem 1.2rem 1.6rem 0;
@@ -350,10 +362,6 @@
 
   .stepTop {
     gap: 1rem;
-  }
-
-  .stepTitle {
-    font-size: 18px;
   }
 
   .stepBody {

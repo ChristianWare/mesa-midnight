@@ -84,11 +84,18 @@ export default function ServiceDetail({ data }: { data: Data }) {
                     {data.steps.map((s, i) => (
                       <li key={s.title} className={styles.step}>
                         <div className={styles.stepTop}>
-                          <span className={styles.stepLine} aria-hidden='true' />
-                          <h3 className={styles.stepTitle}>{s.title}</h3>
-                          <span className={styles.stepNum}>
-                            /{String(i + 1).padStart(3, "0")}
-                          </span>
+                          <span
+                            className={styles.stepLine}
+                            aria-hidden='true'
+                          />
+                          <div className={styles.stepTopBox}>
+                            <h3 className={`${styles.stepTitle} h6`}>
+                              {s.title}
+                            </h3>
+                            <span className={styles.stepNum}>
+                              /{String(i + 1).padStart(3, "0")}
+                            </span>
+                          </div>
                         </div>
                         <p className={styles.stepBody}>{s.body}</p>
                       </li>
