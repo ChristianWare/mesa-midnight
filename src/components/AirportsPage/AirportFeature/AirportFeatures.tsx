@@ -9,7 +9,7 @@ export default function AirportFeatures() {
     <section className={styles.section} aria-label='Airports in detail'>
       <LayoutWrapper paddingNone='paddingNone'>
         <div className={styles.stack}>
-          {AIRPORT_FEATURES.map((f) => (
+          {AIRPORT_FEATURES.slice(0, 1).map((f) => (
             <AirportFeature key={f.id} data={f} />
           ))}
         </div>
