@@ -1,27 +1,30 @@
 import type { Metadata } from "next";
-import PagePlaceholder from "@/components/shared/PagePlaceholder/PagePlaceholder";
-import { guides } from "@/lib/pageGuides";
 import { SITE } from "@/config/site";
-import ContactForm from "@/components/shared/SimpleForms/ContactForm";
+import Nav from "@/components/shared/Nav/Nav";
+import ContactSection from "@/components/ContactPage/ContactSection/ContactSection";
+import ContactMarquee from "@/components/ContactPage/ContactMarquee/ContactMarquee";
+import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
+import Testimonials from "@/components/HomePage/Testimonials/Testimonials";
+import FaqSection from "@/components/HomePage/FaqSection/FaqSection";
+import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Contact ${SITE.name} by phone, email, or the form.`,
+  description: `Contact ${SITE.name}: dispatch answers 24/7 by phone, or send a message about bookings, corporate accounts and group trips.`,
+  alternates: { canonical: "/contact" },
 };
 
 export default function Page() {
   return (
-    <PagePlaceholder {...guides.contact}>
-      <h2>Contact details (from src/config/site.ts)</h2>
-      <p>
-        <a href={`tel:${SITE.phone.tel}`}>{SITE.phone.display}</a>
-        <br />
-        <a href={`mailto:${SITE.email.info}`}>{SITE.email.info}</a>
-        <br />
-        {SITE.address.street}, {SITE.address.city}, {SITE.address.state} {SITE.address.zip}
-      </p>
-      <h2>Send a message</h2>
-      <ContactForm />
-    </PagePlaceholder>
+    <main>
+      {/* White page, so the nav uses dark text */}
+      <Nav variant='dark' />
+      <ContactSection />
+      <ContactMarquee />
+      <WhyChooseUs />
+      <Testimonials />
+      <FaqSection />
+      <FinalCta />
+    </main>
   );
 }

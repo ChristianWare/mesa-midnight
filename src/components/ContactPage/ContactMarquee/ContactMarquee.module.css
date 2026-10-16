@@ -1,0 +1,95 @@
+/* Same strip as Testimonials */
+.section {
+  background-color: var(--white);
+  padding-bottom: 10rem;
+  overflow: hidden;
+}
+
+.trusted {
+  display: flex;
+  justify-content: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.marquee {
+  margin-top: 3.2rem;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.city {
+  padding: 0 3.2rem;
+  font-family: var(--CreatoDisplayBold);
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.6px;
+  white-space: nowrap;
+  color: #b2b2b2;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .section {
+    padding-bottom: 8rem;
+  }
+
+  .city {
+    padding: 0 2.4rem;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .tag {
+    font-size: 11px;
+  }
+
+  .city {
+    padding: 0 1.8rem;
+    font-size: 18px;
+  }
+}
