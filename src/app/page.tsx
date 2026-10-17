@@ -5,6 +5,7 @@ import { getBookingWidgetData } from "@/lib/booking/widgetData";
 // import QuoteBand from "@/components/HomePage/QuoteBand/QuoteBand";
 import { SITE } from "@/config/site";
 import Hero from "@/components/HomePage/Hero/Hero";
+import HeroStage from "@/components/HomePage/HeroStage/HeroStage";
 import AboutIntro from "@/components/HomePage/AboutIntro/AboutIntro";
 import ServicesSection from "@/components/HomePage/ServicesSection/ServicesSection";
 import HowItWorks from "@/components/HomePage/HowItWorks/HowItWorks";
@@ -39,9 +40,9 @@ export default async function Page() {
       />
 
       {/* The hero stays pinned to the screen... */}
-      <div className={styles.heroStage}>
+      <HeroStage className={styles.heroStage}>
         <Hero widget={widget} />
-      </div>
+      </HeroStage>
 
       {/* ...and everything after it scrolls up over the top. */}
       <div className={styles.overHero}>

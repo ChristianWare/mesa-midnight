@@ -6,11 +6,11 @@
   position: relative;
 }
 
-/* Normal flow by default (phones in landscape, short laptop windows):
-   the hero would be taller than the screen, so pinning it would hide
-   its bottom bar. */
+/* Pinned underneath the page. HeroStage.tsx sets `top` so a hero taller
+   than the screen sticks by its bottom edge (nothing gets cut off). */
 .heroStage {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 0;
 }
 
@@ -22,17 +22,10 @@
   box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* Pin the hero only when the screen is tall enough to show all of it. */
-@media screen and (min-height: 640px) {
-  .heroStage {
-    position: sticky;
-    top: 0;
-  }
-}
-
 /* Respect "reduce motion": no layering effect, just a normal page. */
 @media (prefers-reduced-motion: reduce) {
   .heroStage {
     position: relative;
+    top: auto !important;
   }
 }
