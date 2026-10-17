@@ -10,7 +10,7 @@ import Link from "next/link";
 import styles from "./Button.module.css";
 import platformStyles from "./PlatformButton.module.css";
 import { motion, useAnimate, AnimationOptions } from "motion/react";
-import CornerArrow from "../icons/CornerArrow/CornerArrow";
+import Arrow from "../icons/Arrow/Arrow";
 import Plus from "../icons/Plus/Plus";
 import DownloadIcon from "../DownloadIcon/DownloadIcon";
 import Close from "../icons/Close/Close";
@@ -148,8 +148,17 @@ export default function Button({
   const nonTextChildren = typeof children !== "string" ? children : null;
 
   // New marketing variants first; fall back to the platform variants.
+  const isMarketing = Boolean(styles[btnType]);
   const variantClass = styles[btnType] ?? platformStyles[btnType] ?? "";
-  const className = `${styles.btn} ${variantClass}${compact ? ` ${styles.compact}` : ""}`;
+  const className = [
+    styles.btn,
+    variantClass,
+    // Marketing buttons put the arrow in its own little square
+    isMarketing && arrow ? styles.withArrow : "",
+    compact ? styles.compact : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const hoverStart = () => {
     if (!supportsHover) return;
@@ -181,7 +190,7 @@ export default function Button({
       {nonTextChildren}
       {arrow && (
         <IconSlide
-          icon={CornerArrow}
+          icon={Arrow}
           className={styles.arrow}
           containerClassName={styles.arrowContainer}
         />

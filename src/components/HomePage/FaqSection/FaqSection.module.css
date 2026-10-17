@@ -6,61 +6,113 @@
   padding: 12rem 0;
 }
 
+/* Heading + card on the left, questions on the right */
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 300fr) minmax(0, 990fr);
+  grid-template-columns: minmax(0, 520fr) minmax(0, 770fr);
+  column-gap: 8rem;
+  align-items: start;
 }
 
-.labelCol {
-  padding-top: 0.6rem;
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .tag {
-  display: inline-block;
-  padding: 6px 8px;
-  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 100px;
   background-color: #efefef;
   font-family: var(--IBMPlex);
   font-size: 12px;
   line-height: 1;
-  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--black);
 }
 
-/* ================================
-   Heading row (the h2 keeps its global size)
-   ================================ */
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 4rem;
-}
-
-.heading {
-  max-width: 620px;
+.tagIcon {
+  width: 10px;
+  height: 10px;
   color: var(--black);
 }
 
-.headerRight {
+/* The h2 keeps its global size */
+.heading {
+  max-width: 560px;
+  margin-top: 2rem;
+  color: var(--black);
+}
+
+/* ================================
+   "Talk to dispatch" card
+   ================================ */
+.card {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  width: 100%;
+  max-width: 380px;
+  margin-top: 5rem;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: var(--black);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.avatar {
+  position: relative;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
-  max-width: 300px;
-  text-align: right;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #2d3852;
 }
 
-.intro {
+.avatarImg {
+  object-fit: cover;
+}
+
+.cardMeta {
+  padding-top: 2px;
+  font-family: var(--IBMPlex);
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cardText {
+  padding: 2rem 0.6rem 2.4rem;
+}
+
+.cardTitle {
+  font-family: var(--CreatoDisplayBold);
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.cardCopy {
+  max-width: 280px;
+  margin-top: 0.6rem;
   font-family: var(--CreatoDisplayMedium);
-  font-size: 16px;
-  line-height: 1.3;
-  color: var(--black400);
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.headerBtn {
-  margin-top: 3rem;
+.cardBtn > * {
+  width: 100%;
 }
 
 /* ================================
@@ -71,33 +123,32 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 6rem 0 0;
+  margin: 0;
   padding: 0;
 }
 
 .item {
-  padding: 6px;
   border-radius: 6px;
   background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
 }
 
 .question {
   margin: 0;
-  color: var(--black);
+  font: inherit;
 }
 
 .trigger {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  justify-content: space-between;
+  gap: 2rem;
   width: 100%;
-  padding: 1.8rem 1.4rem;
+  padding: 1.8rem 2rem;
   text-align: left;
   cursor: pointer;
-  border-radius: 4px;
-  font: inherit;
-  letter-spacing: inherit;
-  color: inherit;
+  border-radius: 6px;
+  color: var(--black);
 }
 
 .trigger:focus-visible {
@@ -106,49 +157,43 @@
 }
 
 .questionText {
-  font: inherit;
-  letter-spacing: inherit;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 17px;
+  line-height: 1.3;
   color: var(--black);
 }
 
-/* + that turns into − (and goes black) when open */
+/* Thin + that turns into − when open */
 .icon {
   position: relative;
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background-color: var(--white);
-  transition: background-color 0.3s ease;
+  width: 16px;
+  height: 16px;
 }
 
 .iconBar {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 12px;
+  width: 14px;
   height: 1.5px;
   background-color: var(--black);
   transform: translate(-50%, -50%);
-  transition:
-    transform 0.3s ease,
-    background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .iconBarV {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.itemOpen .icon {
-  background-color: var(--black);
-}
-
-.itemOpen .iconBar {
-  background-color: var(--white);
-}
-
 .itemOpen .iconBarV {
   transform: translate(-50%, -50%) rotate(0deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item:hover {
+    background-color: #eeeeee;
+  }
 }
 
 /* Open / close: the row grows from 0 to its natural height */
@@ -168,9 +213,8 @@
 }
 
 .answer {
-  padding: 1.6rem;
-  border-radius: 4px;
-  background-color: var(--white);
+  max-width: 620px;
+  padding: 0 2rem 2rem;
   font-family: var(--CreatoDisplayMedium);
   font-size: 16px;
   line-height: 1.4;
@@ -179,7 +223,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .collapse,
-  .icon,
   .iconBar {
     transition: none;
   }
@@ -190,12 +233,12 @@
    ================================ */
 @media screen and (max-width: 1268px) {
   .layout {
-    grid-template-columns: minmax(0, 200fr) minmax(0, 990fr);
+    column-gap: 4rem;
   }
 }
 
 /* ================================
-   968px — centred heading, full-width questions
+   968px — centred heading, card and questions full width
    ================================ */
 @media screen and (max-width: 968px) {
   .section {
@@ -204,46 +247,47 @@
 
   .layout {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 2rem;
+    row-gap: 4rem;
   }
 
-  .labelCol {
-    padding-top: 0;
-    text-align: center;
-  }
-
-  .header {
-    flex-direction: column;
+  .left {
     align-items: center;
-    gap: 1.6rem;
     text-align: center;
   }
 
-  .headerRight {
-    align-items: center;
-    max-width: 380px;
-    text-align: center;
+  .heading {
+    max-width: 520px;
   }
 
-  .headerBtn {
-    display: none;
-  }
-
-  .list {
-    margin-top: 4rem;
+  .card {
+    max-width: none;
+    margin-top: 3.2rem;
+    text-align: left;
   }
 
   .trigger {
-    padding: 1.2rem 1rem;
-    gap: 1.2rem;
+    padding: 1.6rem 1.8rem;
   }
 
-  .icon {
-    width: 24px;
-    height: 24px;
+  .questionText {
+    font-size: 16px;
   }
 
-  .iconBar {
-    width: 10px;
+  .answer {
+    padding: 0 1.8rem 1.8rem;
+  }
+}
+
+/* ================================
+   568px
+   ================================ */
+@media screen and (max-width: 568px) {
+  .avatar {
+    width: 52px;
+    height: 52px;
+  }
+
+  .questionText {
+    font-size: 15px;
   }
 }

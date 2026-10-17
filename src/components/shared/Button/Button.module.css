@@ -1,6 +1,7 @@
 /* ================================
    Base
-   Pill with text and a small inline arrow (screenshot 1).
+   Squared-off button, mono uppercase label. With `arrow`, the arrow
+   sits in its own small square at the right edge.
    ================================ */
 .btn {
   position: relative;
@@ -86,7 +87,9 @@
 }
 
 /* ================================
-   Icons — inline, no circle, same color as the text
+   Arrow square
+   Each variant sets --arrowBg / --arrowFg; platform buttons don't,
+   so their arrow stays plain.
    ================================ */
 .arrowContainer,
 .plusContainer {
@@ -94,10 +97,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   overflow: hidden;
-  background: transparent;
   padding: 0;
-  color: inherit;
+  border-radius: 4px;
+  background-color: var(--arrowBg, transparent);
+  color: var(--arrowFg, currentColor);
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.btn span.arrowContainer,
+.btn span.arrowContainer svg {
+  color: var(--arrowFg, currentColor);
+}
+
+.withArrow .arrowContainer {
+  width: 3.4rem;
+  height: 3.4rem;
 }
 
 .arrowWrapper {
@@ -105,8 +123,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 1.6rem;
+  height: 1.6rem;
   overflow: hidden;
   color: inherit;
 }
@@ -124,10 +142,12 @@
   color: inherit;
 }
 
+/* The shared Arrow icon points up; turn it to point right */
 .arrow {
   color: currentColor;
-  width: 2rem;
-  height: 2rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  transform: rotate(90deg);
 }
 
 .optionalIcon {
@@ -137,106 +157,156 @@
 }
 
 /* ================================
-   Pill buttons — Bold (screenshot 1)
+   Shared look for every marketing variant
+   ================================ */
+.mainBlack,
+.whiteMain,
+.goldMain,
+.blackMain,
+.navWhite,
+.whiteBlock,
+.blackBlock,
+.yellowBlock,
+.footerSubWhite,
+.underlinedBlack,
+.underlinedWhite {
+  border-radius: 6px;
+  font-family: var(--IBMPlex);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* Label gets underlined on hover */
+@media (hover: hover) and (pointer: fine) {
+  :is(
+      .mainBlack,
+      .whiteMain,
+      .goldMain,
+      .blackMain,
+      .navWhite,
+      .whiteBlock,
+      .blackBlock,
+      .yellowBlock
+    ):hover
+    :is(.textPrimary, .textSecondary) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+}
+
+/* With an arrow: tight padding on the right so the square sits near the edge */
+.btn.withArrow {
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 5px 5px 5px 20px;
+}
+
+/* ================================
+   Main buttons
    ================================ */
 .mainBlack,
 .mainBlack:link,
 .mainBlack:visited,
-.whiteMain,
-.whiteMain:link,
-.whiteMain:visited
-.goldMain,
-.goldMain:link,
-.goldMain:visited
-
-{
+.blackMain,
+.blackMain:link,
+.blackMain:visited {
+  --arrowBg: var(--yellow);
+  --arrowFg: var(--black);
   background-color: var(--black);
   color: var(--white);
   border-color: var(--black);
-  border-radius: 100px;
-  padding: 12px 22px;
-  font-family: var(--CreatoDisplayBold);
-  font-size: 1.6rem;
-  letter-spacing: normal;
+  padding: 13px 20px;
 }
 
 .whiteMain,
 .whiteMain:link,
 .whiteMain:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
   background-color: var(--white);
   color: var(--black);
   border-color: var(--white);
+  padding: 13px 20px;
 }
 
 .goldMain,
 .goldMain:link,
 .goldMain:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--black);
   background-color: var(--gold);
   color: var(--black);
   border-color: var(--gold);
+  padding: 13px 20px;
 }
 
-/* ================================
-   Pill buttons — Regular (screenshot 2)
-   ================================ */
-.blackMain,
-.blackMain:link,
-.blackMain:visited {
-  background-color: var(--black);
-  color: var(--white);
-  border-color: var(--black);
-  border-radius: 100px;
-  padding: 14px 22px;
-  font-family: var(--CreatoDisplayRegular);
-  font-size: 1.6rem;
-  letter-spacing: normal;
-}
-
-/* Smaller pill for the nav ("Let's Talk") */
+/* Smaller one for the nav (and the hero booking widget) */
 .navWhite,
 .navWhite:link,
 .navWhite:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--black);
   background-color: var(--yellow);
   color: var(--black);
   border-color: var(--yellow);
-  border-radius: 100px;
-  padding: 10px 17px;
-  font-family: var(--CreatoDisplayBold) !important;
-  font-size: 1.5rem;
-  letter-spacing: normal;
+  padding: 10px 16px;
+  font-family: var(--IBMPlex) !important;
+}
+
+.navWhite.withArrow {
+  padding: 4px 4px 4px 16px;
+}
+
+.navWhite.withArrow .arrowContainer {
+  width: 3rem;
+  height: 3rem;
 }
 
 /* ================================
-   Block buttons (screenshot 3)
+   Block buttons: full-width calls to action
    ================================ */
 .whiteBlock,
 .whiteBlock:link,
 .whiteBlock:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
   background-color: var(--white);
   color: var(--black);
   border-color: var(--white);
-  border-radius: 6px;
-  padding: 30px 26px;
-  font-family: var(--CreatoDisplayBold);
-  font-size: 1.6rem;
-  letter-spacing: normal;
+  padding: 17px 24px;
 }
 
 .blackBlock,
 .blackBlock:link,
 .blackBlock:visited {
+  --arrowBg: var(--yellow);
+  --arrowFg: var(--black);
   background-color: var(--black);
   color: var(--white);
   border-color: var(--black);
-  border-radius: 6px;
-  padding: 30px 26px;
-  font-family: var(--CreatoDisplayBold);
-  font-size: 1.6rem;
-  letter-spacing: normal;
+  padding: 17px 24px;
+}
+
+.yellowBlock,
+.yellowBlock:link,
+.yellowBlock:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--black);
+  background-color: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
+  padding: 17px 24px;
+}
+
+.btn.withArrow:is(.whiteBlock, .blackBlock, .yellowBlock) {
+  padding: 6px 6px 6px 24px;
 }
 
 /* ================================
-   Footer subscribe (screenshot 4)
+   Footer subscribe
    ================================ */
 .footerSubWhite,
 .footerSubWhite:link,
@@ -244,54 +314,73 @@
   background-color: #f1f1f1;
   color: var(--black);
   border-color: #f1f1f1;
-  border-radius: 6px;
   height: 40px;
   padding: 0 20px;
-  font-family: var(--CreatoDisplayRegular);
-  font-size: 1.4rem;
-  letter-spacing: normal;
 }
 
 /* ================================
-   Underlined links (screenshot 5)
+   Underlined links: underlined label + arrow square
    ================================ */
 .underlinedBlack,
 .underlinedBlack:link,
-.underlinedBlack:visited {
+.underlinedBlack:visited,
+.underlinedWhite,
+.underlinedWhite:link,
+.underlinedWhite:visited {
   background-color: transparent;
-  color: var(--black);
   border: none;
-  border-bottom: 1px solid var(--black);
   border-radius: 0;
-  padding: 0 0 3px;
-  gap: 30px;
-  justify-content: space-between;
-  font-family: var(--IBMPlex);
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  padding: 0;
+}
+
+.underlinedBlack,
+.underlinedBlack:link,
+.underlinedBlack:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
+  color: var(--black);
 }
 
 .underlinedWhite,
 .underlinedWhite:link,
 .underlinedWhite:visited {
-  background-color: transparent;
+  --arrowBg: var(--white);
+  --arrowFg: var(--black);
   color: var(--white);
-  border: none;
-  border-bottom: 1px solid var(--white);
-  border-radius: 0;
-  padding: 0 0 3px;
-  gap: 30px;
-  justify-content: space-between;
-  font-family: var(--IBMPlex);
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+}
+
+.underlinedBlack :is(.textPrimary, .textSecondary),
+.underlinedWhite :is(.textPrimary, .textSecondary) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.btn.withArrow:is(.underlinedBlack, .underlinedWhite) {
+  gap: 1.2rem;
+  padding: 0;
+}
+
+.btn.withArrow:is(.underlinedBlack, .underlinedWhite) .arrowContainer {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .underlinedBlack:hover,
+  .underlinedWhite:hover {
+    --arrowBg: var(--yellow);
+    --arrowFg: var(--black);
+  }
 }
 
 /* ================================
    Compact size (any variant): for buttons inside forms
    ================================ */
-.btn.compact {
-  padding: 15px 20px;
+.btn.compact:not(.withArrow) {
+  padding: 13px 20px;
+}
+
+.btn.compact.withArrow {
+  padding: 5px 5px 5px 20px;
 }
