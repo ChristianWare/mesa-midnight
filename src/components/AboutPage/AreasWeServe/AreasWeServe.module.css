@@ -38,13 +38,13 @@
   display: inline-block;
   padding: 6px 8px;
   border-radius: 3px;
-  background-color: #1f1f1f;
+  background-color: var(--yellow);
   font-family: var(--IBMPlex);
   font-size: 12px;
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--black);
 }
 
 .main {
@@ -95,7 +95,7 @@
 .cityNum {
   font-family: inherit;
   font-size: inherit;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--yellow);
 }
 
 .btn {
