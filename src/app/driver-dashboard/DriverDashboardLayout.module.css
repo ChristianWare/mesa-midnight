@@ -71,3 +71,34 @@
   position: relative;
   z-index: -999;
 }
+
+/* =====================================================================
+   Dashboard fonts
+   Everything: Creato Display Medium. Headings: Creato Display Bold.
+   No letter spacing anywhere. (The site has no body font, so without
+   this the dashboard falls back to the browser's default serif.)
+   ===================================================================== */
+.container {
+  font-family: var(--CreatoDisplayMedium);
+  letter-spacing: normal;
+}
+
+/* Form controls don't inherit fonts by default. Zero specificity, so any
+   button variant (mainBlack, blackReg…) still wins with its own font. */
+:where(.container) :global(:where(button, input, select, textarea, option)) {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+/* Text that global classes set to Regular or tighten (p, .paragraph, inputs…).
+   Skips anything inside buttons and links, so button variants and the
+   side-nav menu items keep their own fonts. */
+.container :global(:is(p, span, li, td, label, small, strong, b, em, dd, dt, input, select, textarea, option):not(button *):not(a *)) {
+  font-family: var(--CreatoDisplayMedium);
+  letter-spacing: normal;
+}
+
+.container :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .cardTitle, .emptyTitle, .emptyTitleSmall, th)) {
+  font-family: var(--CreatoDisplayBold);
+  letter-spacing: normal;
+}

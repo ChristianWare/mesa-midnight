@@ -365,3 +365,13 @@
     font-size: 1.6rem;
   }
 }
+
+/* Rendered into <body>, outside the dashboard: set the font here too */
+.backdrop {
+  font-family: var(--CreatoDisplayMedium);
+  letter-spacing: normal;
+}
+
+:where(.backdrop) :global(:where(button, input, select, textarea)) {
+  font-family: inherit;
+}

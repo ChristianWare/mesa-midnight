@@ -384,3 +384,24 @@
     display: flex;
   }
 }
+
+/* =====================================================================
+   Fonts: menu items in Creato Display Bold, the rest Medium, no tracking
+   ===================================================================== */
+.container {
+  font-family: var(--CreatoDisplayMedium);
+  letter-spacing: normal;
+}
+
+:where(.container) :global(:where(button)) {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+.navLink,
+.title,
+.signOutBtn,
+.moreBtn {
+  font-family: var(--CreatoDisplayBold);
+  letter-spacing: normal;
+}

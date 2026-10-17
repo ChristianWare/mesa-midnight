@@ -87,3 +87,13 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   pointer-events: none;
 }
+
+/* Rendered into <body>, outside the dashboard: set the font here too */
+.tooltip {
+  font-family: var(--CreatoDisplayMedium);
+  letter-spacing: normal;
+}
+
+:where(.tooltip) :global(:where(button, input, select, textarea)) {
+  font-family: inherit;
+}
