@@ -97,3 +97,9 @@
 :where(.tooltip) :global(:where(button, input, select, textarea)) {
   font-family: inherit;
 }
+
+/* Rendered into <body>: no letter spacing here either */
+.tooltip,
+.tooltip :global(*) {
+  letter-spacing: normal !important;
+}

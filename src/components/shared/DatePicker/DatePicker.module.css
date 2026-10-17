@@ -375,3 +375,9 @@
 :where(.backdrop) :global(:where(button, input, select, textarea)) {
   font-family: inherit;
 }
+
+/* Rendered into <body>: no letter spacing here either */
+.backdrop,
+.backdrop :global(*) {
+  letter-spacing: normal !important;
+}

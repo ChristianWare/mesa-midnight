@@ -186,3 +186,12 @@
     font-size: 16px;
   }
 }
+
+/* =====================================================================
+   No letter spacing anywhere in the dashboard except h1.
+   !important because many dashboard components set their own
+   negative letter spacing on labels and numbers.
+   ===================================================================== */
+.container :global(*:not(h1, .h1, h1 *, .h1 *)) {
+  letter-spacing: normal !important;
+}
