@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import NavProgress from "@/components/shared/NavProgress/NavProgress";
-import CornerArrow from "@/components/shared/icons/CornerArrow/CornerArrow";
+import Arrow from "@/components/shared/icons/Arrow/Arrow";
 import { SITE } from "@/config/site";
 import styles from "./Nav.module.css";
 import CarFront from "../icons/CarFront/CarFront";
@@ -192,7 +192,7 @@ export default function Nav({ variant = "solid" }: NavProps) {
           </Link>
 
           <Link href='/book' className={`${styles.pill} ${styles.bookBtn}`}>
-            Book a ride
+            <span className={styles.pillLabel}>Book a ride</span>
           </Link>
 
           <button
@@ -206,7 +206,9 @@ export default function Nav({ variant = "solid" }: NavProps) {
               <span />
               <span />
             </span>
-            <span className={styles.menuLabel}>Menu</span>
+            <span className={`${styles.menuLabel} ${styles.pillLabel}`}>
+              Menu
+            </span>
           </button>
         </div>
       </nav>
@@ -240,7 +242,7 @@ export default function Nav({ variant = "solid" }: NavProps) {
                   <AccountIcon />
                 </Link>
                 <Link href='/book' className={styles.panelBook} onClick={close}>
-                  Book a ride
+                  <span className={styles.pillLabel}>Book a ride</span>
                 </Link>
                 <button
                   type='button'
@@ -250,7 +252,11 @@ export default function Nav({ variant = "solid" }: NavProps) {
                   <span className={styles.closeIcon}>
                     <CloseIcon />
                   </span>
-                  <span className={styles.panelCloseLabel}>Menu</span>
+                  <span
+                    className={`${styles.panelCloseLabel} ${styles.pillLabel}`}
+                  >
+                    Menu
+                  </span>
                 </button>
               </div>
 
@@ -278,7 +284,9 @@ export default function Nav({ variant = "solid" }: NavProps) {
                 <span className={styles.panelCtaText}>
                   Open a corporate account
                 </span>
-                <CornerArrow className={styles.panelCtaArrow} />
+                <span className={styles.panelCtaBox} aria-hidden='true'>
+                  <Arrow className={styles.panelCtaArrow} />
+                </span>
               </Link>
 
               <div className={styles.account}>
