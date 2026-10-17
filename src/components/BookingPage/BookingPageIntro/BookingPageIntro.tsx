@@ -16,7 +16,7 @@ export default function BookingPageIntro() {
           <div>
             <span className={styles.tag}>Book a ride</span>
             <h1 id='book-heading' className={styles.heading}>
-              Book your ride.
+              Book Your Ride
             </h1>
             <p className={styles.intro}>
               Three quick steps: your trip, your vehicle, then confirm. You see
