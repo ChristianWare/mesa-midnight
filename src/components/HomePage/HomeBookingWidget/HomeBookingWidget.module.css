@@ -7,7 +7,7 @@
 
 .card {
   background: var(--white);
-  border: 1px solid var(--stroke);
+  border: 1px solid var(--paragraph);
   border-radius: 14px;
   min-width: 450px;
   width: 450px;
@@ -188,8 +188,8 @@
       li,
       th,
       td,
-      a,
-      button
+      a
+      /* button */
     )
   ) {
   font-family: var(--CreatoDisplayMedium);
@@ -250,7 +250,7 @@
     rgba(255, 255, 255, 0.2) 0%,
     rgba(255, 255, 255, 0.08) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(24px) saturate(160%);
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.35),
@@ -265,14 +265,14 @@
 
 .glass .headerTitle {
   font-weight: 400;
-  font-size: 1.8rem;
-  color: var(--white);
+  font-size: 2.5rem;
+  color: var(--yellow);
 }
 
 /* Labels: soft white bars instead of the cream ones */
 .glass :global(.cardTitle) {
   background: rgba(255, 255, 255, 0.12);
-  color: var(--white);
+  color: var(--yellow);
 }
 
 .glass :global(.cardTitle span),
@@ -332,4 +332,15 @@
   .glass {
     max-width: none;
   }
+}
+
+
+/* Buttons keep the font from their own variant (navWhite, blackBlock…) */
+.card .buttonWrap :global(button),
+.card .buttonWrap :global(button span) {
+  font-family: inherit;
+}
+
+.card .buttonWrap > :global(button) {
+  font-family: unset;
 }

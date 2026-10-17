@@ -196,12 +196,12 @@
 .navWhite,
 .navWhite:link,
 .navWhite:visited {
-  background-color: var(--white);
+  background-color: var(--yellow);
   color: var(--black);
-  border-color: var(--white);
+  border-color: var(--yellow);
   border-radius: 100px;
   padding: 10px 17px;
-  font-family: var(--CreatoDisplayRegular);
+  font-family: var(--CreatoDisplayBold) !important;
   font-size: 1.5rem;
   letter-spacing: normal;
 }
