@@ -113,7 +113,7 @@
 }
 
 /* Heading sizes: back to the original dashboard sizes (the marketing
-   site's sizes are much bigger). No letter spacing except on h1.
+   site's sizes are much bigger). No letter spacing except on h1 (-1px).
    Low specificity, so a component's own size class still wins. */
 :where(.container) :global(:is(h1, .h1)) {
   font-size: 5.4rem;
@@ -121,7 +121,7 @@
 }
 
 .container :global(:is(h1, .h1)) {
-  letter-spacing: -2.2px;
+  letter-spacing: -1px;
 }
 
 :where(.container) :global(:is(h2, .h2)) {
@@ -180,7 +180,7 @@
   }
 
   .container :global(:is(h1, .h1)) {
-    letter-spacing: -2px;
+    letter-spacing: -1px;
   }
 
   :where(.container) :global(:is(h2, .h2)) {
@@ -203,4 +203,9 @@
    ===================================================================== */
 .container :global(*:not(h1, .h1, h1 *, .h1 *)) {
   letter-spacing: normal !important;
+}
+
+/* Every h1 in the dashboard: -1px, whatever its component sets */
+.container :global(:is(h1, .h1)) {
+  letter-spacing: -1px !important;
 }
