@@ -172,14 +172,14 @@
 .underlinedWhite {
   border-radius: 6px;
   font-family: var(--IBMPlex);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
 /* Label gets underlined on hover */
-@media (hover: hover) and (pointer: fine) {
+/* @media (hover: hover) and (pointer: fine) {
   :is(
       .mainBlack,
       .whiteMain,
@@ -195,7 +195,7 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }
-}
+} */
 
 /* With an arrow: tight padding on the right so the square sits near the edge */
 .btn.withArrow {
@@ -218,7 +218,7 @@
   background-color: var(--black);
   color: var(--white);
   border-color: var(--black);
-  padding: 13px 20px;
+  padding: 5px 5px 5px 24px;
 }
 
 .whiteMain,
@@ -229,7 +229,7 @@
   background-color: var(--white);
   color: var(--black);
   border-color: var(--white);
-  padding: 13px 20px;
+  padding: 5px 5px 5px 24px;
 }
 
 .goldMain,
@@ -240,7 +240,7 @@
   background-color: var(--gold);
   color: var(--black);
   border-color: var(--gold);
-  padding: 13px 20px;
+  padding: 5px 5px 5px 24px;
 }
 
 /* Smaller one for the nav (and the hero booking widget) */
@@ -378,7 +378,7 @@
    Compact size (any variant): for buttons inside forms
    ================================ */
 .btn.compact:not(.withArrow) {
-  padding: 13px 20px;
+  padding: 5px 5px 5px 24px;
 }
 
 .btn.compact.withArrow {
