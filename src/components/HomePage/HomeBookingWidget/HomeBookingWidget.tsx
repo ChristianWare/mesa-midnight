@@ -246,6 +246,8 @@ export default function HomeBookingWidget({
   fluid = false,
   showMap = false,
   source,
+  glass = false,
+  showAuthLinks = true,
 }: {
   serviceTypes: WidgetServiceTypeDTO[];
   vehicles: WidgetVehicleDTO[];
@@ -257,6 +259,10 @@ export default function HomeBookingWidget({
   showMap?: boolean;
   /** Where the widget sits (e.g. "blog:topgolf-scottsdale"); sent to Plausible on submit. */
   source?: string;
+  /** Frosted, see-through card with white text, for use over the hero video. */
+  glass?: boolean;
+  /** Show the Log In / Create Account links in the header. */
+  showAuthLinks?: boolean;
 }) {
   const router = useRouter();
   const plausible = usePlausible();
@@ -672,6 +678,7 @@ export default function HomeBookingWidget({
     <div
       className={[
         styles.card,
+        glass ? styles.glass : "",
         fluid || showMap ? styles.fluid : "",
         showMap ? styles.withMap : "",
       ]
@@ -681,18 +688,20 @@ export default function HomeBookingWidget({
       {/* ── Header: "Book your Ride" left, auth links right ── */}
       <div className={styles.cardHeader}>
         <span className={styles.headerTitle}>Book your Ride</span>
-        <div className={styles.headerLinks}>
-          <Link href='/login' className='backBtn' style={{ marginBottom: 0 }}>
-            Log In
-          </Link>
-          <Link
-            href='/register'
-            className='backBtn'
-            style={{ marginBottom: 0 }}
-          >
-            Create Account
-          </Link>
-        </div>
+        {showAuthLinks && (
+          <div className={styles.headerLinks}>
+            <Link href='/login' className='backBtn' style={{ marginBottom: 0 }}>
+              Log In
+            </Link>
+            <Link
+              href='/register'
+              className='backBtn'
+              style={{ marginBottom: 0 }}
+            >
+              Create Account
+            </Link>
+          </div>
+        )}
       </div>
 
       <div className={showMap ? styles.split : undefined}>
@@ -1086,12 +1095,23 @@ export default function HomeBookingWidget({
 
         {/* ── CTA ── */}
         <div className={styles.buttonWrap}>
-          <Button
-            type='button'
-            text='Instant Quote →'
-            btnType='redReg'
-            onClick={handleSubmit}
-          />
+          {glass ? (
+            <Button
+              type='button'
+              text='Instant Quote'
+              btnType='blackBlock'
+              arrow
+              compact
+              onClick={handleSubmit}
+            />
+          ) : (
+            <Button
+              type='button'
+              text='Instant Quote →'
+              btnType='redReg'
+              onClick={handleSubmit}
+            />
+          )}
         </div>
       </div>
 

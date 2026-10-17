@@ -4,6 +4,8 @@ import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import Button from "@/components/shared/Button/Button";
 import CornerArrow from "@/components/shared/icons/CornerArrow/CornerArrow";
 import Nav from "@/components/shared/Nav/Nav";
+import HomeBookingWidget from "@/components/HomePage/HomeBookingWidget/HomeBookingWidget";
+import type { BookingWidgetData } from "@/lib/booking/widgetData";
 import HeroClock from "./HeroClock";
 import styles from "./Hero.module.css";
 
@@ -24,7 +26,7 @@ const CHAUFFEURS = [
   { src: "/images/img3.webp", alt: "Mesa Midnight chauffeur" },
 ];
 
-export default function Hero() {
+export default function Hero({ widget }: { widget: BookingWidgetData }) {
   return (
     <section className={styles.section} aria-labelledby='hero-heading'>
       {/* Transparent nav over the video */}
@@ -98,8 +100,18 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* ── Right: services + intro ── */}
-            <div className={styles.right}></div>
+            {/* ── Right: frosted booking widget ── */}
+            <div className={styles.right}>
+              <HomeBookingWidget
+                serviceTypes={widget.serviceTypes}
+                vehicles={widget.vehicles}
+                companyTimezone={widget.companyTimezone}
+                companyTimezoneLabel={widget.companyTimezoneLabel}
+                source='home:hero'
+                glass
+                showAuthLinks={false}
+              />
+            </div>
           </div>
 
           {/* ── Bottom bar ── */}

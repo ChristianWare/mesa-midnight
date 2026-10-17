@@ -288,3 +288,10 @@
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
+
+/* ================================
+   Compact size (any variant): for buttons inside forms
+   ================================ */
+.btn.compact {
+  padding: 15px 20px;
+}

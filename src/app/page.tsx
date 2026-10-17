@@ -40,7 +40,7 @@ export default async function Page() {
 
       {/* The hero stays pinned to the screen... */}
       <div className={styles.heroStage}>
-        <Hero />
+        <Hero widget={widget} />
       </div>
 
       {/* ...and everything after it scrolls up over the top. */}

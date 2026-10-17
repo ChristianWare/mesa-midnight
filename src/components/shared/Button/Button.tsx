@@ -36,6 +36,8 @@ interface Props {
   fileIcon?: boolean;
   type?: "button" | "submit" | "reset";
   as?: "auto" | "button" | "span";
+  /** Smaller padding, for buttons inside forms (e.g. the hero booking widget). */
+  compact?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 }
 
@@ -135,6 +137,7 @@ export default function Button({
   downloadIcon,
   type = "button",
   as = "auto",
+  compact = false,
   onClick,
 }: Props) {
   const [scope, animate] = useAnimate();
@@ -146,7 +149,7 @@ export default function Button({
 
   // New marketing variants first; fall back to the platform variants.
   const variantClass = styles[btnType] ?? platformStyles[btnType] ?? "";
-  const className = `${styles.btn} ${variantClass}`;
+  const className = `${styles.btn} ${variantClass}${compact ? ` ${styles.compact}` : ""}`;
 
   const hoverStart = () => {
     if (!supportsHover) return;

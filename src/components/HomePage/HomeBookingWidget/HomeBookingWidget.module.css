@@ -265,3 +265,96 @@
 .card :global(p) {
   font-size: 16px;
 }
+
+/* =====================================================================
+   Glass variant: frosted card with white text over the hero video.
+   ===================================================================== */
+.glass {
+  width: 100%;
+  min-width: 0;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  color: var(--white);
+}
+
+.glass .cardHeader {
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+.glass .headerTitle {
+  font-weight: 400;
+  color: var(--white);
+}
+
+/* Labels: soft white bars instead of the cream ones */
+.glass :global(.cardTitle) {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.glass :global(.cardTitle span),
+.glass .airportLabel,
+.glass .optionalTag {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.glass :global(.miniNote) {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+/* Dropdowns and text fields */
+.glass :global(.selectBorder),
+.glass :global(.input) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--white);
+  opacity: 1;
+}
+
+.glass :global(.selectBorder) {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.glass :global(.input) {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 7px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.glass :global(.input::placeholder) {
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+}
+
+.glass :global(:is(.selectBorder, .input):focus) {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* The open dropdown list is drawn by the browser on white */
+.glass :global(option) {
+  color: var(--black);
+  background-color: var(--white);
+}
+
+.glass :global(.redBorder) {
+  border-color: #ff8a80 !important;
+}
+
+.glass .flightSection {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+@media screen and (max-width: 568px) {
+  .glass {
+    max-width: none;
+  }
+}

@@ -97,7 +97,9 @@
 }
 
 .right {
-  margin-top: 13rem;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .rightTop {
@@ -322,7 +324,7 @@
 
   .right {
     /* width: min(100%, 32rem); */
-    margin-top: 10rem;
+    margin-top: 0;
   }
 
   .copy {
@@ -348,7 +350,7 @@
   }
 
   .right {
-    justify-self: end;
+    justify-content: flex-start;
     margin-top: 4rem;
   }
 
