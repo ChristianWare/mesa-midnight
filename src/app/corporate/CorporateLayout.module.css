@@ -116,3 +116,87 @@
   font-family: var(--CreatoDisplayBold);
   letter-spacing: normal;
 }
+
+/* Heading sizes: back to the original dashboard sizes (the marketing
+   site's sizes are much bigger). No letter spacing except on h1.
+   Low specificity, so a component's own size class still wins. */
+:where(.container) :global(:is(h1, .h1)) {
+  font-size: 5.4rem;
+  line-height: 1.1;
+}
+
+.container :global(:is(h1, .h1)) {
+  letter-spacing: -2.2px;
+}
+
+:where(.container) :global(:is(h2, .h2)) {
+  font-size: 4rem;
+  line-height: 1.2;
+}
+
+:where(.container) :global(:is(h3, .h3)) {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+:where(.container) :global(:is(h4, .h4)) {
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+:where(.container) :global(:is(h5, .h5)) {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+:where(.container) :global(:is(h6, .h6)) {
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+:where(.container) :global(p) {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 1268px) {
+  :where(.container) :global(:is(h1, .h1)) {
+    font-size: 4.8rem;
+  }
+
+  :where(.container) :global(:is(h2, .h2)) {
+    font-size: 3.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :where(.container) :global(:is(h1, .h1)) {
+    font-size: 4.2rem;
+  }
+
+  :where(.container) :global(:is(h2, .h2)) {
+    font-size: 3.4rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  :where(.container) :global(:is(h1, .h1)) {
+    font-size: 42px;
+  }
+
+  .container :global(:is(h1, .h1)) {
+    letter-spacing: -2px;
+  }
+
+  :where(.container) :global(:is(h2, .h2)) {
+    font-size: 34px;
+  }
+
+  :where(.container) :global(:is(h3, .h3)) {
+    font-size: 2.8rem;
+  }
+
+  :where(.container) :global(p) {
+    font-size: 16px;
+  }
+}
