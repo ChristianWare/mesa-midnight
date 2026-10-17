@@ -519,6 +519,7 @@ th {
   font-weight: 700;
   text-transform: uppercase;
   width: fit-content;
+  letter-spacing: normal;
 }
 
 .pillGood {
@@ -551,6 +552,7 @@ th {
   display: flex;
   align-items: center;
   justify-content: center;
+  letter-spacing: normal;
 }
 
 .badge_neutral {

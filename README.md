@@ -59,6 +59,8 @@ live in `src/components/shared/icons`.
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:push` | Sync schema to the database (fresh projects) |
 | `npm run db:seed` | Seed admin + defaults (safe to re-run) |
+| `npm run db:seed:demo` | Add a year of sample rides, drivers, customers and corporate accounts so the dashboards have data (dev only, re-run to refresh) |
+| `npm run db:demo:clear` | Remove only the sample data |
 | `npm run db:studio` | Prisma Studio |
 
 ## Docs
