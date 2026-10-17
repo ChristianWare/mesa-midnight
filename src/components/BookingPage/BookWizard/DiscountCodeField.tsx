@@ -6,6 +6,7 @@ import {
   type CheckDiscountInput,
 } from "../../../../actions/discountCodes/checkDiscountCode";
 import styles from "./DiscountCodeField.module.css";
+import Button from "@/components/shared/Button/Button";
 
 export type AppliedDiscount = {
   code: string;
@@ -87,17 +88,16 @@ export default function DiscountCodeField({
           ✓ <strong>{applied.code}</strong> applied · {applied.summary} · −$
           {usd(applied.totalCents)}
         </span>
-        <button
+        <Button
           type='button'
-          className={styles.remove}
+          text='Remove'
+          btnType='underlinedBlack'
           onClick={() => {
             onApplied(null);
             setCode("");
             setTriedOnce(false);
           }}
-        >
-          Remove
-        </button>
+        />
       </div>
     );
   }
@@ -125,14 +125,14 @@ export default function DiscountCodeField({
           aria-invalid={!!error}
           aria-describedby={error ? `${id}-error` : undefined}
         />
-        <button
+        <Button
           type='button'
-          className={styles.apply}
+          text={checking ? "Checking…" : "Apply"}
+          btnType='mainBlack'
+          arrow
           onClick={() => void apply()}
           disabled={checking}
-        >
-          {checking ? "Checking…" : "Apply"}
-        </button>
+        />
       </div>
       {applied && applied.key !== ridesKey ? (
         <p className='miniNote'>

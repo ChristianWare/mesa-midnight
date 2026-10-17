@@ -204,31 +204,31 @@
 .card :global(:is(h2, .h2)) {
   font-size: 4rem;
   line-height: 1.2;
-  letter-spacing: -2.2px;
+  letter-spacing: normal;
 }
 
 .card :global(:is(h3, .h3)) {
   font-size: 3rem;
   line-height: 1.2;
-  letter-spacing: -1.6px;
+  letter-spacing: normal;
 }
 
 .card :global(:is(h4, .h4)) {
   font-size: 2.4rem;
   line-height: 1.2;
-  letter-spacing: -1.3px;
+  letter-spacing: normal;
 }
 
 .card :global(:is(h5, .h5)) {
   font-size: 2rem;
   line-height: 1.2;
-  letter-spacing: -1px;
+  letter-spacing: normal;
 }
 
 .card :global(:is(h6, .h6)) {
   font-size: 1.8rem;
   line-height: 1.2;
-  letter-spacing: -0.8px;
+  letter-spacing: normal;
 }
 
 .card :global(p) {
@@ -343,4 +343,11 @@
 
 .card .buttonWrap > :global(button) {
   font-family: unset;
+}
+
+/* =====================================================================
+   Booking flow: headings use normal letter spacing (not tightened)
+   ===================================================================== */
+.card :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .cardTitle, .emptyTitle, .emptyTitleSmall)) {
+  letter-spacing: normal;
 }

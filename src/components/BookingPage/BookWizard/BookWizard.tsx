@@ -2187,8 +2187,9 @@ export default function BookingWizard({
                   >
                     <Button
                       type='button'
-                      text='Next: Choose Vehicle →'
-                      btnType='greenReg'
+                      text='Next: Choose vehicle'
+                      btnType='mainBlack'
+                      arrow
                       onClick={goStep2}
                     />
                   </div>
@@ -2372,14 +2373,15 @@ export default function BookingWizard({
                   >
                     <Button
                       type='button'
-                      text='← Back: Trip Details'
-                      btnType='blackReg'
+                      text='Back: Trip details'
+                      btnType='underlinedBlack'
                       onClick={() => setStep(1)}
                     />
                     <Button
                       type='button'
-                      text='Next: Confirm →'
-                      btnType='greenReg'
+                      text='Next: Confirm'
+                      btnType='mainBlack'
+                      arrow
                       onClick={goStep3}
                     />
                   </div>
@@ -2960,10 +2962,9 @@ export default function BookingWizard({
                   </button> */}
                   <Button
                     type='button'
-                    text='Add another ride to this trip'
-                    btnType='greenii'
+                    text='+ Add another ride to this trip'
+                    btnType='yellowBlock'
                     onClick={addAnotherRide}
-                    plus
                   />
                   {savedLegs.length === 0 && (
                     <div
@@ -3011,8 +3012,8 @@ export default function BookingWizard({
                   >
                     <Button
                       type='button'
-                      text='← Back: Vehicle Details'
-                      btnType='blackReg'
+                      text='Back: Vehicle details'
+                      btnType='underlinedBlack'
                       onClick={() => setStep(2)}
                     />
                     <Button
@@ -3023,10 +3024,11 @@ export default function BookingWizard({
                           : submitting
                             ? "Submitting..."
                             : isMultiLeg
-                              ? `Submit ${savedLegs.length + 1} rides →`
-                              : "Submit request →"
+                              ? `Submit ${savedLegs.length + 1} rides`
+                              : "Submit request"
                       }
-                      btnType='greenReg'
+                      btnType='mainBlack'
+                      arrow
                       onClick={handleSubmit}
                     />
                   </div>
@@ -3049,21 +3051,19 @@ export default function BookingWizard({
             </span>
           </p>
           <div className={styles.modalActions}>
-            <button
+            <Button
               type='button'
-              className='secondaryBtn'
+              text='Cancel'
+              btnType='underlinedBlack'
               onClick={() => setRemoveLegId(null)}
-            >
-              Cancel
-            </button>
-            <button
+            />
+            <Button
               type='button'
-              className='primaryBtn'
-              style={{ background: "rgba(180,0,0,0.85)" }}
+              text='Yes, remove ride'
+              btnType='mainBlack'
+              arrow
               onClick={confirmRemoveLeg}
-            >
-              Yes, remove ride
-            </button>
+            />
           </div>
         </div>
       </Modal>

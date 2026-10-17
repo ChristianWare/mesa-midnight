@@ -471,7 +471,7 @@
 .flightSummaryTimeValue {
   font-size: 2rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: normal;
   line-height: 1;
 }
 
@@ -509,7 +509,7 @@
 .flightSummaryIata {
   font-size: 4rem;
   font-weight: 900;
-  letter-spacing: -2px;
+  letter-spacing: normal;
   line-height: 1;
   color: var(--white);
   flex-shrink: 0;
@@ -559,7 +559,8 @@
   font-family: var(--CreatoDisplayMedium);
 }
 
-.container :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, label, p, span, div, strong, li, th, td, a, button)) {
+/* Buttons and links keep their own font (the custom Button variants use IBM Plex Mono) */
+.container :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, label, p, span, div, strong, li, th, td):not(button *):not(a *)) {
   font-family: var(--CreatoDisplayMedium);
 }
 
@@ -572,33 +573,40 @@
 .container :global(:is(h2, .h2)) {
   font-size: 4rem;
   line-height: 1.2;
-  letter-spacing: -2.2px;
+  letter-spacing: normal;
 }
 
 .container :global(:is(h3, .h3)) {
   font-size: 3rem;
   line-height: 1.2;
-  letter-spacing: -1.6px;
+  letter-spacing: normal;
 }
 
 .container :global(:is(h4, .h4)) {
   font-size: 2.4rem;
   line-height: 1.2;
-  letter-spacing: -1.3px;
+  letter-spacing: normal;
 }
 
 .container :global(:is(h5, .h5)) {
   font-size: 2rem;
   line-height: 1.2;
-  letter-spacing: -1px;
+  letter-spacing: normal;
 }
 
 .container :global(:is(h6, .h6)) {
   font-size: 1.8rem;
   line-height: 1.2;
-  letter-spacing: -0.8px;
+  letter-spacing: normal;
 }
 
 .container :global(p) {
   font-size: 16px;
+}
+
+/* =====================================================================
+   Booking flow: headings use normal letter spacing (not tightened)
+   ===================================================================== */
+.container :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .cardTitle, .emptyTitle, .emptyTitleSmall)) {
+  letter-spacing: normal;
 }
