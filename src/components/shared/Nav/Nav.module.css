@@ -199,13 +199,13 @@
 }
 
 /* Label underlines on hover, like the "Contact now" style */
-@media (hover: hover) and (pointer: fine) {
+/* @media (hover: hover) and (pointer: fine) {
   :is(.pill, .panelBook, .panelClose):hover .pillLabel {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }
-}
+} */
 
 .burger {
   display: inline-flex;
@@ -421,13 +421,13 @@
   transform: rotate(90deg);
 }
 
-@media (hover: hover) and (pointer: fine) {
+/* @media (hover: hover) and (pointer: fine) {
   .panelCta:hover .panelCtaText {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }
-}
+} */
 
 .account {
   display: flex;
