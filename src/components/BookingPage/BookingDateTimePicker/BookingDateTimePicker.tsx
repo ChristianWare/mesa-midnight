@@ -227,7 +227,7 @@ export default function BookingDateTimePicker({
     <div className={styles.wrap}>
       <div className={styles.header}>
         <div className={`${styles.topRow} underline`}>
-          <label className='h5 bgWhite'>Date</label>
+          <label className={`${styles.label} h5 bgWhite`}>Date</label>
         </div>
 
         <div className={styles.controlsRow}>
@@ -340,7 +340,8 @@ export default function BookingDateTimePicker({
       </div>
 
       <div className={styles.timeBlock}>
-        <label className='h5 bgWhite underline'>Time</label>
+        {/* <label className='h5 bgWhite underline'>Time</label> */}
+        <label className={`${styles.label} h5 bgWhite underline`}>Time</label>
 
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}

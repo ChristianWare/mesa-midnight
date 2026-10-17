@@ -6,6 +6,10 @@
   padding-bottom: 10rem;
 }
 
+.content h2 {
+  text-transform: capitalize;
+}
+
 .checklistContainer,
 .checklistMobile {
   position: sticky;
@@ -560,7 +564,31 @@
 }
 
 /* Buttons and links keep their own font (the custom Button variants use IBM Plex Mono) */
-.container :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, label, p, span, div, strong, li, th, td):not(button *):not(a *)) {
+.container
+  :global(
+    :is(
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6,
+        label,
+        p,
+        span,
+        div,
+        strong,
+        li,
+        th,
+        td
+      ):not(button *):not(a *)
+  ) {
   font-family: var(--CreatoDisplayMedium);
 }
 
@@ -607,6 +635,25 @@
 /* =====================================================================
    Booking flow: headings use normal letter spacing (not tightened)
    ===================================================================== */
-.container :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .cardTitle, .emptyTitle, .emptyTitleSmall)) {
+.container
+  :global(
+    :is(
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .h1,
+      .h2,
+      .h3,
+      .h4,
+      .h5,
+      .h6,
+      .cardTitle,
+      .emptyTitle,
+      .emptyTitleSmall
+    )
+  ) {
   letter-spacing: normal;
 }

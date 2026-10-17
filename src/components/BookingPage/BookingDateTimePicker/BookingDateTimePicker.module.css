@@ -20,6 +20,11 @@
   margin-top: 1.5rem;
 }
 
+.label {
+  letter-spacing: normal !important;
+  
+}
+
 .controlsRow {
   display: grid;
   gap: 10px;
