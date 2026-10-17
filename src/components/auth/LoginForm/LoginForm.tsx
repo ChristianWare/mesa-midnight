@@ -106,11 +106,10 @@ export default function LoginForm() {
 
         <div className={styles.btnContainer}>
           <Button
-            text={isPending ? "Submitting..." : "Sign In"}
+            text={isPending ? "Submitting..." : "Sign in"}
             type='submit'
             disabled={isPending}
-            btnType='black'
-            arrow
+            btnType='blackBlock'
           />
         </div>
       </form>

@@ -5,8 +5,7 @@ import Button from "@/components/shared/Button/Button";
 import CornerArrow from "@/components/shared/icons/CornerArrow/CornerArrow";
 import Nav from "@/components/shared/Nav/Nav";
 import HeroClock from "@/components/HomePage/Hero/HeroClock";
-// Same styles as the home hero, so the two always match.
-import styles from "@/components/HomePage/Hero/Hero.module.css";
+import styles from "./AirportsHero.module.css";
 
 const LINKS = [
   { n: "/001", label: "Sky Harbor (PHX)", href: "/airports/phx-sky-harbor" },

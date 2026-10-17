@@ -134,11 +134,10 @@ export default function RegisterForm() {
 
         <div className={styles.btnContainer}>
           <Button
-            text={isPending ? "Submitting..." : "Sign Up"}
+            text={isPending ? "Submitting..." : "Create account"}
             type='submit'
             disabled={isPending}
-            btnType='black'
-            arrow
+            btnType='blackBlock'
           />
         </div>
       </form>

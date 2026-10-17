@@ -99,3 +99,33 @@
   align-items: center;
   justify-content: center;
 }
+
+/* ================================
+   Clean white fields (login / register cards)
+   ================================ */
+.label {
+  font-family: var(--IBMPlex);
+  font-size: 1.2rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.inputWrapper .input {
+  height: 44px;
+  padding: 0 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: var(--white);
+  font-family: var(--CreatoDisplayRegular);
+  font-size: 1.5rem;
+}
+
+.inputWrapper .input::placeholder {
+  color: var(--black400);
+  opacity: 1;
+}
+
+.inputWrapper .input:focus {
+  border-color: var(--black);
+}

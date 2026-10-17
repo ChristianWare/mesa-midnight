@@ -5,7 +5,8 @@ import OurStandards from "@/components/AboutPage/OurStandards/OurStandards";
 import AreasWeServe from "@/components/AboutPage/AreasWeServe/AreasWeServe";
 import Chauffeurs from "@/components/AboutPage/Chauffeurs/Chauffeurs";
 import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
-import styles from "../page.module.css";
+import HeroStage from "@/components/HomePage/HeroStage/HeroStage";
+import styles from "./page.module.css";
 
 const TITLE = "About Mesa Midnight | East Valley Black Car Service Since 2019";
 const DESCRIPTION =
@@ -23,9 +24,9 @@ export default function Page() {
   return (
     <main className={styles.main}>
       {/* The hero stays pinned to the screen... */}
-      <div className={styles.heroStage}>
+      <HeroStage className={styles.heroStage}>
         <AboutUsHero />
-      </div>
+      </HeroStage>
 
       {/* ...and the next sections scroll up over it. */}
       <div className={styles.overHero}>

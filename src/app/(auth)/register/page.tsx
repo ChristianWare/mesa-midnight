@@ -3,7 +3,7 @@ import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
 import RegisterPageIntro from "@/components/registerPage/RegisterPageIntro";
 import Nav from "@/components/shared/Nav/Nav";
-import AboutNumbers from "@/components/shared/AboutNumbers/AboutNumbers";
+import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -41,7 +41,7 @@ export default async function RegisterPage({
     <main>
       <Nav background='white' />
       <RegisterPageIntro />
-      <AboutNumbers />
+      <FinalCta />
     </main>
   );
 }
