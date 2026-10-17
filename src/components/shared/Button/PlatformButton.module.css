@@ -1,33 +1,108 @@
-/* Older button variants used by the admin, booking tool, checkout and
-   portals. Not used on the marketing site. Button.tsx falls back to
-   these when a btnType isn't in Button.module.css. */
+/* Button variants used by the admin, booking tool, checkout and portals.
+   Button.tsx falls back to these when a btnType isn't in Button.module.css.
 
-.underlinedBlackii,
-.underlinedBlackii:link,
-.underlinedBlackii:visited {
-  background-color: transparent;
-  color: var(--black);
-  font-size: 2rem;
-  border-bottom: 1px solid var(--black);
-  border-radius: 0px;
-  padding: 5px 0px;
-  padding-bottom: 10px;
-  justify-content: space-between;
+   Same look as mainBlack & co: 6px corners, IBM Plex Mono uppercase label,
+   and (with `arrow`) the arrow in its own little square. Each variant
+   keeps its original colors; --arrowBg / --arrowFg color the square. */
+
+/* ================================
+   Shared look
+   ================================ */
+.black,
+.primary,
+.blackReg,
+.blackRegSmall,
+.blackAdmin,
+.blackOutline,
+.white,
+.gray,
+.grayReg,
+.cream,
+.red,
+.redReg,
+.accent,
+.lightRed,
+.green,
+.greenReg,
+.greenii,
+.blue,
+.blueReg,
+.transparent,
+.underlinedBlackii {
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-family: var(--IBMPlex);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
+/* ================================
+   Dark
+   ================================ */
+.black,
+.black:link,
+.black:visited,
+.primary,
+.primary:link,
+.primary:visited,
+.blackReg,
+.blackReg:link,
+.blackReg:visited,
 .blackAdmin,
 .blackAdmin:link,
 .blackAdmin:visited {
+  --arrowBg: var(--yellow);
+  --arrowFg: var(--black);
   background-color: var(--black);
-  color: var(--white);
+  color: var(--white) !important;
   border: 1px solid var(--black);
+}
+
+.blackAdmin {
   display: flex;
   justify-content: space-between;
 }
 
+.blackReg,
+.blackRegSmall {
+  display: flex;
+  justify-content: center;
+}
+
+/* Smaller dark one for tables and tight rows */
+.blackRegSmall,
+.blackRegSmall:link,
+.blackRegSmall:visited {
+  --arrowBg: var(--yellow);
+  --arrowFg: var(--black);
+  background-color: var(--black);
+  color: var(--white) !important;
+  border: 1px solid var(--black);
+  padding: 7px 14px;
+  font-size: 1.3rem;
+}
+
+.blackOutline,
+.blackOutline:link,
+.blackOutline:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
+  background-color: transparent;
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+/* ================================
+   Light
+   ================================ */
 .white,
 .white:link,
 .white:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
   background-color: var(--white);
   color: var(--black);
   border: 1px solid var(--white);
@@ -38,6 +113,8 @@
 .gray,
 .gray:link,
 .gray:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
   background-color: var(--stroke);
   color: var(--black);
   border: 1px solid var(--strokeii);
@@ -45,51 +122,23 @@
   justify-content: space-between;
 }
 
-.red,
-.red:link,
-.red:visited {
-  background-color: var(--accent);
-  color: var(--white);
-  border: 1px solid var(--accent600);
+.grayReg,
+.grayReg:link,
+.grayReg:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
+  background-color: var(--black300);
+  color: var(--black) !important;
+  border: 1px solid var(--black300);
   display: flex;
-  justify-content: space-between;
-}
-
-.green,
-.green:link,
-.green:visited {
-  background-color: var(--green);
-  color: var(--white);
-  border: 1px solid var(--darkGreen);
-  display: flex;
-  justify-content: space-between;
-}
-
-.greenii,
-.greenii:link,
-.greenii:visited {
-  background-color: var(--lighterGreen);
-  color: var(--green);
-  font-weight: 700;
-  letter-spacing: normal;
-  border: 1px solid var(--darkGreen);
-  display: flex;
-  justify-content: space-between;
-}
-
-.lightRed,
-.lightRed:link,
-.lightRed:visited {
-  background-color: #0000001a;
-  color: var(--black);
-  border: 1px solid var(--accent);
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .cream,
 .cream:link,
 .cream:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
   background-color: var(--cream);
   color: var(--black);
   border: 1px solid var(--strokeii);
@@ -97,88 +146,178 @@
   justify-content: space-between;
 }
 
-.blackOutline {
-  background-color: transparent;
-  color: var(--black);
-  border: 1px solid var(--black);
-}
-
-.transparent {
-  color: var(--white) !important;
-  background-color: #ffffff1a;
+/* ================================
+   Red
+   ================================ */
+.red,
+.red:link,
+.red:visited,
+.accent,
+.accent:link,
+.accent:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--accent);
+  background-color: var(--accent);
+  color: var(--white);
+  border: 1px solid var(--accent600);
   display: flex;
   justify-content: space-between;
 }
 
-.blackReg {
-  background-color: var(--black);
-  color: var(--white) !important;
-  border: 1px solid var(--black);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 8px 15px;
-}
-
-.blackRegSmall {
-  background-color: var(--black);
-  color: var(--white) !important;
-  border: 1px solid var(--black);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 5px 10px;
-  font-size: 1.4rem;
-}
-
-.greenReg {
-  background-color: var(--green);
-  color: var(--white) !important;
-  border: 1px solid var(--darkGreen);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  padding: 8px 15px;
-}
-
-.redReg {
+.redReg,
+.redReg:link,
+.redReg:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--accent);
   background-color: var(--accent);
   color: var(--white) !important;
   border: 1px solid var(--accent600);
-  border-radius: 5px;
   display: flex;
   justify-content: center;
-  padding: 8px 15px;
 }
 
-.grayReg {
-  background-color: var(--black300);
-  color: var(--black) !important;
-  border: 1px solid var(--black300);
-  border-radius: 5px;
+.lightRed,
+.lightRed:link,
+.lightRed:visited {
+  --arrowBg: var(--accent);
+  --arrowFg: var(--white);
+  background-color: #0000001a;
+  color: var(--black);
+  border: 1px solid var(--accent);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ================================
+   Green
+   ================================ */
+.green,
+.green:link,
+.green:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--darkGreen);
+  background-color: var(--green);
+  color: var(--white);
+  border: 1px solid var(--darkGreen);
+  display: flex;
+  justify-content: space-between;
+}
+
+.greenReg,
+.greenReg:link,
+.greenReg:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--darkGreen);
+  background-color: var(--green);
+  color: var(--white) !important;
+  border: 1px solid var(--darkGreen);
   display: flex;
   justify-content: center;
-  padding: 8px 15px;
 }
 
-.blueReg {
+.greenii,
+.greenii:link,
+.greenii:visited {
+  --arrowBg: var(--green);
+  --arrowFg: var(--white);
+  background-color: var(--lighterGreen);
+  color: var(--green);
+  border: 1px solid var(--darkGreen);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ================================
+   Blue
+   ================================ */
+.blue,
+.blue:link,
+.blue:visited,
+.blueReg,
+.blueReg:link,
+.blueReg:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--blue);
   background-color: var(--blue);
   color: var(--white) !important;
   border: 1px solid var(--blue);
-  border-radius: 5px;
   display: flex;
   justify-content: center;
-  padding: 8px 15px;
 }
 
+/* ================================
+   On dark backgrounds
+   ================================ */
+.transparent,
+.transparent:link,
+.transparent:visited {
+  --arrowBg: var(--white);
+  --arrowFg: var(--black);
+  color: var(--white) !important;
+  background-color: #ffffff1a;
+  border: 1px solid #ffffff33;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ================================
+   Underlined (like underlinedBlack)
+   ================================ */
+.underlinedBlackii,
+.underlinedBlackii:link,
+.underlinedBlackii:visited {
+  --arrowBg: var(--black);
+  --arrowFg: var(--white);
+  background-color: transparent;
+  color: var(--black);
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  gap: 1.2rem;
+  justify-content: space-between;
+}
+
+.underlinedBlackii :global(.text-primary),
+.underlinedBlackii :global(.text-secondary) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* ================================
+   Hover: a touch darker
+   ================================ */
 @media (hover: hover) and (pointer: fine) {
-  .blackReg:hover {
-    background-color: var(--black400);
-    border: 1px solid var(--black400);
+  .black:hover,
+  .primary:hover,
+  .blackReg:hover,
+  .blackRegSmall:hover,
+  .blackAdmin:hover {
+    background-color: var(--darkBlueii);
+    border-color: var(--darkBlueii);
   }
 
-  .greenReg:hover {
+  .greenReg:hover,
+  .green:hover {
     background-color: var(--darkGreen);
-    border: 1px solid var(--darkGreen);
+    border-color: var(--darkGreen);
+  }
+
+  .redReg:hover,
+  .red:hover,
+  .accent:hover {
+    background-color: var(--accent600);
+    border-color: var(--accent600);
+  }
+
+  .blackOutline:hover {
+    background-color: var(--black);
+    color: var(--white);
+  }
+
+  .grayReg:hover,
+  .gray:hover,
+  .cream:hover {
+    border-color: var(--black);
   }
 }

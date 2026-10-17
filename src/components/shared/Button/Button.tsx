@@ -148,13 +148,14 @@ export default function Button({
   const nonTextChildren = typeof children !== "string" ? children : null;
 
   // New marketing variants first; fall back to the platform variants.
-  const isMarketing = Boolean(styles[btnType]);
   const variantClass = styles[btnType] ?? platformStyles[btnType] ?? "";
+  // Every styled variant (marketing and platform) puts the arrow in its square
+  const hasVariant = Boolean(variantClass);
   const className = [
     styles.btn,
     variantClass,
-    // Marketing buttons put the arrow in its own little square
-    isMarketing && arrow ? styles.withArrow : "",
+    hasVariant && arrow ? styles.withArrow : "",
+    btnType === "blackRegSmall" ? styles.small : "",
     compact ? styles.compact : "",
   ]
     .filter(Boolean)

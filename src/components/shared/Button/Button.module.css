@@ -204,6 +204,24 @@
   padding: 5px 5px 5px 20px;
 }
 
+/* Plus / download / close icons stay plain (no square) */
+.btn span.plusContainer,
+.btn span.plusContainer svg {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* Small platform button (blackRegSmall) with an arrow */
+.btn.small.withArrow {
+  gap: 1rem;
+  padding: 3px 3px 3px 14px;
+}
+
+.btn.small.withArrow .arrowContainer {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
 /* ================================
    Main buttons
    ================================ */
