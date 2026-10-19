@@ -4,7 +4,7 @@
   right: 0;
   bottom: 0;
   height: 3px;
-  background: var(--accent, #b8432a);
+  background: var(--yellow);
   transform: scaleX(0);
   transform-origin: left center;
   opacity: 0;
