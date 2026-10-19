@@ -175,7 +175,7 @@
 } */
 
 .dayNum {
-  font-family: var(--interTight);
+  font-family: var(--CreatoDisplayBold);
   font-weight: 800;
   color: #222;
   font-size: 14px;
@@ -561,10 +561,12 @@
 /* Mesa Midnight fonts: dates and labels Medium, picked values Regular */
 .wrap {
   font-family: var(--CreatoDisplayMedium);
+  letter-spacing: normal;
 }
 
 .wrap :global(:is(button, label, span, div)) {
-  font-family: var(--CreatoDisplayMedium);
+  font-family: var(--CreatoDisplayExtraBold);
+  letter-spacing: normal;
 }
 
 .wrap :global(:is(select, input, .selectBorder)) {
