@@ -1,0 +1,43 @@
+.bar {
+  position: relative;
+  z-index: 60;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 0;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.tag {
+  padding: 3px 7px;
+  border-radius: 4px;
+  background-color: var(--black);
+  font-family: var(--IBMPlex);
+  color: var(--white);
+}
+
+.copy {
+  font-family: var(--IBMPlex);
+  color: var(--black);
+}
+
+@media screen and (max-width: 568px) {
+  .text {
+    font-size: 10px;
+  }
+}

@@ -1,3 +1,4 @@
+import DemoBanner from "@/components/shared/DemoBanner/DemoBanner";
 import SmoothScroll from "@/components/shared/SmoothScroll/SmoothScroll";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -77,6 +78,8 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [`${SITE.url}${SITE.ogImage}`],
   },
+  // Demo site: keep it out of search results so nobody tries to book a real ride
+  ...(SITE.demo ? { robots: { index: false, follow: false } } : {}),
 };
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -159,6 +162,7 @@ export default function RootLayout({
             <ToastsProvider />
             <SmoothScroll>
               <ScrollToTop />
+              {SITE.demo && <DemoBanner />}
               {children}
               <Footer />
             </SmoothScroll>

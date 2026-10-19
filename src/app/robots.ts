@@ -2,6 +2,11 @@ import { MetadataRoute } from "next";
 import { SITE } from "@/config/site";
 
 export default function robots(): MetadataRoute.Robots {
+  // Demo site: block every crawler (see SITE.demo)
+  if (SITE.demo) {
+    return { rules: [{ userAgent: "*", disallow: "/" }] };
+  }
+
   return {
     rules: [
       {

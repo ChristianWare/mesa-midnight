@@ -88,13 +88,18 @@ export interface SiteConfig {
   ogImage: string;
   /** PWA theme color */
   themeColor: string;
+  /**
+   * Demo / portfolio site: shows a "this is a demo" bar on every page and
+   * asks search engines not to index the site. Set to false for a real client.
+   */
+  demo: boolean;
   nav: {
     /** Partner landing pages. Empty array hides the Partners menu. */
     partners: PartnerLink[];
   };
 }
 
-const url = "https://www.mesamidnight.com";
+const url = "https://www.mesamidnighttransport.com";
 
 export const SITE: SiteConfig = {
   name: "Mesa Midnight",
@@ -106,12 +111,12 @@ export const SITE: SiteConfig = {
   url,
   domain: new URL(url).host,
   email: {
-    info: "info@mesamidnight.com",
-    reservations: "reservations@mesamidnight.com",
-    support: "support@mesamidnight.com",
-    admin: "admin@mesamidnight.com",
-    corporate: "corporate@mesamidnight.com",
-    noReply: "no-reply@mesamidnight.com",
+    info: "info@mesamidnighttransport.com",
+    reservations: "reservations@mesamidnighttransport.com",
+    support: "support@mesamidnighttransport.com",
+    admin: "admin@mesamidnighttransport.com",
+    corporate: "corporate@mesamidnighttransport.com",
+    noReply: "no-reply@mesamidnighttransport.com",
   },
   phone: {
     display: "(480) 555-0147",
@@ -146,6 +151,7 @@ export const SITE: SiteConfig = {
   logo: "/brand/logo.png",
   ogImage: "/brand/og-image.png",
   themeColor: "#0B1020",
+  demo: true,
   nav: {
     partners: [],
   },
