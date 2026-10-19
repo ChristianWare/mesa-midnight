@@ -378,7 +378,9 @@
 
 /* Rendered into <body>: no letter spacing here either */
 .backdrop,
-.backdrop :global(*) {
+.backdrop :global(*),
+.popover,
+.popover :global(*) {
   letter-spacing: normal !important;
 }
 
@@ -396,6 +398,9 @@
 .timeGroup,
 .timeGroup :global(*),
 .backdrop,
-.backdrop :global(*) {
+.backdrop :global(*),
+.popover,
+.popover :global(*),
+.popover :global(*::placeholder) {
   font-family: var(--CreatoDisplayBold) !important;
 }
