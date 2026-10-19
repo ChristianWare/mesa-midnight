@@ -1,6 +1,7 @@
 /* src/components/shared/WhatHappensNext/WhatHappensNext.module.css */
 
 .container {
+  font-family: var(--CreatoDisplayBold);
   background: #f5f7f8;
   border: 1px solid #95c0f7;
   border-radius: 12px;
@@ -146,4 +147,10 @@
   .stepDescription {
     font-size: 1.4rem;
   }
+}
+
+/* Creato Display Bold on every line: title, steps, notice, strong, span */
+.container :global(*) {
+  font-family: var(--CreatoDisplayBold);
+  letter-spacing: normal;
 }

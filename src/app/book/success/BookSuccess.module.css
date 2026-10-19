@@ -94,3 +94,21 @@
 .parent :global(:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .cardTitle, .emptyTitle, .emptyTitleSmall)) {
   letter-spacing: normal;
 }
+
+/* =====================================================================
+   No default browser font on the success page: anything without its
+   own font (notes, strong, span, plain divs) uses Creato Display Bold.
+   Headings, paragraphs and buttons keep their own fonts.
+   ===================================================================== */
+.card {
+  font-family: var(--CreatoDisplayBold);
+}
+
+.card :global(:is(.miniNote, strong, span, b)):not(:global(button *)):not(:global(a *)) {
+  font-family: var(--CreatoDisplayBold);
+  letter-spacing: normal;
+}
+
+.meta {
+  font-family: var(--CreatoDisplayBold);
+}

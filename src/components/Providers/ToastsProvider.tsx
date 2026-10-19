@@ -36,6 +36,8 @@ export default function ToastsProvider() {
           className: "toastFont customToast",
           duration: 4000, // 4 seconds default
           style: {
+            fontFamily: "var(--CreatoDisplayBold)",
+            letterSpacing: "normal",
             borderRadius: "8px",
             padding: "16px",
             paddingTop: "21px",
@@ -46,6 +48,8 @@ export default function ToastsProvider() {
           success: {
             duration: 3000,
             style: {
+              fontFamily: "var(--CreatoDisplayBold)",
+              letterSpacing: "normal",
               borderRadius: "8px",
               padding: "16px",
               paddingTop: "21px",
@@ -60,6 +64,8 @@ export default function ToastsProvider() {
           error: {
             duration: 5000, // Errors stay longer
             style: {
+              fontFamily: "var(--CreatoDisplayBold)",
+              letterSpacing: "normal",
               borderRadius: "8px",
               padding: "16px",
               paddingTop: "21px",

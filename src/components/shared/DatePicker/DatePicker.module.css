@@ -368,7 +368,7 @@
 
 /* Rendered into <body>, outside the dashboard: set the font here too */
 .backdrop {
-  font-family: var(--CreatoDisplayMedium);
+  font-family: var(--CreatoDisplayBold);
   letter-spacing: normal;
 }
 
@@ -380,4 +380,22 @@
 .backdrop,
 .backdrop :global(*) {
   letter-spacing: normal !important;
+}
+
+/* =====================================================================
+   Every picker (field, popover, bottom sheet) uses Creato Display Bold,
+   wherever it sits, even inside forms that set their own font on spans
+   and divs.
+   ===================================================================== */
+.field,
+.field :global(*),
+.wrap,
+.wrap :global(*),
+.dateTime,
+.dateTime :global(*),
+.timeGroup,
+.timeGroup :global(*),
+.backdrop,
+.backdrop :global(*) {
+  font-family: var(--CreatoDisplayBold) !important;
 }
