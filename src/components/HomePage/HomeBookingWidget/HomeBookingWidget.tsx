@@ -14,6 +14,7 @@ import RoutePicker, {
   type RoutePickerPlace,
   type RoutePickerValue,
 } from "@/components/BookingPage/RoutePicker/RoutePicker";
+import { PlacesAutocomplete } from "@/components/shared/PlacesAutocomplete/PlacesAutocomplete";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -216,7 +217,7 @@ function usePlacesAutocomplete(
     if (!el || !mapsReady || !(window as any).google?.maps?.places) return;
     if ((el as any).__widgetAC) return;
 
-    const ac = new (window as any).google.maps.places.Autocomplete(el, {
+    const ac = new PlacesAutocomplete(el, {
       fields: ["place_id", "formatted_address", "geometry"],
       componentRestrictions: { country: "us" },
     });

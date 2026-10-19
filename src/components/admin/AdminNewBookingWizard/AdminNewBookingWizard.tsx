@@ -61,6 +61,7 @@ import { localToUtcIso } from "@/lib/timezone";
 import { useDirtyForm } from "@/components/shared/DirtyFormProvider/DirtyFormProvider";
 import Button from "@/components/shared/Button/Button";
 import AdminChargeCardOnFileButton from "@/components/admin/AdminChargeCardOnFileButton/AdminChargeCardOnFileButton";
+import { PlacesAutocomplete } from "@/components/shared/PlacesAutocomplete/PlacesAutocomplete";
 
 function formatPhone(raw: string): string {
   const digits = raw.replace(/\D/g, "").slice(0, 10);
@@ -2570,7 +2571,7 @@ export default function AdminNewBookingWizard({
                                 const existingAC = (el as any).__stopAC;
                                 if (!existingAC) {
                                   const ac =
-                                    new window.google.maps.places.Autocomplete(
+                                    new PlacesAutocomplete(
                                       el,
                                       {
                                         fields: [

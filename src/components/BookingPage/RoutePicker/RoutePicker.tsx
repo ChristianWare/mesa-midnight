@@ -6,6 +6,7 @@
 import styles from "./RoutePicker.module.css";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { googleMapsSrc, GOOGLE_MAPS_SCRIPT_ATTR } from "@/lib/googleMaps";
+import { PlacesAutocomplete } from "@/components/shared/PlacesAutocomplete/PlacesAutocomplete";
 
 type LatLng = { lat: number; lng: number };
 
@@ -200,7 +201,7 @@ export default function RoutePicker({
           (!pickupAC.current || pickupACEl.current !== pickupEl)
         ) {
           pickupACEl.current = pickupEl;
-          pickupAC.current = new google.maps.places.Autocomplete(pickupEl, {
+          pickupAC.current = new PlacesAutocomplete(pickupEl, {
             fields: ["place_id", "formatted_address", "geometry"],
             componentRestrictions: { country: "us" },
           });
@@ -235,7 +236,7 @@ export default function RoutePicker({
           (!dropoffAC.current || dropoffACEl.current !== dropoffEl)
         ) {
           dropoffACEl.current = dropoffEl;
-          dropoffAC.current = new google.maps.places.Autocomplete(dropoffEl, {
+          dropoffAC.current = new PlacesAutocomplete(dropoffEl, {
             fields: ["place_id", "formatted_address", "geometry"],
             componentRestrictions: { country: "us" },
           });

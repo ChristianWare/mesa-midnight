@@ -37,6 +37,7 @@ import { calcQuoteCents } from "@/lib/pricing/calcQuote";
 import { useDirtyForm } from "@/components/shared/DirtyFormProvider/DirtyFormProvider";
 import Button from "@/components/shared/Button/Button";
 import { SITE } from "@/config/site";
+import { PlacesAutocomplete } from "@/components/shared/PlacesAutocomplete/PlacesAutocomplete";
 // ───────────── Types ─────────────
 
 type PricingStrategy = "POINT_TO_POINT" | "HOURLY" | "FLAT";
@@ -1475,7 +1476,7 @@ export default function CorporateNewBookingWizard({
                                 const existingAC = (el as any).__stopAC;
                                 if (!existingAC) {
                                   const ac =
-                                    new window.google.maps.places.Autocomplete(
+                                    new PlacesAutocomplete(
                                       el,
                                       {
                                         fields: [

@@ -40,6 +40,7 @@ import { localToUtcIso, isPickupTooSoon } from "@/lib/timezone";
 import { useDirtyForm } from "@/components/shared/DirtyFormProvider/DirtyFormProvider";
 import Button from "@/components/shared/Button/Button";
 import FlightTracker from "@/components/shared/FlightTracker/FlightTracker";
+import { PlacesAutocomplete } from "@/components/shared/PlacesAutocomplete/PlacesAutocomplete";
 
 type PricingStrategy = "POINT_TO_POINT" | "HOURLY" | "FLAT";
 type AirportLeg = "NONE" | "PICKUP" | "DROPOFF";
@@ -1795,7 +1796,7 @@ export default function BookingWizard({
                                     const existingAC = (el as any).__stopAC;
                                     if (!existingAC) {
                                       const ac =
-                                        new window.google.maps.places.Autocomplete(
+                                        new PlacesAutocomplete(
                                           el,
                                           {
                                             fields: [
