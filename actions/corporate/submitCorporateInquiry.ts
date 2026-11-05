@@ -3,6 +3,7 @@
 
 import { db } from "@/lib/db";
 import { sendCorporateInquiryConfirmationEmail } from "@/lib/corporateOnboarding";
+import { DEMO_FORMS_SILENT } from "@/config/demo";
 
 interface InquiryInput {
   companyName: string;
@@ -33,6 +34,12 @@ export async function submitCorporateInquiry(data: InquiryInput) {
     }
     if (!data.message?.trim()) {
       return { success: false, error: "Please describe your needs." };
+    }
+
+    // Demo mode: nothing saved, nothing emailed — just report success.
+    if (DEMO_FORMS_SILENT) {
+      await new Promise((r) => setTimeout(r, 500));
+      return { success: true };
     }
 
     // Check for duplicate pending inquiry from same email

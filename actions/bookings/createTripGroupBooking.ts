@@ -14,6 +14,7 @@ import { sendAdminNotificationsForBookingEvent } from "@/lib/notifications/queue
 import { sendBookingRequestedEmail } from "@/lib/email/sendBookingRequestedEmail";
 import { getCompanySettings } from "../../actions/admin/companySettings";
 import { formatIsoDate } from "@/lib/timezone";
+import { DEMO_FORMS_SILENT } from "@/config/demo";
 
 // ─── Types ───
 
@@ -421,7 +422,7 @@ export async function createTripGroupBooking(input: CreateTripGroupInput) {
   }
 
   // ─── Send admin notifications for each leg ───
-  for (const bookingId of result.bookingIds) {
+  for (const bookingId of DEMO_FORMS_SILENT ? [] : result.bookingIds) {
     try {
       await sendAdminNotificationsForBookingEvent({
         event: "BOOKING_REQUESTED",
@@ -451,7 +452,7 @@ export async function createTripGroupBooking(input: CreateTripGroupInput) {
       )?.name
     : guestName;
 
-  if (customerEmail) {
+  if (customerEmail && !DEMO_FORMS_SILENT) {
     try {
       const APP_URL = process.env.APP_URL || "http://localhost:3000";
       const trackingUrl = claimToken

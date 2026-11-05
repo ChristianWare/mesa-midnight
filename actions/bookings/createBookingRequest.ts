@@ -10,6 +10,7 @@ import { sendAdminNotificationsForBookingEvent } from "@/lib/notifications/queue
 import { sendBookingRequestedEmail } from "@/lib/email/sendBookingRequestedEmail";
 import { getCompanySettings } from "../../actions/admin/companySettings";
 import { formatIsoDate } from "@/lib/timezone";
+import { DEMO_FORMS_SILENT } from "@/config/demo";
 
 // ✅ Stop input type
 type StopInput = {
@@ -343,14 +344,17 @@ export async function createBookingRequest(input: CreateBookingRequestInput) {
   }
 
   // Send notifications IMMEDIATELY (no queue/cron needed)
-  try {
-    await sendAdminNotificationsForBookingEvent({
-      event: "BOOKING_REQUESTED",
-      bookingId: booking.id,
-    });
-  } catch (e) {
-    // Non-critical - log but don't fail the booking
-    console.error("Failed to send admin notifications:", e);
+  // (skipped in demo mode)
+  if (!DEMO_FORMS_SILENT) {
+    try {
+      await sendAdminNotificationsForBookingEvent({
+        event: "BOOKING_REQUESTED",
+        bookingId: booking.id,
+      });
+    } catch (e) {
+      // Non-critical - log but don't fail the booking
+      console.error("Failed to send admin notifications:", e);
+    }
   }
 
   // Send confirmation email to customer (guest or logged-in user)
@@ -372,7 +376,7 @@ export async function createBookingRequest(input: CreateBookingRequestInput) {
       )?.name
     : guestName;
 
-  if (customerEmail) {
+  if (customerEmail && !DEMO_FORMS_SILENT) {
     try {
       const APP_URL = process.env.APP_URL || "http://localhost:3000";
       const trackingUrl = claimToken

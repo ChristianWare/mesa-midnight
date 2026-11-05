@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getCompanySettings } from "../../../../actions/admin/companySettings";
 import { SITE } from "@/config/site";
+import { DEMO_FORMS_SILENT } from "@/config/demo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -107,14 +108,6 @@ function emailHtml(payload: ContactPayload, submittedAt: string) {
 // ─── POST Handler ───
 export async function POST(req: NextRequest) {
   try {
-    if (!process.env.RESEND_API_KEY) {
-      throw new Error("Missing RESEND_API_KEY env var");
-    }
-    if (!RESEND_FROM) {
-      throw new Error("Missing RESEND_FROM env var");
-    }
-
-    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = (await req.json()) as Partial<ContactPayload>;
 
     // ─── Honeypot check ───
@@ -147,6 +140,11 @@ export async function POST(req: NextRequest) {
       message: body.message!.trim(),
     };
 
+    // Demo mode: pretend it sent, send nothing.
+    if (DEMO_FORMS_SILENT) {
+      return NextResponse.json({ messageId: `demo_${Date.now()}`, ok: true });
+    }
+
     const { timezone: companyTz } = await getCompanySettings();
 
     const submittedAt = new Date().toLocaleString("en-US", {
@@ -158,6 +156,14 @@ export async function POST(req: NextRequest) {
       hour: "2-digit",
       minute: "2-digit",
     });
+
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error("Missing RESEND_API_KEY env var");
+    }
+    if (!RESEND_FROM) {
+      throw new Error("Missing RESEND_FROM env var");
+    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const toEmail = SITE.email.reservations;
 
