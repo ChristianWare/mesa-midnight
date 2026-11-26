@@ -2,7 +2,8 @@
    Section
    ================================ */
 .section {
-  --shrink: 0; /* 0 → 1, set from scroll position */
+  --slide: 0; /* 0 → 1, set from scroll position */
+  --travel: 160px; /* middle card height − side card height, set from JS */
   background-color: var(--white);
   padding: 12rem 0;
 }
@@ -34,17 +35,16 @@
 }
 
 /* ================================
-   Three columns. The side cards start as tall as the middle column
-   (button + card) and their tops slide down as you scroll, so they
-   end up shorter than the middle card. Bottoms always line up.
+   Three columns. The side cards are shorter than the middle card and
+   slide down as you scroll: they start level with the top of the middle
+   card and finish with their bottoms on its bottom, just as the cards
+   leave the screen.
    ================================ */
 .grid {
-  /* How far the side cards' tops travel down by the end. */
-  --drop: 150px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-areas: "left middle right";
-  align-items: stretch;
+  align-items: end;
   gap: 8px;
   max-width: 1400px;
   margin: 6rem auto 0;
@@ -59,10 +59,13 @@
 
 .cardLeft,
 .cardRight {
-  /* The row is as tall as the middle column; the top margin eats into
-     it as you scroll, so the card gets shorter from the top down. */
-  margin-top: calc(var(--shrink) * var(--drop));
-  will-change: margin-top;
+  /* Same height the whole way; only its position changes. Sitting on the
+     bottom of the row, it's lifted by --travel at the start (level with
+     the middle card's top) and settles to 0 by the end. */
+  height: 440px;
+  min-height: 0;
+  transform: translateY(calc((var(--slide) - 1) * var(--travel)));
+  will-change: transform;
 }
 
 .cardLeft {
@@ -251,12 +254,14 @@
     grid-template-areas:
       "middle middle"
       "left   right";
+    align-items: stretch;
     margin-top: 4rem;
   }
 
   .cardLeft,
   .cardRight {
-    margin-top: 0;
+    height: auto;
+    transform: none;
     will-change: auto;
   }
 

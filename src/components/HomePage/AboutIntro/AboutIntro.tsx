@@ -68,32 +68,37 @@ function Copy({ card }: { card: Card }) {
 export default function AboutIntro() {
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const middleRef = useRef<HTMLElement>(null);
+  const sideRef = useRef<HTMLElement>(null);
 
-  // The side cards start as tall as the middle column and get shorter as
-  // the cards scroll up the screen: their tops slide down while their
-  // bottoms stay put. Progress (0 → 1) goes into --shrink for the CSS.
+  // The side cards keep their height and slide down as the cards scroll up
+  // the screen: they start level with the top of the middle card and end
+  // with their bottoms on its bottom. Progress (0 → 1) goes into --slide,
+  // and the distance (middle card height minus side card height) into
+  // --travel, measured so it stays right if the text wraps.
   useEffect(() => {
     const section = sectionRef.current;
     const grid = gridRef.current;
-    if (!section || !grid) return;
+    const middle = middleRef.current;
+    const side = sideRef.current;
+    if (!section || !grid || !middle || !side) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
 
     const update = () => {
       frame = 0;
+      const travel = Math.max(0, middle.offsetHeight - side.offsetHeight);
+      section.style.setProperty("--travel", `${travel}px`);
       if (reduced.matches) {
-        section.style.setProperty("--shrink", "1");
+        section.style.setProperty("--slide", "1");
         return;
       }
-      const top = grid.getBoundingClientRect().top;
+      const { top, height } = grid.getBoundingClientRect();
       const H = window.innerHeight;
       // Starts once the cards' tops are 85% of the way down the screen,
-      // and is done when they reach 30% from the top.
-      const p = (H * 0.85 - top) / (H * 0.55);
-      section.style.setProperty(
-        "--shrink",
-        String(Math.min(1, Math.max(0, p))),
-      );
+      // and keeps going until the cards have scrolled off the top.
+      const p = (H * 0.85 - top) / (H * 0.85 + height);
+      section.style.setProperty("--slide", String(Math.min(1, Math.max(0, p))));
     };
     const request = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -137,7 +142,10 @@ export default function AboutIntro() {
               </span>
             </Link>
 
-            <article className={`${styles.card} ${styles.cardMiddle}`}>
+            <article
+              ref={middleRef}
+              className={`${styles.card} ${styles.cardMiddle}`}
+            >
               <Stat card={MIDDLE} big />
               <div className={styles.oval}>
                 <Image
@@ -152,7 +160,10 @@ export default function AboutIntro() {
             </article>
           </div>
 
-          <article className={`${styles.card} ${styles.cardLeft}`}>
+          <article
+            ref={sideRef}
+            className={`${styles.card} ${styles.cardLeft}`}
+          >
             <Stat card={SIDE_LEFT} />
             <Copy card={SIDE_LEFT} />
           </article>
