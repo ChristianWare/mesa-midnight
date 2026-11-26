@@ -1,27 +1,84 @@
 /* ================================
-   Section
+   Section: light, with faint numbered column lines
    ================================ */
 .section {
-  background-color: var(--black);
-  padding: 12rem 0;
-  color: var(--white);
+  --slide: 0; /* 0 → 1 while pinned, set from scroll position */
+  --shift: 0px; /* how far the outer cards travel, set from JS */
+  position: relative;
+  background-color: var(--white);
+  color: var(--black);
 }
 
-.layout {
+/* Pinned while the cards slide apart (desktop). HowItWorks.tsx sets
+   `top` so the content sits in the middle of the screen. */
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+/* The scroll it stays pinned for. */
+.pinSpace {
+  height: 90vh;
+}
+
+.inner {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 10rem;
+}
+
+/* ── Column lines ── */
+.guides {
+  position: absolute;
+  inset: 0;
   display: grid;
-  grid-template-columns: minmax(0, 300fr) minmax(0, 990fr);
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  pointer-events: none;
 }
 
-.labelCol {
-  padding-top: 0.6rem;
+.guide {
+  border-left: 1px dashed var(--lightGray);
 }
 
-/* Same chip as the other section tags, dark version */
+.guide:last-child {
+  border-right: 1px dashed var(--lightGray);
+}
+
+.labels {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  margin: 7rem 0 0;
+  padding: 0 0 2.4rem;
+  list-style: none;
+}
+
+.label {
+  font-family: var(--IBMPlex);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--black);
+}
+
+/* ================================
+   Heading
+   ================================ */
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .tag {
   display: inline-block;
   padding: 6px 8px;
   border-radius: 3px;
-  background-color: var(--yellow);
+  background-color: #efefef;
   font-family: var(--IBMPlex);
   font-size: 12px;
   line-height: 1;
@@ -30,295 +87,123 @@
   color: var(--black);
 }
 
-/* ================================
-   Heading row
-   ================================ */
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 4rem;
-}
-
 .heading {
-  max-width: 640px;
+  max-width: 1100px;
+  margin-top: 2rem;
   font-family: var(--CreatoDisplayMedium);
   font-size: 56px;
   line-height: 1;
   letter-spacing: -2px;
-  color: var(--white);
-}
-
-.headerRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  max-width: 300px;
-  text-align: right;
+  color: var(--black);
 }
 
 .intro {
-  line-height: 1.3;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
+  max-width: 440px;
+  margin-top: 1.6rem;
   font-family: var(--CreatoDisplayMedium);
-}
-
-.headerBtn {
-  margin-top: 3rem;
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--paragraph);
 }
 
 /* ================================
-   Photo + steps
+   Cards: stacked in the middle, then the first slides to the left edge
+   and the last to the right edge as you scroll
    ================================ */
-.body {
-  display: grid;
-  grid-template-columns: minmax(0, 330fr) minmax(0, 630fr);
-  column-gap: 3rem;
-  margin-top: 6rem;
-}
-
-/* ── Desktop photo, slides to sit level with the open step ── */
-.mediaCol {
+.cards {
   position: relative;
-}
-
-.media {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.mediaLabel {
-  display: block;
-  margin-top: 0.4rem;
-  font-family: var(--IBMPlex);
-  font-size: 14px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.mediaFrame {
-  position: relative;
-  margin-top: 1.4rem;
-  aspect-ratio: 330 / 224;
-  overflow: hidden;
-  border-radius: 4px;
-  background-color: #1a1a1a;
-}
-
-/* All photos stacked; the open step's fades in */
-.mediaImg {
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.04);
-  transition:
-    opacity 0.5s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.mediaImgActive {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ── Steps ── */
-.list {
-  list-style: none;
   display: flex;
   flex-direction: column;
-  row-gap: 8px;
-  margin: 0;
+  align-items: center;
+  gap: 8px;
+  margin: 6rem 0 0;
   padding: 0;
-  width: 100%;
-}
-
-.item {
-  min-width: 0;
-  width: 100%;
-}
-
-.box {
-  padding: 6px;
-  border: 1px solid #1f1f1f;
-  border-radius: 10px;
-  background-color: var(--darkBlueii);
-  transition: border-color 0.3s ease;
-  width: 100%;
+  list-style: none;
 }
 
 .card {
-  border-radius: 7px;
-  background-color: transparent;
-  transition: background-color 0.4s ease;
-  width: 100%;
+  display: flex;
+  gap: 1.6rem;
+  width: min(640px, 100%);
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #f0efed;
 }
 
-.itemOpen .card {
-  background-color: #f5f5f5;
+.cardFirst,
+.cardLast {
+  will-change: transform;
 }
 
-.titleWrap {
-  margin: 0;
-  font-size: inherit;
+.cardFirst {
+  transform: translateX(calc(var(--slide) * var(--shift) * -1));
 }
 
-.trigger {
-  display: block;
-  width: 100%;
-  padding: 2rem 2.2rem;
-  text-align: left;
-  cursor: pointer;
-  border-radius: 7px;
+.cardLast {
+  transform: translateX(calc(var(--slide) * var(--shift)));
 }
 
-.itemOpen .trigger {
-  cursor: default;
-  padding-bottom: 1.2rem;
+.cardText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+  min-width: 0;
+  padding: 1rem 0.4rem 1rem 1.2rem;
 }
 
-.trigger:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: 2px;
-}
-
-.itemOpen .trigger:focus-visible {
-  outline-color: var(--black);
-  outline-offset: -4px;
-}
-
-.title {
-  display: block;
-  font-family: var(--CreatoDisplayMedium);
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  color: rgba(255, 255, 255, 0.4);
-  transition: color 0.3s ease;
-}
-
-.itemOpen .title {
+.icon {
+  width: 30px;
+  height: 30px;
   color: var(--black);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .item:not(.itemOpen) .trigger:hover .title {
-    color: rgba(255, 255, 255, 0.75);
-  }
-
-  .item:not(.itemOpen) .box:hover {
-    border-color: #333;
-  }
+.cardTitle {
+  margin: 0;
+  color: var(--black);
 }
 
-/* ── Open / close: rows grow from 0 to their natural height ── */
-.collapse {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.itemOpen .collapse {
-  grid-template-rows: 1fr;
-}
-
-.collapseInner {
-  min-height: 0;
-  overflow: hidden;
-}
-
-.card .collapseInner {
-  padding: 0 2.2rem;
-}
-
-.text {
-  max-width: 440px;
+.cardBody {
+  max-width: 300px;
+  margin-top: 0.8rem;
   font-family: var(--CreatoDisplayMedium);
   font-size: 15px;
-  line-height: 1.35;
-  color: var(--black400);
+  line-height: 1.4;
+  color: var(--paragraph);
 }
 
-.tags {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 2.4rem 0 0;
-  padding: 2.4rem 0 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.chip {
-  padding: 6px 8px;
-  border-radius: 3px;
-  background-color: #e6e6e6;
-  font-family: var(--IBMPlex);
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--black);
-}
-
-.cta,
-.cta:link,
-.cta:visited {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 1.6rem 1.8rem 1rem;
-  color: var(--white);
-}
-
-.ctaText {
-  font-family: var(--IBMPlex);
-  font-size: 14px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: inherit;
-}
-
-.ctaIcon {
-  color: inherit;
-  transition: transform 0.3s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .cta:hover .ctaIcon {
-    transform: translateX(4px);
-  }
-}
-
-.cta:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: -2px;
-  border-radius: 4px;
-}
-
-/* Phone / tablet photo lives inside each step; hidden on desktop */
-.mobileMedia {
-  display: none;
-}
-
-.mobileFrame {
+.cardMedia {
   position: relative;
-  margin-top: 6px;
-  aspect-ratio: 443 / 302;
+  flex: none;
+  width: 280px;
+  height: 200px;
   overflow: hidden;
-  border-radius: 6px;
-  background-color: #1a1a1a;
+  border-radius: 4px;
+  background-color: #e2e1de;
 }
 
-.mobileImg {
+.cardImg {
   object-fit: cover;
+}
+
+/* The step number on the photo */
+.num {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-width: 28px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 3px;
+  background-color: var(--white);
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
 }
 
 .srOnly {
@@ -337,107 +222,65 @@
    1268px
    ================================ */
 @media screen and (max-width: 1268px) {
-  .layout {
-    grid-template-columns: minmax(0, 200fr) minmax(0, 990fr);
-  }
-
   .heading {
     font-size: 48px;
-    max-width: 560px;
-  }
-
-  .title {
-    font-size: 38px;
+    max-width: 760px;
   }
 }
 
 /* ================================
-   968px — one centred column, photo opens under the step
+   968px — no pin: the cards just stack, smaller photos
    ================================ */
 @media screen and (max-width: 968px) {
-  .section {
-    padding: 8rem 0;
+  .sticky {
+    position: relative;
+    top: auto !important;
   }
 
-  .layout {
-    grid-template-columns: minmax(1, 1fr);
-    max-width: 640px;
-    margin: 0 auto;
+  .pinSpace {
+    display: none;
   }
 
-  .labelCol {
-    padding-top: 0;
-    text-align: center;
-  }
-
-  .header {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.6rem;
-    margin-top: 2rem;
-    text-align: center;
+  .inner {
+    padding-top: 8rem;
   }
 
   .heading {
-    max-width: 480px;
+    max-width: 560px;
     font-size: 40px;
     letter-spacing: -1.4px;
   }
 
-  .headerRight {
-    align-items: center;
-    max-width: 340px;
-    text-align: center;
-  }
-
-  .headerBtn {
-    display: none;
-  }
-
-  .body {
-    grid-template-columns: minmax(0, 1fr);
+  .cards {
     margin-top: 4rem;
   }
 
-  .mediaCol {
-    display: none;
+  .card {
+    width: min(560px, 100%);
   }
 
-  .mobileMedia {
-    display: grid;
+  .cardFirst,
+  .cardLast {
+    transform: none;
+    will-change: auto;
   }
 
-  .title {
-    font-size: 28px;
-    letter-spacing: -0.8px;
+  .cardText {
+    gap: 1.6rem;
   }
 
-  .trigger {
-    padding: 1.4rem 1.6rem;
+  .cardMedia {
+    width: 200px;
+    height: 172px;
   }
 
-  .card .collapseInner {
-    padding: 0 1.6rem;
-  }
-
-  .text {
-    font-size: 14px;
-  }
-
-  .tags {
-    margin-top: 1.8rem;
-    padding: 1.8rem 0 1.6rem;
-  }
-
-  .cta,
-  .cta:link,
-  .cta:visited {
-    padding: 1.4rem 1.6rem 1rem;
+  .labels {
+    margin-top: 5rem;
   }
 }
 
 /* ================================
-   568px
+   568px — photo on top of each card
    ================================ */
 @media screen and (max-width: 568px) {
   .heading {
@@ -449,24 +292,33 @@
     font-size: 14px;
   }
 
-  .title {
-    font-size: 24px;
+  .card {
+    flex-direction: column;
+    gap: 1.2rem;
   }
 
-  .mobileFrame {
-    aspect-ratio: 4 / 3;
+  .cardMedia {
+    order: -1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 280 / 100;
+  }
+
+  .cardText {
+    padding: 0.4rem 0.6rem 0.8rem;
   }
 }
 
 /* ================================
-   Reduced motion
+   Reduced motion: no pin, cards already in place
    ================================ */
 @media (prefers-reduced-motion: reduce) {
-  .media,
-  .mediaImg,
-  .collapse,
-  .card,
-  .title {
-    transition: none;
+  .sticky {
+    position: relative;
+    top: auto !important;
+  }
+
+  .pinSpace {
+    display: none;
   }
 }
