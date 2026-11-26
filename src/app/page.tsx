@@ -50,8 +50,8 @@ export default async function Page() {
         {/* <QuoteBand widget={widget} showMap /> */}
         <ServicesSection />
         <HowItWorks />
-        <FleetTeaser />
         <AreasWeServe />
+        <FleetTeaser />
         <AirportsSection />
         <WhyChooseUs />
         <Testimonials />
