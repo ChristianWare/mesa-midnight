@@ -191,7 +191,7 @@ export default function HowItWorks() {
             <div className={styles.header}>
               <span className={styles.tag}>How it works</span>
               <h2 id='how-heading' className={styles.heading}>
-                Booked in a Minute. Remembered for Years.
+                Booked in a Minute. <br /> Remembered for Years.
               </h2>
               <p className={styles.intro}>
                 Four steps from quote to curb. The price you see first is the
