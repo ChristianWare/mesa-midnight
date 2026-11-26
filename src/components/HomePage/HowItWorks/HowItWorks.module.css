@@ -112,10 +112,11 @@
    the bottom card to the right edge.
    ================================ */
 .cards {
-  /* Each card's width: 640px, or half the row when that's narrower.
-     (The % resolves where it's used: the row here, and the two-column
-     span on the top and bottom cards, which works out the same.) */
-  --cardW: min(640px, calc((100% - 8px) / 2));
+  /* Each card's width: 560px, or a little under half the row when
+     that's narrower. Either way the middle pair leaves room at both
+     edges, so the top and bottom cards slide well past it, like the
+     reference. */
+  --cardW: min(560px, calc((100% - 8px) / 2 - 6%));
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, var(--cardW));
@@ -135,12 +136,13 @@
   background-color: #f0efed;
 }
 
-/* Top and bottom cards span both columns, centred at one card's width */
+/* Top and bottom cards span both columns, centred at one card's width
+   (half the span, less the gap, is exactly one column) */
 .cardFirst,
 .cardLast {
   grid-column: 1 / -1;
   justify-self: center;
-  width: var(--cardW);
+  width: calc((100% - 8px) / 2);
   will-change: transform;
 }
 
@@ -235,6 +237,12 @@
     font-size: 48px;
     max-width: 760px;
   }
+
+  /* Smaller photos, so the text keeps room as the cards narrow */
+  .cardMedia {
+    width: 200px;
+    height: 172px;
+  }
 }
 
 /* ================================
@@ -269,6 +277,7 @@
 
   .cardFirst,
   .cardLast {
+    width: 100%;
     transform: none;
     will-change: auto;
   }
