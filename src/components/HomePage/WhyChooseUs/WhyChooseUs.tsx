@@ -2,7 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
+import Button from "@/components/shared/Button/Button";
 import styles from "./WhyChooseUs.module.css";
+
+// The proof points under the copy: a label and a short badge, like the
+// "Red Rock Canyon · 30 min" chips on the reference.
+const PROOF = [
+  { label: "Arrive early", badge: "15 min" },
+  { label: "Phone answered", badge: "24/7" },
+  { label: "Flights tracked", badge: "Every ride" },
+  { label: "Surge pricing", badge: "Never" },
+];
 
 export default function WhyChooseUs() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -72,7 +82,11 @@ export default function WhyChooseUs() {
 
       <LayoutWrapper>
         <div className={styles.content}>
-          <h2 id='why-heading' className={`${styles.heading} h3`}>
+          <p className={styles.tag}>
+            <span className={styles.tagDot} aria-hidden='true' />
+            Why Mesa Midnight
+          </p>
+          <h2 id='why-heading' className={`${styles.heading} h2`}>
             Why Choose Us for Your Transportation Needs?
           </h2>
           <p className={`${styles.copy} mediumParagrapgh`}>
@@ -81,6 +95,17 @@ export default function WhyChooseUs() {
             the phone at any hour, and never add surge pricing at 2 a.m. or on
             game day.
           </p>
+          <ul className={styles.proof}>
+            {PROOF.map((p) => (
+              <li key={p.label} className={styles.chip}>
+                <span className={styles.chipLabel}>{p.label}</span>
+                <span className={styles.chipBadge}>{p.badge}</span>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.cta}>
+            <Button href='/book' text='Book a ride' btnType='whiteMain' arrow />
+          </div>
         </div>
       </LayoutWrapper>
     </section>
