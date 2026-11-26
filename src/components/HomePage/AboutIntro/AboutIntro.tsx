@@ -67,26 +67,33 @@ function Copy({ card }: { card: Card }) {
 
 export default function AboutIntro() {
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
-  // The middle column grows taller as the section scrolls up the screen.
-  // Progress (0 → 1) goes into --grow, which the CSS turns into height.
+  // The side cards start as tall as the middle column and get shorter as
+  // the cards scroll up the screen: their tops slide down while their
+  // bottoms stay put. Progress (0 → 1) goes into --shrink for the CSS.
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    const grid = gridRef.current;
+    if (!section || !grid) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
 
     const update = () => {
       frame = 0;
       if (reduced.matches) {
-        section.style.setProperty("--grow", "1");
+        section.style.setProperty("--shrink", "1");
         return;
       }
-      const r = section.getBoundingClientRect();
+      const top = grid.getBoundingClientRect().top;
       const H = window.innerHeight;
-      // Starts when the section enters; done a little after its top reaches the top of the screen.
-      const p = (H - r.top) / (H * 1.3);
-      section.style.setProperty("--grow", String(Math.min(1, Math.max(0, p))));
+      // Starts once the cards' tops are 85% of the way down the screen,
+      // and is done when they reach 30% from the top.
+      const p = (H * 0.85 - top) / (H * 0.55);
+      section.style.setProperty(
+        "--shrink",
+        String(Math.min(1, Math.max(0, p))),
+      );
     };
     const request = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -118,8 +125,8 @@ export default function AboutIntro() {
           </h2>
         </div>
 
-        <div className={styles.grid}>
-          {/* Middle column: button + the card that grows */}
+        <div ref={gridRef} className={styles.grid}>
+          {/* Middle column: the button and the card, which stay put */}
           <div className={styles.middle}>
             <Link href='/about' className={styles.bar}>
               <span className={styles.barText}>Learn about us</span>
