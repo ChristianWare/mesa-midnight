@@ -107,14 +107,19 @@
 }
 
 /* ================================
-   Cards: stacked in the middle, then the first slides to the left edge
-   and the last to the right edge as you scroll
+   Cards: one on top, two side by side in the middle, one at the bottom,
+   all centred. As you scroll, the top card slides to the left edge and
+   the bottom card to the right edge.
    ================================ */
 .cards {
+  /* Each card's width: 640px, or half the row when that's narrower.
+     (The % resolves where it's used: the row here, and the two-column
+     span on the top and bottom cards, which works out the same.) */
+  --cardW: min(640px, calc((100% - 8px) / 2));
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, var(--cardW));
+  justify-content: center;
   gap: 8px;
   margin: 6rem 0 0;
   padding: 0;
@@ -124,14 +129,18 @@
 .card {
   display: flex;
   gap: 1.6rem;
-  width: min(640px, 100%);
+  min-width: 0;
   padding: 8px;
   border-radius: 6px;
   background-color: #f0efed;
 }
 
+/* Top and bottom cards span both columns, centred at one card's width */
 .cardFirst,
 .cardLast {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: var(--cardW);
   will-change: transform;
 }
 
@@ -251,12 +260,11 @@
     letter-spacing: -1.4px;
   }
 
+  /* One column, every card the same width */
   .cards {
+    --cardW: min(560px, 100%);
+    grid-template-columns: var(--cardW);
     margin-top: 4rem;
-  }
-
-  .card {
-    width: min(560px, 100%);
   }
 
   .cardFirst,

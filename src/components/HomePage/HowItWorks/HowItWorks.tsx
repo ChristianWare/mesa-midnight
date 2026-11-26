@@ -5,7 +5,7 @@ import Image from "next/image";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import styles from "./HowItWorks.module.css";
 
-type IconName = "quote" | "book" | "ride";
+type IconName = "quote" | "book" | "ride" | "again";
 
 type Step = {
   title: string;
@@ -39,6 +39,14 @@ const STEPS: Step[] = [
     icon: "ride",
     image: "/images/img1.png",
     alt: "Black Mesa Midnight SUV parked in the desert at sunrise",
+  },
+  {
+    title: "Ride again",
+    body: "Your addresses, trips and receipts stay in your account, so the next booking takes seconds.",
+    icon: "again",
+    image: "/images/img2.png",
+    alt: "Black Mesa Midnight SUV on the open road",
+    focus: "70% 50%",
   },
 ];
 
@@ -78,6 +86,14 @@ function StepIcon({ name }: { name: IconName }) {
         <path d='M8 3v4M16 3v4M9 14.5l2 2 4-4' />
       </svg>
     );
+  if (name === "again")
+    return (
+      <svg {...common}>
+        <circle cx='12' cy='12' r='5' fill='var(--yellow)' />
+        <path d='M20 12a8 8 0 0 1-14.2 5.1M4 12a8 8 0 0 1 14.2-5.1' />
+        <path d='M18.6 3.4v3.8h-3.8M5.4 20.6v-3.8h3.8' />
+      </svg>
+    );
   return (
     <svg {...common}>
       <circle cx='12' cy='12' r='8.5' />
@@ -93,9 +109,10 @@ export default function HowItWorks() {
   const cardsRef = useRef<HTMLOListElement>(null);
   const spaceRef = useRef<HTMLDivElement>(null);
 
-  // Desktop: the section pins in the middle of the screen. While it's
-  // pinned, scrolling slides the first card to the left edge and the last
-  // card to the right edge; the middle card stays put. Then the pin lets
+  // Desktop: four cards in three rows: one on top, two side by side in
+  // the middle, one at the bottom. The section pins in the middle of the
+  // screen; while it's pinned, scrolling slides the top card to the left
+  // edge and the bottom card to the right edge. The middle two stay put. Then the pin lets
   // go and the next section scrolls up as normal.
   //   --slide: progress, 0 → 1
   //   --shift: how far the outer cards travel (from the centre to the edge)
@@ -177,7 +194,7 @@ export default function HowItWorks() {
                 Booked in a Minute. Remembered for Years.
               </h2>
               <p className={styles.intro}>
-                Three steps from quote to curb. The price you see first is the
+                Four steps from quote to curb. The price you see first is the
                 price you pay.
               </p>
             </div>
