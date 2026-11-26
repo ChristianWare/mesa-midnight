@@ -3,7 +3,7 @@
    ================================ */
 .section {
   --slide: 0; /* 0 → 1, set from scroll position */
-  --travel: 160px; /* middle card height − side card height, set from JS */
+  --travel: 210px; /* middle column height − side card height, set from JS */
   background-color: var(--white);
   padding: 12rem 0;
 }
@@ -35,10 +35,10 @@
 }
 
 /* ================================
-   Three columns. The side cards are shorter than the middle card and
-   slide down as you scroll: they start level with the top of the middle
-   card and finish with their bottoms on its bottom, just as the cards
-   leave the screen.
+   Three columns. The side cards are shorter than the middle column and
+   slide down as you scroll: they start level with the top of the
+   "Learn about us" bar and finish with their bottoms on the middle
+   card's bottom, just as the cards leave the screen.
    ================================ */
 .grid {
   display: grid;
@@ -61,7 +61,7 @@
 .cardRight {
   /* Same height the whole way; only its position changes. Sitting on the
      bottom of the row, it's lifted by --travel at the start (level with
-     the middle card's top) and settles to 0 by the end. */
+     the top of the "Learn about us" bar) and settles to 0 by the end. */
   height: 440px;
   min-height: 0;
   transform: translateY(calc((var(--slide) - 1) * var(--travel)));

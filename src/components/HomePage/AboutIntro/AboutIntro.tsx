@@ -68,14 +68,15 @@ function Copy({ card }: { card: Card }) {
 export default function AboutIntro() {
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const middleRef = useRef<HTMLElement>(null);
+  const middleRef = useRef<HTMLDivElement>(null);
   const sideRef = useRef<HTMLElement>(null);
 
   // The side cards keep their height and slide down as the cards scroll up
-  // the screen: they start level with the top of the middle card and end
-  // with their bottoms on its bottom. Progress (0 → 1) goes into --slide,
-  // and the distance (middle card height minus side card height) into
-  // --travel, measured so it stays right if the text wraps.
+  // the screen: they start level with the top of the middle column (the
+  // "Learn about us" bar) and end with their bottoms on the middle card's
+  // bottom. Progress (0 → 1) goes into --slide, and the distance (middle
+  // column height minus side card height) into --travel, measured so it
+  // stays right if the text wraps.
   useEffect(() => {
     const section = sectionRef.current;
     const grid = gridRef.current;
@@ -132,7 +133,7 @@ export default function AboutIntro() {
 
         <div ref={gridRef} className={styles.grid}>
           {/* Middle column: the button and the card, which stay put */}
-          <div className={styles.middle}>
+          <div ref={middleRef} className={styles.middle}>
             <Link href='/about' className={styles.bar}>
               <span className={styles.barText}>Learn about us</span>
               <span className={styles.barIcon} aria-hidden='true'>
@@ -142,10 +143,7 @@ export default function AboutIntro() {
               </span>
             </Link>
 
-            <article
-              ref={middleRef}
-              className={`${styles.card} ${styles.cardMiddle}`}
-            >
+            <article className={`${styles.card} ${styles.cardMiddle}`}>
               <Stat card={MIDDLE} big />
               <div className={styles.oval}>
                 <Image
