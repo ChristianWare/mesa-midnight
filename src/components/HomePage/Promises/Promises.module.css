@@ -1,32 +1,114 @@
 /* ================================
-   Section — four promise cards on black
+   Section — four promise cards on black.
+   Desktop: pins to the screen. The big title's top line slides off to
+   the left and its bottom line off to the right, then the cards slide
+   in from the right. The section's extra height is the scroll it stays
+   pinned for.
    ================================ */
 .section {
+  --text: 0; /* 0 → 1, title lines leaving (set from scroll) */
+  --cards: 0; /* 0 → 1, cards arriving (set from scroll) */
+  --outTop: 100vw; /* how far each line travels, measured in JS */
+  --outBottom: 100vw;
+  position: relative;
+  height: 340vh;
   background-color: var(--black);
-  padding: 12rem 0 8rem;
 }
 
-.tag {
+/* The pinned screen: title, cards and bottom row share one cell */
+.stage {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template: "stage" 100vh / minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.titleLayer,
+.cardsLayer,
+.bottomLayer {
+  grid-area: stage;
+  min-width: 0;
+}
+
+.titleLayer,
+.cardsLayer {
+  align-self: center;
+}
+
+.bottomLayer {
+  align-self: end;
+  padding-bottom: 4rem;
+}
+
+/* ── Big title ── */
+.bigTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 200px;
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* Each line's wrapper stays still (it's what JS measures); the inner
+   span is what moves. */
+.line {
+  position: relative;
+  display: block;
+  white-space: nowrap;
+}
+
+/* Staggered like the reference: top line nudged right, bottom left */
+.lineTop {
+  left: 0.55em;
+}
+
+.lineBottom {
+  left: -0.55em;
+}
+
+.lineInner {
   display: inline-block;
-  padding: 6px 8px;
-  border-radius: 3px;
-  background-color: var(--yellow);
+  will-change: transform;
+}
+
+.innerTop {
+  transform: translateX(calc(var(--text) * var(--outTop) * -1));
+}
+
+.innerBottom {
+  transform: translateX(calc(var(--text) * var(--outBottom)));
+}
+
+/* The small "(04)" at the top-left of the top line */
+.count {
+  position: absolute;
+  top: 0.06em;
+  right: 100%;
+  margin-right: 10px;
   font-family: var(--IBMPlex);
   font-size: 12px;
-  font-weight: 400;
   line-height: 1;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--black);
+  transform: translateX(calc(var(--text) * var(--outTop) * -1));
 }
 
+/* ── Cards ── */
 .grid {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  margin: 4rem 0 0;
+  margin: 0;
   padding: 0;
+  transform: translateX(calc((1 - var(--cards)) * 100vw));
+  will-change: transform;
 }
 
 /* White frame, grey panel inside */
@@ -149,7 +231,6 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 4rem;
-  margin-top: 16rem;
 }
 
 .note {
@@ -161,11 +242,57 @@
 }
 
 /* ================================
+   1268px
+   ================================ */
+@media screen and (max-width: 1268px) {
+  .bigTitle {
+    font-size: 152px;
+  }
+}
+
+/* ================================
+   No pin: 968px and below, and for "reduce motion". The title sits on
+   its two lines, then the cards and the bottom row, in normal flow.
+   ================================ */
+@media screen and (max-width: 968px), (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+    padding: 8rem 0 6rem;
+  }
+
+  .stage {
+    position: relative;
+    display: block;
+    overflow: visible;
+  }
+
+  .bottomLayer {
+    padding-bottom: 0;
+  }
+
+  .innerTop,
+  .innerBottom,
+  .count,
+  .grid {
+    transform: none;
+    will-change: auto;
+  }
+
+  .grid {
+    margin-top: 4rem;
+  }
+
+  .bottom {
+    margin-top: 6rem;
+  }
+}
+
+/* ================================
    968px — two by two
    ================================ */
 @media screen and (max-width: 968px) {
-  .section {
-    padding: 8rem 0 6rem;
+  .bigTitle {
+    font-size: 98px;
   }
 
   .grid {
@@ -175,9 +302,14 @@
   .badgeArea {
     height: 160px;
   }
+}
 
-  .bottom {
-    margin-top: 6rem;
+/* ================================
+   768px
+   ================================ */
+@media screen and (max-width: 768px) {
+  .bigTitle {
+    font-size: 68px;
   }
 }
 
@@ -185,6 +317,15 @@
    568px — one column
    ================================ */
 @media screen and (max-width: 568px) {
+  .bigTitle {
+    font-size: 42px;
+  }
+
+  .count {
+    font-size: 10px;
+    margin-right: 6px;
+  }
+
   .grid {
     grid-template-columns: minmax(0, 1fr);
   }
