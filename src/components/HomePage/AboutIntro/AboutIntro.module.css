@@ -265,27 +265,18 @@
     will-change: auto;
   }
 
-  .card,
-  .cardMiddle {
-    min-height: 0;
-  }
 
-  /* A small pill at this size */
-  .oval {
-    max-width: 120px;
-    aspect-ratio: 120 / 156;
-  }
 }
 
 /* ================================
    968px — smaller pill
    ================================ */
-@media screen and (max-width: 968px) {
+/* @media screen and (max-width: 968px) {
   .oval {
     max-width: 80px;
     aspect-ratio: 80 / 112;
   }
-}
+} */
 
 /* ================================
    568px — one column
