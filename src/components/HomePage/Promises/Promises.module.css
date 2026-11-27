@@ -64,6 +64,14 @@
   white-space: nowrap;
 }
 
+/* The site's global CSS makes every span black; these sit on the dark
+   section, so they take the title's white. */
+.line,
+.lineInner,
+.count {
+  color: var(--white);
+}
+
 /* Staggered like the reference: top line nudged right, bottom left */
 .lineTop {
   left: 0.55em;
