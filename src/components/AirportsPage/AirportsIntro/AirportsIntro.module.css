@@ -47,6 +47,7 @@
 .heading {
   margin-top: 2rem;
   color: var(--black);
+  max-width: 800px;
 }
 
 .btnContainer {
