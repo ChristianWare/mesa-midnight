@@ -211,34 +211,19 @@
   color: var(--black400);
 }
 
+/* The shared yellow button, stretched to the form's width: label on the
+   left, white arrow square on the right */
 .submit {
-  width: 100%;
   margin-top: 2rem;
-  padding: 14px 22px;
-  border-radius: 100px;
-  background-color: var(--black);
-  font-family: var(--CreatoDisplayBold);
-  font-size: 16px;
-  line-height: 1;
-  color: var(--white);
-  cursor: pointer;
-  transition: opacity 0.2s ease;
 }
 
-.submit:disabled {
-  opacity: 0.6;
+.submit > button {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.submit > button:disabled {
   cursor: progress;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .submit:not(:disabled):hover {
-    opacity: 0.85;
-  }
-}
-
-.submit:focus-visible {
-  outline: 2px solid var(--black);
-  outline-offset: 3px;
 }
 
 /* ================================

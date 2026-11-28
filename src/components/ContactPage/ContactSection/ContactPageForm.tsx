@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import toast from "react-hot-toast";
+import Button from "@/components/shared/Button/Button";
 import styles from "./ContactSection.module.css";
 
 type Fields = {
@@ -158,9 +159,17 @@ export default function ContactPageForm() {
         us.
       </p>
 
-      <button type='submit' className={styles.submit} disabled={sending}>
-        {sending ? "Sending…" : "Send message"}
-      </button>
+      {/* Site button: yellow with the white arrow square, full width */}
+      <div className={styles.submit}>
+        <Button
+          as='button'
+          type='submit'
+          text={sending ? "Sending…" : "Send message"}
+          btnType='black'
+          arrow
+          disabled={sending}
+        />
+      </div>
     </form>
   );
 }
