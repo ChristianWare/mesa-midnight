@@ -8,7 +8,19 @@ import { homeQuestions } from "@/lib/data";
 import { SITE } from "@/config/site";
 import styles from "./FaqSection.module.css";
 
-export default function FaqSection() {
+type Question = { id: number | string; question: string; answer: string };
+
+/**
+ * Home page FAQ. Other pages can pass their own questions and heading, like
+ * the vehicle pages do.
+ */
+export default function FaqSection({
+  items = homeQuestions,
+  heading = "Questions before you book",
+}: {
+  items?: ReadonlyArray<Question>;
+  heading?: string;
+} = {}) {
   // All closed by default; click a question to open it, again to close.
   const [open, setOpen] = useState<number | null>(null);
 
@@ -33,7 +45,7 @@ export default function FaqSection() {
             </span>
 
             <h2 id='faq-heading' className={styles.heading}>
-              Questions before you book
+              {heading}
             </h2>
 
             <div className={styles.card}>
@@ -70,7 +82,7 @@ export default function FaqSection() {
 
           {/* ── Right: questions ── */}
           <ul className={styles.list}>
-            {homeQuestions.map((q, i) => {
+            {items.map((q, i) => {
               const isOpen = open === i;
               const id = `faq-answer-${i}`;
               return (

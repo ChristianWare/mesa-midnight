@@ -1,21 +1,140 @@
 /* ================================
-   Hero — black, white text
+   Intro — dark, vehicle left, copy right
    ================================ */
 .hero {
   position: relative;
   background-color: var(--black);
-  padding-bottom: 8rem;
+  padding: 12rem 0 10rem;
 }
 
-.heroTop {
+.crumbs {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 4rem;
-  padding-top: 14rem;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 2.4rem 0;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
 }
 
-.heroText {
+/* Global span colour is dark: keep the trail light on the dark intro */
+.crumbs span {
+  color: inherit;
+}
+
+.crumbs a {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.introGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 6rem;
+  align-items: center;
+}
+
+/* Vehicle cut-out on a light stage */
+.stage {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: 6px;
+  background: radial-gradient(ellipse at 50% 70%, #ffffff 0%, #e4e4e4 70%);
+}
+
+.cutout {
+  object-fit: contain;
+  padding: 6% 8% 18%;
+}
+
+/* Capacity track: every vehicle by passengers, this one in yellow */
+.track {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.line {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  height: 1px;
+  background-color: var(--black400);
+}
+
+.stop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stop:first-of-type {
+  align-items: flex-start;
+}
+
+.stop:last-of-type {
+  align-items: flex-end;
+}
+
+.stopTag {
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: var(--white);
+  border: 1px solid var(--stroke);
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--black);
+}
+
+.stopName {
+  display: none;
+}
+
+.stopDot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 2px solid var(--black400);
+}
+
+.stopActive .stopTag {
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.stopActive .stopName {
+  display: inline;
+}
+
+.stopActive .stopDot {
+  background-color: var(--yellow);
+  border-color: var(--black);
+  transform: scale(1.25);
+}
+
+/* ── Name, intro, stats, best for, buttons ── */
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
   min-width: 0;
 }
 
@@ -25,18 +144,7 @@
   gap: 8px;
 }
 
-.chipDark {
-  padding: 6px 8px;
-  border-radius: 3px;
-  background-color: #2a2a2a;
-  font-family: var(--IBMPlex);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
+.chipDark,
 .chipPlain {
   font-family: var(--IBMPlex);
   font-size: 12px;
@@ -46,175 +154,41 @@
   color: var(--white);
 }
 
+.chipDark {
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
 .heading {
-  margin-top: 2.4rem;
   color: var(--white);
 }
 
 .intro {
-  max-width: 460px;
-  margin-top: 1.6rem;
+  max-width: 480px;
   font-family: var(--CreatoDisplayMedium);
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 18px;
+  line-height: 1.45;
   color: rgba(255, 255, 255, 0.65);
 }
 
-/* Features | capacity + rate */
-.meta {
-  display: flex;
-  gap: 6rem;
-  flex-shrink: 0;
-  margin: 0;
-}
-
-.metaCol {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.metaLabel {
-  margin-bottom: 0.6rem;
-  font-family: var(--IBMPlex);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.metaGap {
-  margin-top: 2.4rem;
-}
-
-.metaValue {
-  margin: 0;
-  font-family: var(--IBMPlex);
-  font-size: 12px;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-/* 2:1 frame, vehicle cut-out on a light stage */
-.stage {
-  position: relative;
-  margin-top: 6rem;
-  aspect-ratio: 2 / 1;
-  overflow: hidden;
-  border-radius: 6px;
-  background: radial-gradient(ellipse at 50% 75%, #ffffff 0%, #e4e4e4 70%);
-}
-
-.cutout {
-  object-fit: contain;
-  padding: 8% 12% 6%;
-}
-
-/* ================================
-   Content blocks — tag left, text right
-   ================================ */
-.block {
-  background-color: var(--white);
-  padding-top: 12rem;
-}
-
-.blockLast {
-  padding-bottom: 12rem;
-}
-
-.row {
+.stats {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-  column-gap: 4rem;
-}
-
-.tag {
-  align-self: start;
-  justify-self: start;
-  padding: 6px 8px;
-  border-radius: 3px;
-  background-color: #efefef;
-  font-family: var(--IBMPlex);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--black);
-}
-
-.body {
-  max-width: 640px;
-  margin: 0;
-}
-
-.blockHeading {
-  color: var(--black);
-}
-
-.text {
-  margin-top: 1.6rem;
-  font-family: var(--CreatoDisplayMedium);
-  font-size: 16px;
-  line-height: 1.45;
-  color: #7f7f7f;
-}
-
-/* Galleries line up under the text column */
-.galleryThree,
-.galleryTwo {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  margin-top: 6rem;
-}
-
-.photo {
-  position: relative;
-  aspect-ratio: 515 / 345;
-  overflow: hidden;
-  border-radius: 6px;
-  background-color: #efefef;
-}
-
-.photoWide {
-  grid-column: 1 / -1;
-  aspect-ratio: 1035 / 427;
-}
-
-.image {
-  object-fit: cover;
-}
-
-/* ── Feedback ── */
-.quote {
+  width: 100%;
   margin: 0;
 }
 
-.quote p {
-  color: #7f7f7f;
-}
-
-.statRow {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 3.2rem;
-}
-
-.statCard {
+.stat {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem;
+  min-width: 0;
+  padding: 1.6rem;
   border-radius: 4px;
-  background-color: #efefef;
-}
-
-.statValue {
-  color: var(--black);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .statLabel {
@@ -223,30 +197,220 @@
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.statValue {
+  margin: 0;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--white);
+  overflow-wrap: anywhere;
+}
+
+.best {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.best .label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.bestList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.4rem;
+}
+
+.bestItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--white);
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--yellow);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.4rem;
+  margin-top: 0.8rem;
+}
+
+/* ================================
+   Details — rows left, sticky card right
+   ================================ */
+.details {
+  background-color: var(--white);
+  padding: 12rem 0 10rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: 6rem;
+  align-items: start;
+}
+
+.content {
+  min-width: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  column-gap: 4rem;
+  padding: 2.4rem 0 5.6rem;
+  border-top: 1px solid var(--lightGray);
+}
+
+.row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Small grey tag, same as the service pages */
+.tag {
+  align-self: start;
+  justify-self: start;
+  margin: 0;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: #efefef;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.rowBody {
+  min-width: 0;
+  margin: 0;
+}
+
+.rowHeading {
+  margin-bottom: 1.6rem;
+  color: var(--black);
+}
+
+.text {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--black400);
+}
+
+.text + .text {
+  margin-top: 1.2rem;
+}
+
+.label {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+.checks {
+  list-style: none;
+  padding: 0;
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--lightGray);
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--black);
+}
+
+.checkItem:first-child {
+  padding-top: 0;
+}
+
+.check {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  padding: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2.4rem;
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--lightGray);
+}
+
+.spec:nth-child(-n + 2) {
+  padding-top: 0;
+}
+
+.specValue {
+  margin: 0;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--black);
+}
+
+/* ── Feedback ── */
+.quote {
+  margin: 0;
+}
+
+.quote p {
+  color: var(--black);
 }
 
 .reviewer {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  margin-top: 8px;
+  margin-top: 2rem;
   padding: 1.6rem 2rem;
   border-radius: 4px;
   background-color: #efefef;
-}
-
-.avatar {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  background-color: var(--black);
-  font-family: var(--IBMPlex);
-  font-size: 12px;
-  color: var(--white);
 }
 
 .reviewerText {
@@ -284,17 +448,282 @@
   fill: var(--accent);
 }
 
+/* Two photos under the rows */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 515 / 420;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #efefef;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ── Sticky dark card ── */
+.aside {
+  align-self: stretch;
+}
+
+.summary {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 8px 8px 2.4rem;
+  border-radius: 6px;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.summaryPhoto {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: radial-gradient(ellipse at 50% 70%, #ffffff 0%, #e4e4e4 70%);
+}
+
+.summaryCutout {
+  object-fit: contain;
+  padding: 8% 10%;
+}
+
+.summaryStat,
+.summaryChips,
+.summaryFoot {
+  margin-left: 1.6rem;
+  margin-right: 1.6rem;
+}
+
+.summaryStat {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summaryEyebrow,
+.summaryLabel {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.summaryValue {
+  margin: 0;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 80px;
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  color: var(--yellow);
+}
+
+.summaryUnit {
+  margin-left: 0.4rem;
+  font-size: 24px;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.summaryChips {
+  list-style: none;
+  padding: 2rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.summaryChip {
+  padding: 6px 8px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.12);
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.summaryFoot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+.summaryCall {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.summaryCall a {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
 /* ================================
-   1268px — galleries span the full width
+   The rest of the fleet
+   ================================ */
+.others {
+  background-color: var(--white);
+  padding: 0 0 12rem;
+}
+
+.othersTop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+  margin-bottom: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--lightGray);
+}
+
+.othersTitle {
+  color: var(--black);
+}
+
+.otherList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4rem 8px;
+}
+
+.other {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.otherImg {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #efefef;
+  transition: background-color 0.2s ease;
+}
+
+.otherCutout {
+  object-fit: contain;
+  padding: 8% 10%;
+  transition: transform 0.35s ease;
+}
+
+/* The whole card is the link */
+.otherName {
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--black);
+}
+
+.otherName::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.other:hover .otherImg {
+  background-color: var(--lightGray);
+}
+
+.other:hover .otherCutout {
+  transform: scale(1.04);
+}
+
+.otherMeta {
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+/* ================================
+   1268px
    ================================ */
 @media screen and (max-width: 1268px) {
-  .heroTop {
-    flex-direction: column;
-    align-items: flex-start;
+  .introGrid {
+    gap: 4rem;
   }
 
-  .meta {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
     gap: 4rem;
+  }
+
+  .row {
+    column-gap: 2.4rem;
+  }
+
+  .summaryValue {
+    font-size: 64px;
+  }
+}
+
+/* ================================
+   1068px — one column, card on top, not sticky
+   ================================ */
+@media screen and (max-width: 1068px) {
+  .introGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stage {
+    aspect-ratio: 16 / 10;
+  }
+
+  .stopName {
+    display: inline;
+  }
+
+  .side {
+    max-width: 640px;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aside {
+    order: -1;
+  }
+
+  .summary {
+    position: static;
+  }
+
+  .summaryPhoto {
+    aspect-ratio: 16 / 7;
+  }
+
+  .otherList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -302,24 +731,15 @@
    968px — tag above the text
    ================================ */
 @media screen and (max-width: 968px) {
-  .heroTop {
-    padding-top: 12rem;
-  }
-
-  .stage {
-    margin-top: 4rem;
-    aspect-ratio: 16 / 10;
-  }
-
   .hero {
-    padding-bottom: 6rem;
+    padding: 10rem 0 7rem;
   }
 
-  .block {
-    padding-top: 8rem;
+  .details {
+    padding: 7rem 0;
   }
 
-  .blockLast {
+  .others {
     padding-bottom: 8rem;
   }
 
@@ -327,14 +747,16 @@
     grid-template-columns: minmax(0, 1fr);
     row-gap: 2rem;
   }
+}
 
-  .body {
-    max-width: none;
+/* Between 768px and 568px only this vehicle keeps its name */
+@media screen and (max-width: 768px) {
+  .stopName {
+    display: none;
   }
 
-  .galleryThree,
-  .galleryTwo {
-    margin-top: 4rem;
+  .stopActive .stopName {
+    display: inline;
   }
 }
 
@@ -342,13 +764,8 @@
    568px
    ================================ */
 @media screen and (max-width: 568px) {
-  .heroTop {
-    padding-top: 10rem;
-  }
-
-  .meta {
-    flex-direction: column;
-    gap: 2.4rem;
+  .hero {
+    padding: 8rem 0 5rem;
   }
 
   .stage {
@@ -356,14 +773,70 @@
   }
 
   .cutout {
-    padding: 10% 6%;
+    padding: 6% 4% 22%;
   }
 
-  .statCard {
-    padding: 1.4rem;
+  .track {
+    left: 1.2rem;
+    right: 1.2rem;
+    bottom: 1.4rem;
+  }
+
+  .stopName,
+  .stopActive .stopName {
+    display: none;
+  }
+
+  .stopTag {
+    padding: 5px 6px;
+    font-size: 11px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stat {
+    padding: 1.2rem 1rem;
+  }
+
+  .statValue {
+    font-size: 18px;
+  }
+
+  .actions {
+    gap: 1.6rem;
+  }
+
+  .details {
+    padding: 5rem 0;
+  }
+
+  .specs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .spec:nth-child(2) {
+    padding-top: 1.4rem;
+  }
+
+  .summaryValue {
+    font-size: 56px;
   }
 
   .reviewer {
     padding: 1.2rem 1.4rem;
+  }
+
+  .otherList {
+    gap: 3rem 8px;
+  }
+
+  .otherName {
+    font-size: 16px;
+  }
+
+  .others {
+    padding-bottom: 5rem;
   }
 }
