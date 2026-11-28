@@ -517,6 +517,7 @@
   text-align: left;
   color: var(--black);
   cursor: pointer;
+  letter-spacing: normal;
 }
 
 .subLinkActive,
