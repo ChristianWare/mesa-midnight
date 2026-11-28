@@ -3,17 +3,18 @@
   z-index: 60;
   width: 100%;
   overflow: hidden;
-  padding: 8px 16px;
+  padding: 8px 0;
   background-color: var(--yellow);
   color: var(--black);
 }
 
-/* One message: the "DEMO SITE" chip + the sentence */
+/* One message: the chip + the sentence */
 .item {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+  padding-right: 48px;
   white-space: nowrap;
   font-family: var(--IBMPlex);
   font-size: 12px;
@@ -37,64 +38,39 @@
 }
 
 /* ================================
-   Wide screens: centred, static
+   Marquee, at every screen size
    ================================ */
-.static {
+.marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
   display: flex;
-  justify-content: center;
-  margin: 0;
+  width: max-content;
+  animation: bannerMarquee 70s linear infinite;
 }
 
-.marquee,
+.group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Pause on hover so a message can be read */
+.bar:hover .track {
+  animation-play-state: paused;
+}
+
 .srOnly {
-  display: none;
-}
-
-/* ================================
-   1268px and below: marquee
-   ================================ */
-@media screen and (max-width: 1268px) {
-  .bar {
-    padding: 8px 0;
-  }
-
-  .static {
-    display: none;
-  }
-
-  .marquee {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .track {
-    display: flex;
-    width: max-content;
-    animation: demoMarquee 45s linear infinite;
-  }
-
-  .group {
-    display: flex;
-    flex-shrink: 0;
-  }
-
-  .group .item {
-    padding-right: 48px;
-  }
-
-  .srOnly {
-    display: block;
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media screen and (max-width: 568px) {
@@ -104,11 +80,11 @@
   }
 
   .track {
-    animation-duration: 35s;
+    animation-duration: 55s;
   }
 }
 
-@keyframes demoMarquee {
+@keyframes bannerMarquee {
   from {
     transform: translateX(0);
   }
@@ -117,7 +93,7 @@
   }
 }
 
-/* "Reduce motion": no scrolling, just the first copy */
+/* "Reduce motion": no scrolling, just the first messages */
 @media (prefers-reduced-motion: reduce) {
   .track {
     animation: none;

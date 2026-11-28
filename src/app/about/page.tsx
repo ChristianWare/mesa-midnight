@@ -4,6 +4,8 @@ import OurStory from "@/components/AboutPage/OurStory/OurStory";
 import OurStandards from "@/components/AboutPage/OurStandards/OurStandards";
 import AreasWeServe from "@/components/AboutPage/AreasWeServe/AreasWeServe";
 import Chauffeurs from "@/components/AboutPage/Chauffeurs/Chauffeurs";
+import PreRideCheck from "@/components/AboutPage/PreRideCheck/PreRideCheck";
+import WhoWeDrive from "@/components/AboutPage/WhoWeDrive/WhoWeDrive";
 import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 import HeroStage from "@/components/HomePage/HeroStage/HeroStage";
 import styles from "./page.module.css";
@@ -33,7 +35,9 @@ export default function Page() {
         <OurStory />
         <AreasWeServe />
         <OurStandards />
+        <PreRideCheck />
         <Chauffeurs />
+        <WhoWeDrive />
         <FinalCta />
       </div>
     </main>

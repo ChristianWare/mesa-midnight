@@ -3,22 +3,34 @@
    ================================ */
 .section {
   background-color: var(--white);
-  padding: 12rem 0rem;
+  padding: 12rem 0;
 }
 
 /* ================================
-   Places strip — same as Testimonials
+   Top — heading left, story right
    ================================ */
-.trusted {
-  display: flex;
-  justify-content: center;
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4rem;
+  padding-top: 3.2rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
 }
 
-.trustedTag,
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
+  min-width: 0;
+}
+
 .tag {
-  display: inline-block;
-  padding: 6px 8px;
-  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
   background-color: #efefef;
   font-family: var(--IBMPlex);
   font-size: 12px;
@@ -28,169 +40,104 @@
   color: var(--black);
 }
 
-.marquee {
-  margin-top: 3.2rem;
-  overflow: hidden;
-  /* soft fade at both ends */
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 10%,
-    #000 90%,
-    transparent
-  );
-}
-
-.track {
-  display: flex;
-  width: max-content;
-  animation: marquee 40s linear infinite;
-}
-
-.group {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-}
-
-.city {
-  padding: 0 3.2rem;
-  font-family: var(--CreatoDisplayBold);
-  font-size: 26px;
-  line-height: 1;
-  letter-spacing: -0.6px;
-  white-space: nowrap;
-  color: #b2b2b2;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-  }
-}
-
-/* ================================
-   Story — starts under a thin divider
-   ================================ */
-.story {
-  margin-top: 10rem;
-  padding-top: 3.2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.heading {
-  /* max-width: 900px; */
-  margin-top: 2rem;
-  color: var(--black);
-}
-
-/* ================================
-   The story, in three short chapters
-   ================================ */
-.chapters {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 4rem;
-  margin: 6rem 0 0;
-  padding: 3.2rem 0 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.chapter {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-
-.when {
-  font-family: var(--IBMPlex);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--black);
-}
-
-.text {
-  max-width: 420px;
+.tagIcon {
+  width: 10px;
+  height: 10px;
   color: var(--black400);
 }
 
+.heading {
+  max-width: 460px;
+  color: var(--black);
+}
+
+/* "2019©" never splits; the global span colour is dark, keep it inherited */
+.nowrap {
+  white-space: nowrap;
+  color: inherit;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.2rem;
+  min-width: 0;
+}
+
+.copy {
+  color: var(--paragraph);
+}
+
+.btn {
+  margin-top: 0.8rem;
+}
+
 /* ================================
-   By the numbers — same cards as the home About intro
+   Bottom — numbers left, photo right, same height
    ================================ */
+.bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 6rem;
+}
+
 .stats {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  margin: 6rem 0 0;
+  margin: 0;
   padding: 0;
-}
-
-.card {
   display: flex;
   flex-direction: column;
-  padding: 4px 4px 0;
-  border-radius: 4px;
-  background-color: #efefef;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
 }
 
-.cardInner {
+.stat {
+  flex: 1;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  gap: 4rem;
-  min-height: 165px;
-  padding: 16px;
-  border-radius: 3px;
-  background-color: var(--white);
+  gap: 2.4rem;
+  min-height: 126px;
+  padding: 2rem 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
 }
 
-.cardLabel {
+.label {
+  max-width: 260px;
   font-family: var(--IBMPlex);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.02em;
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--black);
 }
 
-/* Big number, bottom right */
+/* Big number, right */
 .number {
   display: flex;
   align-items: baseline;
-  align-self: flex-end;
+  flex-shrink: 0;
   margin: 0;
-  line-height: 0.8;
   color: var(--black);
 }
 
 .count,
 .suffix {
-  line-height: 0.8;
+  line-height: 1;
   color: inherit;
 }
 
-.cardFoot {
-  margin: 0;
-  padding: 10px 6px 8px;
-  font-family: var(--IBMPlex);
-  font-size: 12px;
-  line-height: 1.3;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--black400);
+.photo {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #efefef;
+}
+
+.image {
+  object-fit: cover;
 }
 
 .srOnly {
@@ -206,57 +153,70 @@
 }
 
 /* ================================
-   968px
+   1068px — heading on one line, story under it
    ================================ */
-@media screen and (max-width: 968px) {
-  .section {
-    padding: 8rem 0rem;
-  }
-
-  .city {
-    padding: 0 2.4rem;
-    font-size: 22px;
-  }
-
-  .story {
-    margin-top: 6rem;
-  }
-
-  .chapters {
+@media screen and (max-width: 1068px) {
+  .top {
     grid-template-columns: minmax(0, 1fr);
-    gap: 3.2rem;
+    gap: 2.4rem;
+  }
+
+  .heading {
+    max-width: none;
+  }
+
+  .right {
+    gap: 2rem;
+  }
+
+  .bottom {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     margin-top: 4rem;
   }
 
-  .text {
-    max-width: 640px;
+  .stat {
+    min-height: 96px;
+    padding: 1.6rem 0;
   }
 
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 4.8rem;
+  .label {
+    max-width: 200px;
+    font-size: 12px;
   }
 }
 
 /* ================================
-   568px
+   968px
+   ================================ */
+@media screen and (max-width: 968px) {
+  .section {
+    padding: 8rem 0;
+  }
+}
+
+/* ================================
+   568px — photo under the numbers
    ================================ */
 @media screen and (max-width: 568px) {
   .section {
-    padding: 5rem 0rem;
+    padding: 5rem 0;
   }
 
-  .trustedTag {
+  .bottom {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.4rem;
+  }
+
+  .stat {
+    min-height: 76px;
+  }
+
+  .label {
     font-size: 11px;
   }
 
-  .city {
-    padding: 0 1.8rem;
-    font-size: 18px;
-  }
-
-  .cardInner {
-    min-height: 130px;
-    gap: 2.4rem;
+  .photo {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
   }
 }
