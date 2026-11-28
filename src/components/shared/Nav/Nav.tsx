@@ -375,7 +375,7 @@ export default function Nav({ variant = "solid" }: NavProps) {
                 onClick={close}
               >
                 <span className={styles.panelCtaText}>
-                  Open a corporate account
+                  corporate accounts
                 </span>
                 <span className={styles.panelCtaBox} aria-hidden='true'>
                   <Arrow className={styles.panelCtaArrow} />
