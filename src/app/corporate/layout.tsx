@@ -3,6 +3,7 @@ import styles from "./CorporateLayout.module.css";
 import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import CorporateSideNav from "@/components/corporate/CorporateSideNav/CorporateSideNav";
+import CorporateBottomBar from "@/components/corporate/CorporateBottomBar/CorporateBottomBar";
 import Nav from "@/components/shared/Nav/Nav";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import { db } from "@/lib/db";
@@ -74,6 +75,8 @@ export default async function CorporateLayout({
     },
   });
 
+  const canBook = account.status === "ACTIVE";
+
   const fullName = session.user?.name?.trim() ?? "";
   const firstName = fullName.split(/\s+/)[0] || "";
   const displayName = firstName || "there";
@@ -90,10 +93,23 @@ export default async function CorporateLayout({
               </p>
               <h1 className={`${styles.heading} h2`}>Welcome {displayName}!</h1>
 
+              {/* A suspended or closed account can't book: say so. */}
+              {!canBook && (
+                <p className={styles.statusNote} role='status'>
+                  {account.status === "SUSPENDED"
+                    ? "Account suspended."
+                    : account.status === "CLOSED"
+                      ? "Account closed."
+                      : "Account inactive."}{" "}
+                  New bookings are paused.
+                </p>
+              )}
+
               <div className={styles.sideNavContainer}>
                 <CorporateSideNav
+                  roles={roles}
+                  canBook={canBook}
                   upcomingRidesCount={upcomingRidesCount}
-                  accountStatus={account.status}
                 />
               </div>
             </div>
@@ -102,6 +118,12 @@ export default async function CorporateLayout({
           </div>
         </section>
       </LayoutWrapper>
+      {/* Tablets and phones: the bottom bar replaces the side nav. */}
+      <CorporateBottomBar
+        roles={roles}
+        canBook={canBook}
+        upcomingRidesCount={upcomingRidesCount}
+      />
     </main>
   );
 }

@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import AdminSideNav from "@/components/admin/AdminSideNav/AdminSideNav";
 import Nav from "@/components/shared/Nav/Nav";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
-import { db } from "@/lib/db";
 import { getOnboardingStatus } from "../../../actions/admin/onboarding";
 import OnboardingChecklist from "@/components/admin/OnboardingChecklist/OnboardingChecklist";
 
@@ -29,12 +28,7 @@ export default async function AdminLayout({
   const isAdmin = roles.includes("ADMIN");
   if (!isAdmin) redirect("/");
 
-  const [pendingReview, onboarding] = await Promise.all([
-    db.booking.count({ where: { status: "PENDING_REVIEW" } }),
-    getOnboardingStatus(),
-  ]);
-
-  const bookingNeedsAttentionCount = pendingReview;
+  const onboarding = await getOnboardingStatus();
 
   return (
     <main>
@@ -44,9 +38,7 @@ export default async function AdminLayout({
           <div className={styles.content}>
             <div className={styles.left}>
               <div className={styles.AdminSideNavContainer}>
-                <AdminSideNav
-                  bookingNeedsAttentionCount={bookingNeedsAttentionCount}
-                />
+                <AdminSideNav />
               </div>
             </div>
             <div className={styles.right} data-refresh-area>

@@ -374,6 +374,192 @@
   }
 }
 
+/* "Admin options" (admin pages): first row of the menu, with the arrow
+   square of the site buttons */
+.menuLinkAdmin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  padding: 5px 5px 5px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--yellow);
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuLinkBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 4px;
+  background-color: var(--white);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menuLinkAdmin:hover {
+    opacity: 0.85;
+  }
+}
+
+/* ================================
+   Admin options — second panel over the menu
+   ================================ */
+.sub {
+  z-index: 101;
+}
+
+.subTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* The shared Arrow icon points up; turn it left */
+.backArrow {
+  width: 1.4rem;
+  height: 1.4rem;
+  transform: rotate(-90deg);
+}
+
+.subEyebrow {
+  margin-top: 4rem;
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+.subGroups {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+}
+
+.subGroup {
+  border-bottom: 1px solid var(--stroke);
+}
+
+.subHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.4rem 0;
+  border: none;
+  background: none;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  text-align: left;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.chevron {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  transition: transform 0.25s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Opens to its links' height */
+.subPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.subPanelOpen {
+  grid-template-rows: 1fr;
+}
+
+.subLinks {
+  min-height: 0;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subPanelOpen .subLinks {
+  padding-bottom: 1.2rem;
+}
+
+.subLink,
+.subLink:link,
+.subLink:visited {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.subLinkActive,
+.subLinkActive:link,
+.subLinkActive:visited {
+  background-color: var(--yellow);
+}
+
+.subIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--black400);
+}
+
+.panel .subIcon {
+  color: var(--black400);
+}
+
+.subLinkActive .subIcon,
+.panel .subLinkActive .subIcon {
+  color: var(--black);
+}
+
+.subIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .subLink:not(.subLinkActive):hover {
+    background-color: #efefef;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subPanel,
+  .chevron {
+    transition: none;
+  }
+}
+
 .panelCta,
 .panelCta:link,
 .panelCta:visited {

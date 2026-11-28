@@ -54,6 +54,21 @@
   z-index: -999;
 }
 
+/* Tablets and phones: the bottom bar replaces the side nav at this size. */
+@media screen and (max-width: 1068px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    min-width: 0;
+  }
+}
+
 /* =====================================================================
    Dashboard fonts
    Everything: Creato Display Medium. Headings: Creato Display Bold.

@@ -12,6 +12,15 @@ import { SITE } from "@/config/site";
 import styles from "./Nav.module.css";
 import CarFront from "../icons/CarFront/CarFront";
 import Moon from "../icons/Moon/Moon";
+import Users from "../icons/Users/Users";
+import Driver from "../icons/Driver/Driver";
+import Business from "../icons/Business/Business";
+import SignOutLogo from "../icons/SignOutLogo/SignOutLogo";
+import {
+  ADMIN_NAV_GROUPS,
+  isAdminNavActive,
+  type AdminNavGroup,
+} from "@/components/admin/AdminSideNav/adminNav";
 
 /**
  * Site nav.
@@ -20,6 +29,11 @@ import Moon from "../icons/Moon/Moon";
  * - default ("solid"): white bar with dark text, for every other page.
  * `background` and the color props are still accepted so the existing
  * `<Nav background="white" />` callers keep compiling.
+ *
+ * On admin pages the slide-out menu adds "Admin options" at the top (at
+ * 1068px and below it stands in for the admin side nav). That slides a
+ * second panel over the menu with the admin's sections, each opening its
+ * links below it, one at a time, starting on the section you're in.
  */
 export interface NavProps {
   variant?: "overlay" | "dark" | "solid";
@@ -66,6 +80,28 @@ const SOCIALS = [
 
 const noopSubscribe = () => () => {};
 
+/** The admin sections in "Admin options": the side nav's groups, then
+ *  Account (Log out is added where it's drawn). */
+const ADMIN_MENU_GROUPS: AdminNavGroup[] = [
+  ...ADMIN_NAV_GROUPS,
+  {
+    label: "Account",
+    items: [
+      { title: "User dashboard", href: "/dashboard", icon: <Users /> },
+      {
+        title: "Driver dashboard",
+        href: "/driver-dashboard",
+        icon: <Driver />,
+      },
+      {
+        title: "Corporate dashboard",
+        href: "/corporate",
+        icon: <Business />,
+      },
+    ],
+  },
+];
+
 function dashboardFor(roles: AppRole[]): string {
   if (roles.includes("ADMIN")) return "/admin";
   if (roles.includes("DRIVER")) return "/driver-dashboard";
@@ -86,6 +122,23 @@ function AccountIcon() {
     >
       <circle cx='12' cy='8' r='4' />
       <path d='M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5' />
+    </svg>
+  );
+}
+
+function ChevronIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      aria-hidden='true'
+    >
+      <path d='M6 9l6 6 6-6' />
     </svg>
   );
 }
@@ -125,7 +178,25 @@ export default function Nav({ variant = "solid" }: NavProps) {
       : pathname === href || pathname.startsWith(`${href}/`);
 
   const accountHref = session ? dashboardFor(roles) : "/login";
-  const close = () => setOpen(false);
+  // "Admin options": the second panel and which of its sections is open.
+  const [adminOpen, setAdminOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const inAdmin =
+    roles.includes("ADMIN") &&
+    (pathname === "/admin" || pathname.startsWith("/admin/"));
+  const subOpen = open && adminOpen && inAdmin;
+  const close = () => {
+    setOpen(false);
+    setAdminOpen(false);
+  };
+  // Opens on the section of the page you're on.
+  const openAdmin = () => {
+    const current = ADMIN_MENU_GROUPS.find((g) =>
+      g.items.some((i) => isAdminNavActive(pathname, i.href)),
+    );
+    setOpenGroup(current?.label ?? ADMIN_MENU_GROUPS[0].label);
+    setAdminOpen(true);
+  };
 
   // Lock page scroll and close on Escape while the menu is open.
   useEffect(() => {
@@ -134,7 +205,10 @@ export default function Nav({ variant = "solid" }: NavProps) {
     document.body.style.overflow = "hidden";
     lenis?.stop();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        setAdminOpen(false);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {
@@ -200,7 +274,10 @@ export default function Nav({ variant = "solid" }: NavProps) {
             className={`${styles.pill} ${styles.menuBtn}`}
             aria-expanded={open}
             aria-controls='site-menu'
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setAdminOpen(false);
+              setOpen(true);
+            }}
           >
             <span className={styles.burger} aria-hidden='true'>
               <span />
@@ -228,8 +305,8 @@ export default function Nav({ variant = "solid" }: NavProps) {
               id='site-menu'
               className={`${styles.panel} ${open ? styles.panelOpen : ""}`}
               aria-label='Site menu'
-              aria-hidden={!open}
-              inert={!open}
+              aria-hidden={!open || subOpen}
+              inert={!open || subOpen}
               data-lenis-prevent
             >
               <div className={styles.panelTop}>
@@ -261,6 +338,22 @@ export default function Nav({ variant = "solid" }: NavProps) {
               </div>
 
               <ul className={styles.menuList}>
+                {inAdmin && (
+                  <li>
+                    <button
+                      type='button'
+                      className={`${styles.menuLink} ${styles.menuLinkAdmin}`}
+                      onClick={openAdmin}
+                      aria-expanded={subOpen}
+                      aria-controls='admin-menu'
+                    >
+                      Admin options
+                      <span className={styles.menuLinkBox} aria-hidden='true'>
+                        <Arrow className={styles.panelCtaArrow} />
+                      </span>
+                    </button>
+                  </li>
+                )}
                 {MENU_LINKS.map((l) => (
                   <li key={l.href}>
                     <Link
@@ -373,6 +466,132 @@ export default function Nav({ variant = "solid" }: NavProps) {
                 )}
               </div>
             </aside>
+
+            {/* ── Admin options: a second panel over the menu ── */}
+            {inAdmin && (
+              <aside
+                id='admin-menu'
+                className={`${styles.panel} ${styles.sub} ${subOpen ? styles.panelOpen : ""}`}
+                aria-label='Admin options'
+                aria-hidden={!subOpen}
+                inert={!subOpen}
+                data-lenis-prevent
+              >
+                <div className={styles.subTop}>
+                  <button
+                    type='button'
+                    className={styles.panelClose}
+                    onClick={() => setAdminOpen(false)}
+                  >
+                    <Arrow className={styles.backArrow} aria-hidden='true' />
+                    <span className={styles.pillLabel}>Back</span>
+                  </button>
+                  <button
+                    type='button'
+                    className={styles.panelClose}
+                    onClick={close}
+                  >
+                    <span className={styles.closeIcon}>
+                      <CloseIcon />
+                    </span>
+                    <span
+                      className={`${styles.panelCloseLabel} ${styles.pillLabel}`}
+                    >
+                      Menu
+                    </span>
+                  </button>
+                </div>
+
+                <p className={styles.subEyebrow}>Admin options</p>
+
+                <ul className={styles.subGroups}>
+                  {ADMIN_MENU_GROUPS.map((group) => {
+                    const groupOpen = openGroup === group.label;
+                    const panelId = `admin-menu-${group.label.toLowerCase()}`;
+                    return (
+                      <li key={group.label} className={styles.subGroup}>
+                        <button
+                          type='button'
+                          className={styles.subHeading}
+                          aria-expanded={groupOpen}
+                          aria-controls={panelId}
+                          onClick={() =>
+                            setOpenGroup(groupOpen ? null : group.label)
+                          }
+                        >
+                          {group.label}
+                          <ChevronIcon open={groupOpen} />
+                        </button>
+
+                        <div
+                          id={panelId}
+                          className={`${styles.subPanel} ${groupOpen ? styles.subPanelOpen : ""}`}
+                          inert={!groupOpen}
+                        >
+                          <ul className={styles.subLinks}>
+                            {group.items.map((item) => {
+                              const active = isAdminNavActive(
+                                pathname,
+                                item.href,
+                              );
+                              return (
+                                <li key={item.href}>
+                                  <Link
+                                    href={item.href}
+                                    className={`${styles.subLink} ${active ? styles.subLinkActive : ""}`}
+                                    aria-current={active ? "page" : undefined}
+                                    onClick={close}
+                                  >
+                                    <span
+                                      className={styles.subIcon}
+                                      aria-hidden='true'
+                                    >
+                                      {item.icon}
+                                    </span>
+                                    {item.title}
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                            {group.label === "Account" && (
+                              <li>
+                                <button
+                                  type='button'
+                                  className={styles.subLink}
+                                  onClick={() => {
+                                    close();
+                                    signOut({ callbackUrl: "/" });
+                                  }}
+                                >
+                                  <span
+                                    className={styles.subIcon}
+                                    aria-hidden='true'
+                                  >
+                                    <SignOutLogo />
+                                  </span>
+                                  Log out
+                                </button>
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                <Link
+                  href='/admin/bookings/new'
+                  className={styles.panelCta}
+                  onClick={close}
+                >
+                  <span className={styles.panelCtaText}>New booking</span>
+                  <span className={styles.panelCtaBox} aria-hidden='true'>
+                    <Arrow className={styles.panelCtaArrow} />
+                  </span>
+                </Link>
+              </aside>
+            )}
           </>,
           document.body,
         )}

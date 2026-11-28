@@ -1,0 +1,163 @@
+/* A dashboard's side nav (admin, customer, driver, corporate): a white
+   panel with the pages in groups under small mono labels, the current page
+   in yellow, and the other dashboards and sign-out at the bottom in one
+   quiet style. At 1068px and below the layout hides it. */
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.2rem;
+  border: 1px solid var(--stroke);
+  border-radius: 6px;
+  background-color: var(--white);
+}
+
+.navigating {
+  pointer-events: none;
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.loadingOverlay > * {
+  width: auto !important;
+  height: auto !important;
+}
+
+/* ── Groups ── */
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Two classes, so the dashboards' "every p is Creato" rule doesn't win */
+.container .groupLabel {
+  margin: 0;
+  padding: 0 1.2rem 0.8rem;
+  font-family: var(--IBMPlex);
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--black400);
+}
+
+/* ── Links ── */
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border-radius: 4px;
+  font-family: var(--CreatoDisplayMedium);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.navIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--black400);
+  transition: color 0.2s ease;
+}
+
+.navIcon > *,
+.navIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  flex: 1;
+  color: inherit;
+}
+
+.navLinkActive {
+  background-color: var(--yellow);
+}
+
+.navLinkActive .navIcon {
+  color: var(--black);
+}
+
+/* ── Other dashboards and sign-out, one quiet style ── */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--stroke);
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 1.4rem;
+  border: 1px solid var(--stroke);
+  border-radius: 4px;
+  background-color: var(--white);
+  font-family: var(--IBMPlex);
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* The shared Arrow icon points up; turn it right */
+.arrow {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  transform: rotate(90deg);
+}
+
+@media (hover: hover) {
+  .navLink:not(.navLinkActive):hover {
+    background-color: #efefef;
+  }
+
+  .navLink:hover .navIcon {
+    color: var(--black);
+  }
+
+  .actionBtn:hover {
+    border-color: var(--black);
+  }
+}

@@ -81,6 +81,21 @@
   z-index: -999;
 }
 
+/* Tablets and phones: the site menu's Admin options carry the admin pages at this size. */
+@media screen and (max-width: 1068px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    min-width: 0;
+  }
+}
+
 /* =====================================================================
    Dashboard fonts
    Everything: Creato Display Medium. Headings: Creato Display Bold.
