@@ -35,9 +35,9 @@ export default function Page() {
         <OurStory />
         <AreasWeServe />
         <OurStandards />
+        <WhoWeDrive />
         <PreRideCheck />
         <Chauffeurs />
-        <WhoWeDrive />
         <FinalCta />
       </div>
     </main>

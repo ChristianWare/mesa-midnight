@@ -88,7 +88,7 @@ export default function OurStory() {
 
           <div className={styles.photo}>
             <Image
-              src='/images/img5.jpg'
+              src='/images/img12.jpg'
               alt='Mesa Midnight chauffeur with a coffee beside the car'
               fill
               sizes='(max-width: 568px) 100vw, 50vw'

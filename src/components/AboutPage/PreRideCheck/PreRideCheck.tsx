@@ -8,7 +8,7 @@ import styles from "./PreRideCheck.module.css";
 export default function PreRideCheck() {
   return (
     <section className={styles.section} aria-labelledby='preride-heading'>
-      <LayoutWrapper>
+      {/* <LayoutWrapper> */}
         <div className={styles.frame}>
           <video
             className={styles.video}
@@ -49,7 +49,7 @@ export default function PreRideCheck() {
             </figure>
           </div>
         </div>
-      </LayoutWrapper>
+      {/* </LayoutWrapper> */}
     </section>
   );
 }

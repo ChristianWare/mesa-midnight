@@ -3,7 +3,6 @@
    ================================ */
 .section {
   background-color: var(--white);
-  padding-bottom: 12rem;
 }
 
 .frame {
@@ -12,7 +11,7 @@
   align-items: flex-end;
   min-height: 980px;
   overflow: hidden;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   background-color: var(--black);
 }
 
@@ -148,22 +147,9 @@
 }
 
 /* ================================
-   968px
-   ================================ */
-@media screen and (max-width: 968px) {
-  .section {
-    padding-bottom: 8rem;
-  }
-}
-
-/* ================================
    568px
    ================================ */
 @media screen and (max-width: 568px) {
-  .section {
-    padding-bottom: 5rem;
-  }
-
   .frame {
     min-height: 620px;
   }

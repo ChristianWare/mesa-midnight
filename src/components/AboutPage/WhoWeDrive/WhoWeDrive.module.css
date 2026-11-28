@@ -30,6 +30,8 @@
 
 .heading {
   color: var(--black);
+  max-width: 900px;
+  margin-left: auto;
 }
 
 /* Years left, place right, over a thin line */
